@@ -40,7 +40,7 @@ final class GraduationPath
             completionPercentage: 0.0,
             isOnTrack: true,
             estimatedGraduationDate: $estimatedGraduationDate,
-            updatedAt: new DateTimeImmutable(),
+            updatedAt: new DateTimeImmutable,
         );
     }
 
@@ -73,13 +73,48 @@ final class GraduationPath
         $this->isOnTrack = $this->completionPercentage >= 50.0 && $currentGpa >= 2.0;
     }
 
-    public function id(): GraduationPathId { return $this->id; }
-    public function studentId(): StudentId { return $this->studentId; }
-    public function curriculumId(): CurriculumId { return $this->curriculumId; }
-    public function creditsEarned(): Credits { return $this->creditsEarned; }
-    public function creditsRequired(): Credits { return $this->creditsRequired; }
-    public function completionPercentage(): float { return $this->completionPercentage; }
-    public function isOnTrack(): bool { return $this->isOnTrack; }
-    public function estimatedGraduationDate(): ?DateTimeImmutable { return $this->estimatedGraduationDate; }
-    public function updatedAt(): DateTimeImmutable { return $this->updatedAt; }
+    public function id(): GraduationPathId
+    {
+        return $this->id;
+    }
+
+    public function studentId(): StudentId
+    {
+        return $this->studentId;
+    }
+
+    public function curriculumId(): CurriculumId
+    {
+        return $this->curriculumId;
+    }
+
+    public function creditsEarned(): Credits
+    {
+        return $this->creditsEarned;
+    }
+
+    public function creditsRequired(): Credits
+    {
+        return $this->creditsRequired;
+    }
+
+    public function completionPercentage(): float
+    {
+        return $this->completionPercentage;
+    }
+
+    public function isOnTrack(): bool
+    {
+        return $this->isOnTrack;
+    }
+
+    public function estimatedGraduationDate(): ?DateTimeImmutable
+    {
+        return $this->estimatedGraduationDate;
+    }
+
+    public function updatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
 }

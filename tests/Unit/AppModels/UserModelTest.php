@@ -28,7 +28,7 @@ final class UserModelTest extends TestCase
 
     public function test_fillable_attributes(): void
     {
-        $user = new User();
+        $user = new User;
         $fillable = $user->getFillable();
 
         $this->assertContains('academic_id', $fillable);
@@ -42,7 +42,7 @@ final class UserModelTest extends TestCase
 
     public function test_hidden_attributes(): void
     {
-        $user = new User();
+        $user = new User;
         $hidden = $user->getHidden();
 
         $this->assertContains('password_hash', $hidden);

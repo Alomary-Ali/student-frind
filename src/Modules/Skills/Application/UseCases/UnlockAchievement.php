@@ -7,8 +7,8 @@ namespace Modules\Skills\Application\UseCases;
 use DateTimeImmutable;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
-use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Application\DTOs\AchievementDto;
+use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Domain\Contracts\AchievementRepositoryInterface;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
 use Modules\Skills\Domain\Events\AchievementUnlocked;
@@ -55,7 +55,7 @@ final readonly class UnlockAchievement
                     studentId: $achievement->studentId()->value(),
                     title: $achievement->title(),
                     type: $achievement->type()->value,
-                    occurredAt: new DateTimeImmutable(),
+                    occurredAt: new DateTimeImmutable,
                 ),
             ]);
             $dtos[] = $this->mapper->toAchievementDto($achievement);

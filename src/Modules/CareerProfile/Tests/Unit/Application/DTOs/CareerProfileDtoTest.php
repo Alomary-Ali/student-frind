@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\CareerProfile\Tests\Unit\Application\DTOs;
 
-use Modules\CareerProfile\Application\DTOs\CareerProfileDto;
 use Modules\CareerProfile\Application\DTOs\CareerGoalDto;
+use Modules\CareerProfile\Application\DTOs\CareerProfileDto;
 use Modules\CareerProfile\Application\DTOs\ExperienceDto;
 use Modules\CareerProfile\Application\DTOs\PortfolioItemDto;
 use Modules\CareerProfile\Application\DTOs\ResumeDto;

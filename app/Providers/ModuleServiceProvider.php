@@ -36,6 +36,9 @@ final class ModuleServiceProvider extends ServiceProvider
         \Modules\Analytics\AnalyticsServiceProvider::class,
         \Modules\Administration\AdministrationServiceProvider::class,
         \Modules\UI\UIServiceProvider::class,
+        \Modules\Career\CareerServiceProvider::class,
+        \Modules\Notifications\NotificationsServiceProvider::class,
+        \Modules\StudentServices\StudentServicesServiceProvider::class,
     ];
 
     /**

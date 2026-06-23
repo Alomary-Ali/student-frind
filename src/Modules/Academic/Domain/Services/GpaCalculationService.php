@@ -12,7 +12,7 @@ final class GpaCalculationService
     /**
      * Calculate weighted GPA from grade points and credit hours.
      *
-     * @param list<array{grade_points: float, credit_hours: int}> $records
+     * @param  list<array{grade_points: float, credit_hours: int}>  $records
      */
     public function calculateCumulativeGpa(array $records): Gpa
     {
@@ -37,7 +37,7 @@ final class GpaCalculationService
     }
 
     /**
-     * @param list<array{grade_points: float, credit_hours: int}> $records
+     * @param  list<array{grade_points: float, credit_hours: int}>  $records
      */
     public function calculateSemesterGpa(array $records): Gpa
     {

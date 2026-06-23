@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Modules\Academic\Application\UseCases\CreateStudent;
 use Modules\Academic\Application\UseCases\EnrollStudentInCourse;
-use Modules\Academic\Application\UseCases\GetStudentAcademicProfile;
 use Modules\Academic\Domain\Contracts\CourseRepositoryInterface;
 use Modules\Academic\Domain\Contracts\EnrollmentRepositoryInterface;
 use Modules\Academic\Domain\Contracts\SemesterRepositoryInterface;
@@ -35,10 +34,10 @@ final class AcademicModuleIntegrationTest extends TestCase
     {
         parent::setUp();
 
-        $this->studentRepository = new EloquentStudentRepository();
-        $this->courseRepository = new EloquentCourseRepository();
-        $this->semesterRepository = new EloquentSemesterRepository();
-        $this->enrollmentRepository = new EloquentEnrollmentRepository();
+        $this->studentRepository = new EloquentStudentRepository;
+        $this->courseRepository = new EloquentCourseRepository;
+        $this->semesterRepository = new EloquentSemesterRepository;
+        $this->enrollmentRepository = new EloquentEnrollmentRepository;
     }
 
     public function test_student_creation_and_enrollment_flow(): void
@@ -57,14 +56,14 @@ final class AcademicModuleIntegrationTest extends TestCase
         ]);
 
         // Step 2: Create a student using the use case
-        $userRepository = new \Modules\Shared\Infrastructure\Repositories\EloquentUserRepository();
+        $userRepository = new \Modules\Shared\Infrastructure\Repositories\EloquentUserRepository;
 
         $createStudent = new CreateStudent(
             $this->studentRepository,
             $userRepository,
             $this->createMock(\Modules\Shared\Domain\Contracts\EventDispatcherInterface::class),
             $this->createMock(\Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface::class),
-            new \Modules\Academic\Application\Mappers\AcademicMapper(),
+            new \Modules\Academic\Application\Mappers\AcademicMapper,
         );
 
         $studentDto = new \Modules\Academic\Application\DTOs\CreateStudentDto(
@@ -109,10 +108,10 @@ final class AcademicModuleIntegrationTest extends TestCase
             $this->courseRepository,
             $this->semesterRepository,
             $this->enrollmentRepository,
-            new \Modules\Academic\Infrastructure\Integrations\LaravelTransactionManager(),
+            new \Modules\Academic\Infrastructure\Integrations\LaravelTransactionManager,
             $this->createMock(\Modules\Shared\Domain\Contracts\EventDispatcherInterface::class),
             $this->createMock(\Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface::class),
-            new \Modules\Academic\Application\Mappers\AcademicMapper(),
+            new \Modules\Academic\Application\Mappers\AcademicMapper,
             new \Modules\Academic\Domain\Services\PrerequisiteValidationService($this->courseRepository),
         );
 
@@ -143,7 +142,7 @@ final class AcademicModuleIntegrationTest extends TestCase
 
         // First call - should hit database
         $firstCall = $this->courseRepository->findById(
-            \Modules\Academic\Domain\ValueObjects\CourseId::fromString($course->id)
+            \Modules\Academic\Domain\ValueObjects\CourseId::fromString($course->id),
         );
 
         $this->assertNotNull($firstCall);
@@ -151,7 +150,7 @@ final class AcademicModuleIntegrationTest extends TestCase
 
         // Second call - should hit cache
         $secondCall = $this->courseRepository->findById(
-            \Modules\Academic\Domain\ValueObjects\CourseId::fromString($course->id)
+            \Modules\Academic\Domain\ValueObjects\CourseId::fromString($course->id),
         );
 
         $this->assertNotNull($secondCall);

@@ -5,22 +5,21 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Application\UseCases;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Skills\Application\UseCases\GetOrCreateSkillProfile;
-use Modules\Skills\Application\UseCases\AddSkill;
-use Modules\Skills\Application\UseCases\AddCertification;
+use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
+use Modules\Skills\Application\DTOs\SkillProfileDto;
 use Modules\Skills\Application\Mappers\SkillsMapper;
+use Modules\Skills\Application\UseCases\AddCertification;
+use Modules\Skills\Application\UseCases\AddSkill;
+use Modules\Skills\Application\UseCases\GetOrCreateSkillProfile;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
 use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Certification;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Application\DTOs\SkillProfileDto;
-use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class SkillsUseCasesTest extends TestCase
 {
@@ -31,7 +30,7 @@ final class SkillsUseCasesTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->mapper = new SkillsMapper();
+        $this->mapper = new SkillsMapper;
     }
 
     public function test_get_or_create_creates_profile_when_not_found(): void
@@ -39,11 +38,21 @@ final class SkillsUseCasesTest extends TestCase
         $studentId = StudentId::generate()->value();
         $savedProfile = null;
 
-        $this->profiles = new class implements SkillProfileRepositoryInterface {
-            public function findById(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): ?SkillProfile { return null; }
-            public function findByStudentId(StudentId $studentId): ?SkillProfile { return null; }
+        $this->profiles = new class implements SkillProfileRepositoryInterface
+        {
+            public function findById(SkillProfileId $id): ?SkillProfile
+            {
+                return null;
+            }
+
+            public function findByStudentId(StudentId $studentId): ?SkillProfile
+            {
+                return null;
+            }
+
             public function save(SkillProfile $profile): void {}
-            public function delete(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): void {}
+
+            public function delete(SkillProfileId $id): void {}
         };
 
         $this->events = $this->createMock(EventDispatcherInterface::class);
@@ -61,19 +70,30 @@ final class SkillsUseCasesTest extends TestCase
         $studentId = StudentId::generate();
         $profile = SkillProfile::create(SkillProfileId::generate(), $studentId);
 
-        $this->profiles = new class($studentId, $profile) implements SkillProfileRepositoryInterface {
+        $this->profiles = new class($studentId, $profile) implements SkillProfileRepositoryInterface
+        {
             private StudentId $sid;
             private SkillProfile $profile;
-            public function __construct(StudentId $sid, SkillProfile $profile) {
+
+            public function __construct(StudentId $sid, SkillProfile $profile)
+            {
                 $this->sid = $sid;
                 $this->profile = $profile;
             }
-            public function findById(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): ?SkillProfile { return null; }
-            public function findByStudentId(StudentId $studentId): ?SkillProfile {
+
+            public function findById(SkillProfileId $id): ?SkillProfile
+            {
+                return null;
+            }
+
+            public function findByStudentId(StudentId $studentId): ?SkillProfile
+            {
                 return $studentId->equals($this->sid) ? $this->profile : null;
             }
+
             public function save(SkillProfile $profile): void {}
-            public function delete(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): void {}
+
+            public function delete(SkillProfileId $id): void {}
         };
 
         $this->events = $this->createMock(EventDispatcherInterface::class);
@@ -92,21 +112,33 @@ final class SkillsUseCasesTest extends TestCase
         $profile->addSkill(SkillId::generate(), 'Existing', SkillCategory::PROGRAMMING, SkillLevel::ADVANCED);
         $profile->releaseEvents();
 
-        $this->profiles = new class($studentId, $profile) implements SkillProfileRepositoryInterface {
+        $this->profiles = new class($studentId, $profile) implements SkillProfileRepositoryInterface
+        {
             private StudentId $sid;
             private SkillProfile $profile;
-            public function __construct(StudentId $sid, SkillProfile $profile) {
+
+            public function __construct(StudentId $sid, SkillProfile $profile)
+            {
                 $this->sid = $sid;
                 $this->profile = $profile;
             }
-            public function findById(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): ?SkillProfile { return null; }
-            public function findByStudentId(StudentId $studentId): ?SkillProfile {
+
+            public function findById(SkillProfileId $id): ?SkillProfile
+            {
+                return null;
+            }
+
+            public function findByStudentId(StudentId $studentId): ?SkillProfile
+            {
                 return $studentId->equals($this->sid) ? $this->profile : null;
             }
-            public function save(SkillProfile $profile): void {
+
+            public function save(SkillProfile $profile): void
+            {
                 $this->profile = $profile;
             }
-            public function delete(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): void {}
+
+            public function delete(SkillProfileId $id): void {}
         };
 
         $this->events = $this->createMock(EventDispatcherInterface::class);
@@ -126,6 +158,7 @@ final class SkillsUseCasesTest extends TestCase
             if (str_contains($e->getMessage(), 'does not exist') || str_contains($e->getMessage(), 'facade')) {
                 $this->markTestSkipped('Validator facade requires Laravel application context');
             }
+
             throw $e;
         }
     }
@@ -136,25 +169,37 @@ final class SkillsUseCasesTest extends TestCase
         $profile = SkillProfile::create(SkillProfileId::generate(), $studentId);
         $profile->addCertification(
             CertificationId::generate(), 'Existing Cert', 'Issuer',
-            new DateTimeImmutable('2026-01-01')
+            new DateTimeImmutable('2026-01-01'),
         );
         $profile->releaseEvents();
 
-        $this->profiles = new class($studentId, $profile) implements SkillProfileRepositoryInterface {
+        $this->profiles = new class($studentId, $profile) implements SkillProfileRepositoryInterface
+        {
             private StudentId $sid;
             private SkillProfile $profile;
-            public function __construct(StudentId $sid, SkillProfile $profile) {
+
+            public function __construct(StudentId $sid, SkillProfile $profile)
+            {
                 $this->sid = $sid;
                 $this->profile = $profile;
             }
-            public function findById(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): ?SkillProfile { return null; }
-            public function findByStudentId(StudentId $studentId): ?SkillProfile {
+
+            public function findById(SkillProfileId $id): ?SkillProfile
+            {
+                return null;
+            }
+
+            public function findByStudentId(StudentId $studentId): ?SkillProfile
+            {
                 return $studentId->equals($this->sid) ? $this->profile : null;
             }
-            public function save(SkillProfile $profile): void {
+
+            public function save(SkillProfile $profile): void
+            {
                 $this->profile = $profile;
             }
-            public function delete(\Modules\Skills\Domain\ValueObjects\SkillProfileId $id): void {}
+
+            public function delete(SkillProfileId $id): void {}
         };
 
         $this->events = $this->createMock(EventDispatcherInterface::class);
@@ -173,6 +218,7 @@ final class SkillsUseCasesTest extends TestCase
             if (str_contains($e->getMessage(), 'does not exist') || str_contains($e->getMessage(), 'facade')) {
                 $this->markTestSkipped('Validator facade requires Laravel application context');
             }
+
             throw $e;
         }
     }

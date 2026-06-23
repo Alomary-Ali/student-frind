@@ -5,38 +5,42 @@ declare(strict_types=1);
 namespace Modules\Opportunities;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Opportunities\Domain\Contracts\ApplicationRepositoryInterface;
+use Modules\Opportunities\Domain\Contracts\OpportunityRepositoryInterface;
+use Modules\Opportunities\Domain\Contracts\RecommendationRepositoryInterface;
+use Modules\Opportunities\Domain\Contracts\SavedOpportunityRepositoryInterface;
+use Modules\Opportunities\Infrastructure\Persistence\EloquentApplicationRepository;
+use Modules\Opportunities\Infrastructure\Persistence\EloquentOpportunityRepository;
+use Modules\Opportunities\Infrastructure\Persistence\EloquentRecommendationRepository;
+use Modules\Opportunities\Infrastructure\Persistence\EloquentSavedOpportunityRepository;
 
-/**
- * OpportunitiesServiceProvider
- *
- * Bootstraps the Opportunities module.
- * Responsible for: Jobs, internships, scholarships, competitions
- *
- * Register all bindings, routes, migrations, and listeners
- * specific to this module here.
- */
 final class OpportunitiesServiceProvider extends ServiceProvider
 {
-    /**
-     * Register module bindings into the service container.
-     */
     public function register(): void
     {
-        // TODO: Bind Repository interfaces to their Eloquent implementations
-        // Example:
-        // \->app->bind(
-        //     \Modules\\Opportunities\Domain\Contracts\SomeRepositoryInterface::class,
-        //     \Modules\\Opportunities\Infrastructure\Repositories\EloquentSomeRepository::class,
-        // );
+        $this->app->bind(
+            OpportunityRepositoryInterface::class,
+            EloquentOpportunityRepository::class,
+        );
+
+        $this->app->bind(
+            ApplicationRepositoryInterface::class,
+            EloquentApplicationRepository::class,
+        );
+
+        $this->app->bind(
+            SavedOpportunityRepositoryInterface::class,
+            EloquentSavedOpportunityRepository::class,
+        );
+
+        $this->app->bind(
+            RecommendationRepositoryInterface::class,
+            EloquentRecommendationRepository::class,
+        );
     }
 
-    /**
-     * Bootstrap module services.
-     * Load routes, migrations, event listeners, and policies.
-     */
     public function boot(): void
     {
-        // \->loadRoutesFrom(__DIR__ . '/Presentation/Routes/api.php');
-        // \->loadMigrationsFrom(__DIR__ . '/Infrastructure/Persistence/Migrations');
+        $this->loadRoutesFrom(__DIR__ . '/Presentation/Http/routes.php');
     }
 }

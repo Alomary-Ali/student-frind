@@ -7,8 +7,8 @@ namespace Modules\Skills\Domain\Entities;
 use DateTimeImmutable;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 
 final class Skill
 {
@@ -38,7 +38,7 @@ final class Skill
             $category,
             $level,
             $yearsOfExperience,
-            $lastUsed ?? new DateTimeImmutable()
+            $lastUsed ?? new DateTimeImmutable,
         );
     }
 
@@ -58,7 +58,7 @@ final class Skill
             $category,
             $level,
             $yearsOfExperience,
-            $lastUsed
+            $lastUsed,
         );
     }
 
@@ -100,13 +100,13 @@ final class Skill
     public function updateLevel(SkillLevel $newLevel): void
     {
         $this->level = $newLevel;
-        $this->lastUsed = new DateTimeImmutable();
+        $this->lastUsed = new DateTimeImmutable;
     }
 
     public function incrementExperience(int $years = 1): void
     {
         $this->yearsOfExperience += $years;
-        $this->lastUsed = new DateTimeImmutable();
+        $this->lastUsed = new DateTimeImmutable;
     }
 
     public function updateLastUsed(DateTimeImmutable $date): void

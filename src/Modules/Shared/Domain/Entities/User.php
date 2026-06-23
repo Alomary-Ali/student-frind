@@ -7,8 +7,8 @@ namespace Modules\Shared\Domain\Entities;
 use DateTimeImmutable;
 use Modules\Shared\Domain\Enums\UserRole;
 use Modules\Shared\Domain\Enums\UserStatus;
-use Modules\Shared\Domain\Events\UserRegistered;
 use Modules\Shared\Domain\Events\UserEmailVerified;
+use Modules\Shared\Domain\Events\UserRegistered;
 use Modules\Shared\Domain\Events\UserRoleAssigned;
 use Modules\Shared\Domain\Exceptions\UserSuspendedException;
 use Modules\Shared\Domain\ValueObjects\AcademicId;
@@ -66,7 +66,7 @@ final class User
             role: $role,
             status: UserStatus::PendingVerification,
             emailVerifiedAt: null,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $user->raise(new UserRegistered(
@@ -74,7 +74,7 @@ final class User
             email: $email->value(),
             fullName: $name->full(),
             role: $role->value,
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $user;
@@ -117,7 +117,7 @@ final class User
             return; // Already verified — idempotent
         }
 
-        $this->emailVerifiedAt = new DateTimeImmutable();
+        $this->emailVerifiedAt = new DateTimeImmutable;
         $this->status = UserStatus::Active;
 
         $this->raise(new UserEmailVerified(
@@ -140,7 +140,7 @@ final class User
             userId: $this->id->value(),
             previousRole: $previousRole->value,
             newRole: $newRole->value,
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
     }
 
@@ -185,15 +185,50 @@ final class User
     // Accessors
     // -------------------------------------------------------------------------
 
-    public function id(): UserId { return $this->id; }
-    public function academicId(): AcademicId { return $this->academicId; }
-    public function email(): EmailAddress { return $this->email; }
-    public function name(): FullName { return $this->name; }
-    public function passwordHash(): string { return $this->passwordHash; }
-    public function role(): UserRole { return $this->role; }
-    public function status(): UserStatus { return $this->status; }
-    public function emailVerifiedAt(): ?DateTimeImmutable { return $this->emailVerifiedAt; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
+    public function id(): UserId
+    {
+        return $this->id;
+    }
+
+    public function academicId(): AcademicId
+    {
+        return $this->academicId;
+    }
+
+    public function email(): EmailAddress
+    {
+        return $this->email;
+    }
+
+    public function name(): FullName
+    {
+        return $this->name;
+    }
+
+    public function passwordHash(): string
+    {
+        return $this->passwordHash;
+    }
+
+    public function role(): UserRole
+    {
+        return $this->role;
+    }
+
+    public function status(): UserStatus
+    {
+        return $this->status;
+    }
+
+    public function emailVerifiedAt(): ?DateTimeImmutable
+    {
+        return $this->emailVerifiedAt;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 
     // -------------------------------------------------------------------------
     // Domain Event Management

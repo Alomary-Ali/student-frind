@@ -20,8 +20,8 @@ final class Assignment
         private readonly \DateTimeImmutable $assignedAt,
         private readonly \DateTimeImmutable $dueDate,
         private AssignmentStatus $status,
-        private ?string $grade = null,
-        private ?string $submissionUrl = null,
+        private ?string $grade,
+        private ?string $submissionUrl,
         private readonly \DateTimeImmutable $createdAt,
         private readonly \DateTimeImmutable $updatedAt,
     ) {}
@@ -39,13 +39,13 @@ final class Assignment
             courseId: $courseId,
             title: $title,
             description: $description,
-            assignedAt: new \DateTimeImmutable(),
+            assignedAt: new \DateTimeImmutable,
             dueDate: $dueDate,
             status: AssignmentStatus::ASSIGNED,
             grade: null,
             submissionUrl: null,
-            createdAt: new \DateTimeImmutable(),
-            updatedAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
+            updatedAt: new \DateTimeImmutable,
         );
     }
 
@@ -142,13 +142,14 @@ final class Assignment
 
     public function isOverdue(): bool
     {
-        return $this->dueDate < new \DateTimeImmutable() && !$this->status->isCompleted();
+        return $this->dueDate < new \DateTimeImmutable && ! $this->status->isCompleted();
     }
 
     public function isDueSoon(int $days = 3): bool
     {
-        $dueSoon = (new \DateTimeImmutable())->modify("+{$days} days");
-        return $this->dueDate <= $dueSoon && !$this->status->isCompleted();
+        $dueSoon = (new \DateTimeImmutable)->modify("+{$days} days");
+
+        return $this->dueDate <= $dueSoon && ! $this->status->isCompleted();
     }
 
     public function markAsInProgress(): void

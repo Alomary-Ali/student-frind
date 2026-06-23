@@ -15,6 +15,5 @@ final readonly class AchievementDto
         public string $description,
         public ?string $badgeUrl,
         public string $unlockedAt,
-    ) {
-    }
+    ) {}
 }

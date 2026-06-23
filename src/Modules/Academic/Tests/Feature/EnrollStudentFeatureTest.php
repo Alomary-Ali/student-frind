@@ -76,7 +76,7 @@ final class EnrollStudentFeatureTest extends TestCase
     {
         $userId = (string) \Illuminate\Support\Str::uuid();
         $studentId = (string) \Illuminate\Support\Str::uuid();
-        
+
         $user = EloquentUser::create([
             'id' => $userId,
             'email' => 'enroll-student-' . $userId . '@test.com',

@@ -17,7 +17,7 @@ final readonly class UpdateExamStatus
     public function execute(string $examId, string $status): ExamDto
     {
         $exam = $this->examRepository->findById(
-            ExamId::fromString($examId)
+            ExamId::fromString($examId),
         );
 
         if ($exam === null) {

@@ -21,12 +21,13 @@ final class ModuleServiceProviderTest extends TestCase
         \Modules\Analytics\AnalyticsServiceProvider::class,
         \Modules\Administration\AdministrationServiceProvider::class,
         \Modules\UI\UIServiceProvider::class,
+        \Modules\Career\CareerServiceProvider::class,
     ];
 
     public function test_provider_is_registered_in_container(): void
     {
         $this->assertTrue(
-            app()->providerIsLoaded(ModuleServiceProvider::class)
+            app()->providerIsLoaded(ModuleServiceProvider::class),
         );
     }
 
@@ -35,7 +36,7 @@ final class ModuleServiceProviderTest extends TestCase
         foreach (self::EXPECTED_MODULES as $providerClass) {
             $this->assertTrue(
                 class_exists($providerClass),
-                "Expected module provider $providerClass does not exist"
+                "Expected module provider $providerClass does not exist",
             );
         }
     }

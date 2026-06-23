@@ -7,7 +7,6 @@ namespace Modules\CareerProfile\Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
-use Modules\CareerProfile\Infrastructure\Persistence\Eloquent\EloquentCareerProfile;
 use Tests\TestCase;
 
 final class CareerProfileFeatureTest extends TestCase

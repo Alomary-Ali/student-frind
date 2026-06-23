@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\Skills\Infrastructure\Persistence;
 
 use DateTimeImmutable;
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Contracts\AchievementRepositoryInterface;
 use Modules\Skills\Domain\Entities\Achievement;
-use Modules\Skills\Domain\ValueObjects\AchievementId;
 use Modules\Skills\Domain\Enums\AchievementType;
-use Modules\Academic\Domain\ValueObjects\StudentId;
+use Modules\Skills\Domain\ValueObjects\AchievementId;
 use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentAchievement;
 
 final class EloquentAchievementRepository implements AchievementRepositoryInterface
@@ -44,7 +44,7 @@ final class EloquentAchievementRepository implements AchievementRepositoryInterf
         $model = EloquentAchievement::find($achievement->id()->value());
 
         if ($model === null) {
-            $model = new EloquentAchievement();
+            $model = new EloquentAchievement;
             $model->id = $achievement->id()->value();
         }
 
@@ -71,7 +71,7 @@ final class EloquentAchievementRepository implements AchievementRepositoryInterf
             title: $model->title,
             description: $model->description,
             badgeUrl: $model->badge_url,
-            unlockedAt: new DateTimeImmutable($model->unlocked_at->format('Y-m-d H:i:s'))
+            unlockedAt: new DateTimeImmutable($model->unlocked_at->format('Y-m-d H:i:s')),
         );
     }
 }

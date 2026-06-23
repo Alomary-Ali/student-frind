@@ -16,7 +16,7 @@ final class RegisterUserRequest extends FormRequest
     }
 
     /**
-     * @return array<string, array<int, string|\Illuminate\Validation\Rules\Enum>>
+     * @return array<string, array<int, string|Enum>>
      */
     public function rules(): array
     {

@@ -39,7 +39,7 @@ final class Experience
             $description,
             $startDate,
             $endDate,
-            $isCurrent
+            $isCurrent,
         );
     }
 
@@ -61,7 +61,7 @@ final class Experience
             $description,
             $startDate,
             $endDate,
-            $isCurrent
+            $isCurrent,
         );
     }
 

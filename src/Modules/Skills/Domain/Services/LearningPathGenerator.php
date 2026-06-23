@@ -15,7 +15,7 @@ final class LearningPathGenerator
         LearningPathId $id,
         StudentId $studentId,
         string $roleKey,
-        array $missingSkills
+        array $missingSkills,
     ): LearningPath {
         $steps = [];
         $index = 1;
@@ -50,7 +50,7 @@ final class LearningPathGenerator
         $roleTitle = $roleLabels[$roleKey] ?? $roleKey;
         $title = 'مسار التعلم لمهنة: ' . $roleTitle;
 
-        $targetDate = (new DateTimeImmutable())->modify('+' . (count($steps) * 2) . ' weeks');
+        $targetDate = (new DateTimeImmutable)->modify('+' . (count($steps) * 2) . ' weeks');
 
         return LearningPath::create($id, $studentId, $title, $roleKey, $steps, $targetDate);
     }

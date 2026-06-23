@@ -44,8 +44,8 @@ final class CalculateGraduationProgressTest extends TestCase
             totalCredits: 120,
             completedCredits: 60,
             gpa: 3.5,
-            createdAt: new \DateTimeImmutable(),
-            updatedAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
+            updatedAt: new \DateTimeImmutable,
         );
 
         $this->studentRepository->expects($this->once())

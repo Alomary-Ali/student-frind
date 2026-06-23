@@ -7,8 +7,6 @@ namespace Tests\Unit\Productivity;
 use Modules\Productivity\Application\UseCases\UpdateAssignmentProgress;
 use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Assignment;
-use Modules\Productivity\Domain\Enums\AssignmentStatus;
-use Modules\Productivity\Domain\ValueObjects\AssignmentId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +34,7 @@ final class UpdateAssignmentProgressTest extends TestCase
 
         $result = $useCase->execute(
             $assignment->id()->value(),
-            'in_progress'
+            'in_progress',
         );
 
         $this->assertInstanceOf(\Modules\Productivity\Application\DTOs\AssignmentDto::class, $result);

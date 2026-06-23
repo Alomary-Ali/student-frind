@@ -6,8 +6,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
 use Modules\Academic\Domain\Contracts\AcademicPlanReaderInterface;
+use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
 
 final class HomeController extends Controller
 {
@@ -20,11 +20,11 @@ final class HomeController extends Controller
     {
         $userId = (string) $request->user()->id;
         $stats = [
-            'gpa'       => 0,
-            'progress'  => 0,
-            'skills'    => 0,
+            'gpa' => 0,
+            'progress' => 0,
+            'skills' => 0,
             'readiness' => 75,
-            'courses'   => 0,
+            'courses' => 0,
         ];
 
         try {
@@ -32,12 +32,12 @@ final class HomeController extends Controller
             if ($student) {
                 $studentId = $student->id()->value();
                 $stats['gpa'] = $student->cumulativeGpa()->value();
-                
+
                 $progressModel = $this->planReader->getGraduationProgress($studentId);
                 if ($progressModel) {
                     $stats['progress'] = $progressModel->completionPercentage;
                 }
-                
+
                 try {
                     $skillProfile = \Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkillProfile::where('student_id', $studentId)->first();
                     if ($skillProfile) {
@@ -54,4 +54,3 @@ final class HomeController extends Controller
         return view('home', compact('stats'));
     }
 }
-

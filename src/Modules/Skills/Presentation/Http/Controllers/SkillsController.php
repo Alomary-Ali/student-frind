@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Presentation\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Modules\Skills\Application\UseCases\GetOrCreateSkillProfile;
-use Modules\Skills\Application\UseCases\AddSkill;
-use Modules\Skills\Application\UseCases\AddCertification;
-use Modules\Skills\Domain\Contracts\AchievementRepositoryInterface;
-use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
-use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
+use Modules\Skills\Application\Mappers\SkillsMapper;
+use Modules\Skills\Application\UseCases\AddCertification;
+use Modules\Skills\Application\UseCases\AddSkill;
+use Modules\Skills\Application\UseCases\AnalyzeSkillGap;
+use Modules\Skills\Application\UseCases\GetOrCreateSkillProfile;
+use Modules\Skills\Application\UseCases\UpdateSkillLevel;
+use Modules\Skills\Domain\Contracts\AchievementRepositoryInterface;
+use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
 
 final readonly class SkillsController
 {
@@ -22,11 +24,12 @@ final readonly class SkillsController
         private GetOrCreateSkillProfile $getOrCreateSkillProfile,
         private AddSkill $addSkill,
         private AddCertification $addCertification,
+        private UpdateSkillLevel $updateSkillLevel,
+        private AnalyzeSkillGap $analyzeSkillGap,
         private AchievementRepositoryInterface $achievements,
         private LearningPathRepositoryInterface $learningPaths,
         private SkillsMapper $mapper,
-    ) {
-    }
+    ) {}
 
     public function index(Request $request): View
     {
@@ -39,18 +42,18 @@ final readonly class SkillsController
             $profile = $this->getOrCreateSkillProfile->execute($studentId);
             $sid = StudentId::of($studentId);
             $achievementDtos = array_map(
-                fn($a) => $this->mapper->toAchievementDto($a),
-                $this->achievements->findByStudentId($sid)
+                fn ($a) => $this->mapper->toAchievementDto($a),
+                $this->achievements->findByStudentId($sid),
             );
             $learningPathDtos = array_map(
-                fn($p) => $this->mapper->toLearningPathDto($p),
-                $this->learningPaths->findByStudentId($sid)
+                fn ($p) => $this->mapper->toLearningPathDto($p),
+                $this->learningPaths->findByStudentId($sid),
             );
         }
 
         return view('skills.index', [
-            'profile'       => $profile,
-            'achievements'  => $achievementDtos,
+            'profile' => $profile,
+            'achievements' => $achievementDtos,
             'learningPaths' => $learningPathDtos,
         ]);
     }
@@ -59,12 +62,13 @@ final readonly class SkillsController
     {
         $studentId = $this->resolveStudentId($request);
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('skills.index')->with('error', 'لم يتم العثور على ملف المهارات');
         }
 
         try {
             $this->addSkill->execute($studentId, $request->all());
+
             return redirect()->route('skills.index')->with('success', 'تمت إضافة المهارة بنجاح');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -77,12 +81,13 @@ final readonly class SkillsController
     {
         $studentId = $this->resolveStudentId($request);
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('skills.index')->with('error', 'لم يتم العثور على ملف المهارات');
         }
 
         try {
             $this->addCertification->execute($studentId, $request->all());
+
             return redirect()->route('skills.index')->with('success', 'تمت إضافة الشهادة بنجاح');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -91,14 +96,54 @@ final readonly class SkillsController
         }
     }
 
+    public function updateSkillLevel(Request $request, string $id): RedirectResponse
+    {
+        $studentId = $this->resolveStudentId($request);
+
+        if (! $studentId) {
+            return redirect()->route('skills.index')->with('error', 'لم يتم العثور على ملف المهارات');
+        }
+
+        try {
+            $this->updateSkillLevel->execute($studentId, $id, $request->all());
+
+            return redirect()->route('skills.index')->with('success', 'تم تحديث مستوى المهارة بنجاح');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ أثناء تحديث مستوى المهارة')->withInput();
+        }
+    }
+
+    public function analyzeGap(Request $request): RedirectResponse
+    {
+        $studentId = $this->resolveStudentId($request);
+
+        if (! $studentId) {
+            return redirect()->route('skills.index')->with('error', 'لم يتم العثور على ملف المهارات');
+        }
+
+        try {
+            $result = $this->analyzeSkillGap->execute(
+                studentId: $studentId,
+                targetRole: $request->input('target_role', ''),
+            );
+
+            return redirect()->route('skills.index')->with('gap_result', $result);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ أثناء تحليل الفجوات')->withInput();
+        }
+    }
+
     private function resolveStudentId(Request $request): ?string
     {
         $user = $request->user();
-        if (!$user) {
+        if (! $user) {
             return null;
         }
 
         $student = EloquentStudent::where('user_id', $user->id)->first();
+
         return $student?->id;
     }
 }

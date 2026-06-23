@@ -7,8 +7,8 @@ namespace Modules\Academic\Domain\Contracts;
 interface AcademicAuditLoggerInterface
 {
     /**
-     * @param array<string, mixed>|null $oldValues
-     * @param array<string, mixed>|null $newValues
+     * @param  array<string, mixed>|null  $oldValues
+     * @param  array<string, mixed>|null  $newValues
      */
     public function log(
         string $actorUserId,

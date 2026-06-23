@@ -44,8 +44,8 @@ final class Project
             dueDate: $dueDate,
             status: ProjectStatus::PLANNING,
             progressPercentage: 0,
-            createdAt: new \DateTimeImmutable(),
-            updatedAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
+            updatedAt: new \DateTimeImmutable,
         );
     }
 
@@ -121,13 +121,14 @@ final class Project
 
     public function isOverdue(): bool
     {
-        return $this->dueDate < new \DateTimeImmutable() && !$this->status->isActive();
+        return $this->dueDate < new \DateTimeImmutable && ! $this->status->isActive();
     }
 
     public function isDueSoon(int $days = 7): bool
     {
-        $dueSoon = (new \DateTimeImmutable())->modify("+{$days} days");
-        return $this->dueDate <= $dueSoon && !$this->status->isActive();
+        $dueSoon = (new \DateTimeImmutable)->modify("+{$days} days");
+
+        return $this->dueDate <= $dueSoon && ! $this->status->isActive();
     }
 
     public function start(): void

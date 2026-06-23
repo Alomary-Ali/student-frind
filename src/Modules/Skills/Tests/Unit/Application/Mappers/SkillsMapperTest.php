@@ -5,27 +5,27 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Application\Mappers;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Skills\Application\Mappers\SkillsMapper;
-use Modules\Skills\Application\DTOs\SkillProfileDto;
-use Modules\Skills\Application\DTOs\SkillDto;
-use Modules\Skills\Application\DTOs\CertificationDto;
 use Modules\Skills\Application\DTOs\AchievementDto;
+use Modules\Skills\Application\DTOs\CertificationDto;
 use Modules\Skills\Application\DTOs\LearningPathDto;
-use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Skill;
-use Modules\Skills\Domain\Entities\Certification;
+use Modules\Skills\Application\DTOs\SkillDto;
+use Modules\Skills\Application\DTOs\SkillProfileDto;
+use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Domain\Entities\Achievement;
+use Modules\Skills\Domain\Entities\Certification;
 use Modules\Skills\Domain\Entities\LearningPath;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
-use Modules\Skills\Domain\ValueObjects\AchievementId;
-use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use Modules\Skills\Domain\Entities\Skill;
+use Modules\Skills\Domain\Entities\SkillProfile;
+use Modules\Skills\Domain\Enums\AchievementType;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\Enums\AchievementType;
+use Modules\Skills\Domain\ValueObjects\AchievementId;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class SkillsMapperTest extends TestCase
 {
@@ -33,7 +33,7 @@ final class SkillsMapperTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->mapper = new SkillsMapper();
+        $this->mapper = new SkillsMapper;
     }
 
     public function test_to_skill_profile_dto(): void
@@ -47,7 +47,7 @@ final class SkillsMapperTest extends TestCase
 
         $profile->addCertification(
             CertificationId::generate(), 'AWS Certified', 'Amazon',
-            new DateTimeImmutable('2026-01-15')
+            new DateTimeImmutable('2026-01-15'),
         );
 
         $dto = $this->mapper->toSkillProfileDto($profile);
@@ -67,7 +67,7 @@ final class SkillsMapperTest extends TestCase
             'Laravel',
             SkillCategory::PROGRAMMING,
             SkillLevel::ADVANCED,
-            3
+            3,
         );
 
         $dto = $this->mapper->toSkillDto($skill);
@@ -95,7 +95,7 @@ final class SkillsMapperTest extends TestCase
             new DateTimeImmutable('2026-01-15'),
             new DateTimeImmutable('2028-01-15'),
             'https://aws.amazon.com/cert',
-            'AWS-12345'
+            'AWS-12345',
         );
 
         $dto = $this->mapper->toCertificationDto($cert);
@@ -117,7 +117,7 @@ final class SkillsMapperTest extends TestCase
             SkillProfileId::generate(),
             'Some Cert',
             'Issuer',
-            new DateTimeImmutable('2026-01-01')
+            new DateTimeImmutable('2026-01-01'),
         );
 
         $dto = $this->mapper->toCertificationDto($cert);
@@ -134,7 +134,7 @@ final class SkillsMapperTest extends TestCase
             AchievementType::ACADEMIC,
             'النجم الأكاديمي',
             'إكمال 5 مساقات دراسية بنجاح.',
-            '/assets/badges/academic_star.png'
+            '/assets/badges/academic_star.png',
         );
 
         $dto = $this->mapper->toAchievementDto($achievement);
@@ -159,7 +159,7 @@ final class SkillsMapperTest extends TestCase
             'مسار تعلم Laravel',
             'backend_developer',
             $steps,
-            new DateTimeImmutable('2026-12-31')
+            new DateTimeImmutable('2026-12-31'),
         );
 
         $dto = $this->mapper->toLearningPathDto($path);

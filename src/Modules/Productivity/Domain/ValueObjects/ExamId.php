@@ -25,7 +25,7 @@ final readonly class ExamId
 
     private function validate(string $value): void
     {
-        if (!\Ramsey\Uuid\Uuid::isValid($value)) {
+        if (! \Ramsey\Uuid\Uuid::isValid($value)) {
             throw new InvalidExamIdException($value);
         }
     }

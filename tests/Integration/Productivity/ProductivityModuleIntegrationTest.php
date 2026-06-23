@@ -9,8 +9,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Productivity\Application\DTOs\CreateAssignmentDto;
 use Modules\Productivity\Application\UseCases\CreateAssignment;
 use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
-use Modules\Productivity\Infrastructure\Persistence\Eloquent\EloquentAssignmentRepository;
 use Modules\Productivity\Infrastructure\Persistence\Eloquent\EloquentAssignment;
+use Modules\Productivity\Infrastructure\Persistence\Eloquent\EloquentAssignmentRepository;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use Tests\TestCase;
 

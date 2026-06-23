@@ -36,7 +36,7 @@ final class Achievement
             $title,
             $description,
             $badgeUrl,
-            new DateTimeImmutable()
+            new DateTimeImmutable,
         );
     }
 
@@ -56,7 +56,7 @@ final class Achievement
             $title,
             $description,
             $badgeUrl,
-            $unlockedAt
+            $unlockedAt,
         );
     }
 

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Domain\Services;
 
-use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Shared\Domain\ValueObjects\UserId;
 
 final readonly class ProductivityScoreEngine

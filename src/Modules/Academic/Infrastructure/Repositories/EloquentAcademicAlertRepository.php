@@ -35,7 +35,7 @@ final class EloquentAcademicAlertRepository implements AcademicAlertRepositoryIn
                 'is_resolved' => $alert->isResolved(),
                 'resolved_at' => $alert->resolvedAt()?->format('Y-m-d H:i:s'),
                 'resolved_by' => $alert->resolvedBy(),
-            ]
+            ],
         );
     }
 

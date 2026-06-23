@@ -17,7 +17,7 @@ final readonly class UpdateProjectProgress
     public function execute(string $projectId, int $progressPercentage): ProjectDto
     {
         $project = $this->projectRepository->findById(
-            ProjectId::fromString($projectId)
+            ProjectId::fromString($projectId),
         );
 
         if ($project === null) {

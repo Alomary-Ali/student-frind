@@ -39,6 +39,7 @@ final class TenantMiddleware
             // User has no institution yet — allow but don't scope
             // In strict multi-tenant mode, you would abort(403) here
             app()->instance('tenant.id', null);
+
             return $next($request);
         }
 

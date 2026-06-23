@@ -50,7 +50,7 @@ final class ProductivitySnapshot
             overdueTasks: $overdueTasks,
             completionRate: $completionRate,
             snapshotDate: $snapshotDate,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $snapshot->raise(new ProductivitySnapshotGenerated(
@@ -63,7 +63,7 @@ final class ProductivitySnapshot
             overdueTasks: $overdueTasks,
             completionRate: $completionRate,
             snapshotDate: $snapshotDate->format('Y-m-d'),
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $snapshot;

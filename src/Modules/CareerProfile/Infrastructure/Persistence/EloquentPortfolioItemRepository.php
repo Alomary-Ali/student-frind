@@ -7,8 +7,8 @@ namespace Modules\CareerProfile\Infrastructure\Persistence;
 use DateTimeImmutable;
 use Modules\CareerProfile\Domain\Contracts\PortfolioItemRepositoryInterface;
 use Modules\CareerProfile\Domain\Entities\PortfolioItem;
-use Modules\CareerProfile\Domain\ValueObjects\PortfolioItemId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
+use Modules\CareerProfile\Domain\ValueObjects\PortfolioItemId;
 use Modules\CareerProfile\Infrastructure\Persistence\Eloquent\EloquentPortfolioItem;
 
 final class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterface
@@ -29,7 +29,7 @@ final class EloquentPortfolioItemRepository implements PortfolioItemRepositoryIn
         $model = EloquentPortfolioItem::find($item->id()->value());
 
         if ($model === null) {
-            $model = new EloquentPortfolioItem();
+            $model = new EloquentPortfolioItem;
             $model->id = $item->id()->value();
         }
 
@@ -60,7 +60,7 @@ final class EloquentPortfolioItemRepository implements PortfolioItemRepositoryIn
             githubUrl: $model->github_url,
             startDate: new DateTimeImmutable($model->start_date->format('Y-m-d H:i:s')),
             endDate: $model->end_date ? new DateTimeImmutable($model->end_date->format('Y-m-d H:i:s')) : null,
-            technologies: $model->technologies ?? []
+            technologies: $model->technologies ?? [],
         );
     }
 }

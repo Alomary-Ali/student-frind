@@ -40,7 +40,7 @@ final readonly class PermissionId
             throw new \InvalidArgumentException('Permission ID cannot be empty');
         }
 
-        if (!Str::isUuid($this->value)) {
+        if (! Str::isUuid($this->value)) {
             throw new \InvalidArgumentException('Permission ID must be a valid UUID');
         }
     }

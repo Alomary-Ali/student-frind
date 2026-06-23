@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\CareerProfile\Tests\Unit\Domain\ValueObjects;
 
-use Modules\CareerProfile\Domain\Exceptions\InvalidCareerProfileIdException;
 use Modules\CareerProfile\Domain\Exceptions\InvalidCareerGoalIdException;
+use Modules\CareerProfile\Domain\Exceptions\InvalidCareerProfileIdException;
 use Modules\CareerProfile\Domain\Exceptions\InvalidExperienceIdException;
 use Modules\CareerProfile\Domain\Exceptions\InvalidPortfolioItemIdException;
 use Modules\CareerProfile\Domain\Exceptions\InvalidResumeIdException;
-use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
+use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 use Modules\CareerProfile\Domain\ValueObjects\ExperienceId;
 use Modules\CareerProfile\Domain\ValueObjects\PortfolioItemId;
 use Modules\CareerProfile\Domain\ValueObjects\ResumeId;

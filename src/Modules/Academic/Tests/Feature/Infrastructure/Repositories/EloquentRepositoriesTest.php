@@ -7,7 +7,7 @@ namespace Modules\Academic\Tests\Feature\Infrastructure\Repositories;
 use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Modules\Academic\Domain\Contracts\AcademicPlanReaderInterface;
+use Modules\Academic\Domain\Contracts\AcademicAlertRepositoryInterface;
 use Modules\Academic\Domain\Contracts\AcademicPlanRepositoryInterface;
 use Modules\Academic\Domain\Contracts\AcademicRecordRepositoryInterface;
 use Modules\Academic\Domain\Contracts\CourseRepositoryInterface;
@@ -17,7 +17,6 @@ use Modules\Academic\Domain\Contracts\GraduationPathRepositoryInterface;
 use Modules\Academic\Domain\Contracts\SemesterPlanRepositoryInterface;
 use Modules\Academic\Domain\Contracts\SemesterRepositoryInterface;
 use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
-use Modules\Academic\Domain\Contracts\AcademicAlertRepositoryInterface;
 use Modules\Academic\Domain\Entities\AcademicAlert;
 use Modules\Academic\Domain\Entities\AcademicPlan;
 use Modules\Academic\Domain\Entities\AcademicRecord;
@@ -28,8 +27,6 @@ use Modules\Academic\Domain\Entities\GraduationPath;
 use Modules\Academic\Domain\Entities\Semester;
 use Modules\Academic\Domain\Entities\SemesterPlan;
 use Modules\Academic\Domain\Entities\Student;
-use Modules\Academic\Domain\Enums\AcademicStanding;
-use Modules\Academic\Domain\Enums\AcademicStatus;
 use Modules\Academic\Domain\Enums\AlertSeverity;
 use Modules\Academic\Domain\Enums\AlertType;
 use Modules\Academic\Domain\Enums\EnrollmentStatus;
@@ -47,17 +44,6 @@ use Modules\Academic\Domain\ValueObjects\GraduationPathId;
 use Modules\Academic\Domain\ValueObjects\SemesterId;
 use Modules\Academic\Domain\ValueObjects\SemesterPlanId;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Academic\Infrastructure\Persistence\EloquentAcademicAlert;
-use Modules\Academic\Infrastructure\Persistence\EloquentAcademicPlan;
-use Modules\Academic\Infrastructure\Persistence\EloquentAcademicRecord;
-use Modules\Academic\Infrastructure\Persistence\EloquentCourse;
-use Modules\Academic\Infrastructure\Persistence\EloquentCurriculum;
-use Modules\Academic\Infrastructure\Persistence\EloquentCurriculumCourse;
-use Modules\Academic\Infrastructure\Persistence\EloquentEnrollment;
-use Modules\Academic\Infrastructure\Persistence\EloquentGraduationPath;
-use Modules\Academic\Infrastructure\Persistence\EloquentSemester;
-use Modules\Academic\Infrastructure\Persistence\EloquentSemesterPlan;
-use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
 use Modules\Academic\Infrastructure\Repositories\AcademicPlanReader;
 use Modules\Academic\Infrastructure\Repositories\EloquentAcademicAlertRepository;
 use Modules\Academic\Infrastructure\Repositories\EloquentAcademicPlanRepository;
@@ -91,16 +77,16 @@ final class EloquentRepositoriesTest extends TestCase
     {
         parent::setUp();
 
-        $this->studentRepository = new EloquentStudentRepository();
-        $this->courseRepository = new EloquentCourseRepository();
-        $this->semesterRepository = new EloquentSemesterRepository();
-        $this->enrollmentRepository = new EloquentEnrollmentRepository();
-        $this->curriculumRepository = new EloquentCurriculumRepository();
-        $this->academicPlanRepository = new EloquentAcademicPlanRepository();
-        $this->academicRecordRepository = new EloquentAcademicRecordRepository();
-        $this->graduationPathRepository = new EloquentGraduationPathRepository();
-        $this->academicAlertRepository = new EloquentAcademicAlertRepository();
-        $this->semesterPlanRepository = new EloquentSemesterPlanRepository();
+        $this->studentRepository = new EloquentStudentRepository;
+        $this->courseRepository = new EloquentCourseRepository;
+        $this->semesterRepository = new EloquentSemesterRepository;
+        $this->enrollmentRepository = new EloquentEnrollmentRepository;
+        $this->curriculumRepository = new EloquentCurriculumRepository;
+        $this->academicPlanRepository = new EloquentAcademicPlanRepository;
+        $this->academicRecordRepository = new EloquentAcademicRecordRepository;
+        $this->graduationPathRepository = new EloquentGraduationPathRepository;
+        $this->academicAlertRepository = new EloquentAcademicAlertRepository;
+        $this->semesterPlanRepository = new EloquentSemesterPlanRepository;
     }
 
     private function createUser(string $id, string $role = 'student', ?string $email = null): EloquentUser
@@ -1105,7 +1091,7 @@ final class EloquentRepositoriesTest extends TestCase
             completionPercentage: 25.0,
             isOnTrack: true,
             estimatedGraduationDate: new DateTimeImmutable('2028-06-01'),
-            updatedAt: new DateTimeImmutable(),
+            updatedAt: new DateTimeImmutable,
         );
         $this->graduationPathRepository->save($updated);
 

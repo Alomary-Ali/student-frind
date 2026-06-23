@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\TenantMiddleware;
 use Illuminate\Foundation\Application;
@@ -13,8 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
@@ -31,25 +33,24 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(SecurityHeadersMiddleware::class);
 
         // Redirect unauthenticated API requests to JSON response (not redirect)
-        $middleware->redirectGuestsTo(fn (Request $request) =>
-            $request->expectsJson()
+        $middleware->redirectGuestsTo(fn (Request $request) => $request->expectsJson()
                 ? null
-                : route('login')
+                : route('login'),
         );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Return JSON errors for API routes
-        $exceptions->respond(function (Response $response, \Throwable $e, Request $request) {
+        $exceptions->respond(function (Response $response, Throwable $e, Request $request) {
             if ($request->is('api/*') && ! $response->isSuccessful()) {
                 return response()->json([
                     'success' => false,
-                    'data'    => null,
+                    'data' => null,
                     'message' => $e->getMessage(),
-                    'errors'  => null,
-                    'meta'    => null,
+                    'errors' => null,
+                    'meta' => null,
                 ], $response->getStatusCode());
             }
+
             return $response;
         });
     })->create();
-

@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Modules\Skills\Infrastructure\Persistence;
 
 use DateTimeImmutable;
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
-use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Skill;
 use Modules\Skills\Domain\Entities\Certification;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\Entities\Skill;
+use Modules\Skills\Domain\Entities\SkillProfile;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkillProfile;
-use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkill;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentCertification;
+use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkill;
+use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkillProfile;
 
 final class EloquentSkillProfileRepository implements SkillProfileRepositoryInterface
 {
@@ -50,7 +50,7 @@ final class EloquentSkillProfileRepository implements SkillProfileRepositoryInte
         $model = EloquentSkillProfile::find($profile->id()->value());
 
         if ($model === null) {
-            $model = new EloquentSkillProfile();
+            $model = new EloquentSkillProfile;
             $model->id = $profile->id()->value();
         }
 
@@ -58,13 +58,13 @@ final class EloquentSkillProfileRepository implements SkillProfileRepositoryInte
         $model->save();
 
         // Sync Skills
-        $currentSkillIds = array_map(fn(Skill $skill) => $skill->id()->value(), $profile->skills());
+        $currentSkillIds = array_map(fn (Skill $skill) => $skill->id()->value(), $profile->skills());
         EloquentSkill::where('skill_profile_id', $profile->id()->value())
             ->whereNotIn('id', $currentSkillIds)
             ->delete();
 
         foreach ($profile->skills() as $skill) {
-            $skillModel = EloquentSkill::find($skill->id()->value()) ?? new EloquentSkill();
+            $skillModel = EloquentSkill::find($skill->id()->value()) ?? new EloquentSkill;
             $skillModel->id = $skill->id()->value();
             $skillModel->skill_profile_id = $profile->id()->value();
             $skillModel->name = $skill->name();
@@ -76,13 +76,13 @@ final class EloquentSkillProfileRepository implements SkillProfileRepositoryInte
         }
 
         // Sync Certifications
-        $currentCertIds = array_map(fn(Certification $cert) => $cert->id()->value(), $profile->certifications());
+        $currentCertIds = array_map(fn (Certification $cert) => $cert->id()->value(), $profile->certifications());
         EloquentCertification::where('skill_profile_id', $profile->id()->value())
             ->whereNotIn('id', $currentCertIds)
             ->delete();
 
         foreach ($profile->certifications() as $cert) {
-            $certModel = EloquentCertification::find($cert->id()->value()) ?? new EloquentCertification();
+            $certModel = EloquentCertification::find($cert->id()->value()) ?? new EloquentCertification;
             $certModel->id = $cert->id()->value();
             $certModel->skill_profile_id = $profile->id()->value();
             $certModel->name = $cert->name();
@@ -111,7 +111,7 @@ final class EloquentSkillProfileRepository implements SkillProfileRepositoryInte
                 category: SkillCategory::from($skill->category),
                 level: SkillLevel::from($skill->level),
                 yearsOfExperience: (int) $skill->years_of_experience,
-                lastUsed: new DateTimeImmutable($skill->last_used->format('Y-m-d H:i:s'))
+                lastUsed: new DateTimeImmutable($skill->last_used->format('Y-m-d H:i:s')),
             );
         }
 
@@ -125,7 +125,7 @@ final class EloquentSkillProfileRepository implements SkillProfileRepositoryInte
                 issueDate: new DateTimeImmutable($cert->issue_date->format('Y-m-d H:i:s')),
                 expiryDate: $cert->expiry_date ? new DateTimeImmutable($cert->expiry_date->format('Y-m-d H:i:s')) : null,
                 credentialUrl: $cert->credential_url,
-                verificationCode: $cert->verification_code
+                verificationCode: $cert->verification_code,
             );
         }
 
@@ -135,7 +135,7 @@ final class EloquentSkillProfileRepository implements SkillProfileRepositoryInte
             skills: $skills,
             certifications: $certifications,
             createdAt: new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s')),
-            updatedAt: new DateTimeImmutable($model->updated_at->format('Y-m-d H:i:s'))
+            updatedAt: new DateTimeImmutable($model->updated_at->format('Y-m-d H:i:s')),
         );
     }
 }

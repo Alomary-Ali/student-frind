@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Domain\Contracts;
 
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Entities\SkillProfile;
 use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 
 interface SkillProfileRepositoryInterface
 {

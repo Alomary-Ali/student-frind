@@ -23,106 +23,106 @@ final class ProductivityServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentAssignmentRepository::class,
+            Domain\Contracts\AssignmentRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentAssignmentRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\ExamRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentExamRepository::class,
+            Domain\Contracts\ExamRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentExamRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\ProjectRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentProjectRepository::class,
+            Domain\Contracts\ProjectRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentProjectRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\GoalRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentGoalRepository::class,
+            Domain\Contracts\GoalRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentGoalRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\TaskRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentTaskRepository::class,
+            Domain\Contracts\TaskRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentTaskRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentReminderRepository::class,
+            Domain\Contracts\ReminderRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentReminderRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Contracts\CalendarEventRepositoryInterface::class,
-            \Modules\Productivity\Infrastructure\Persistence\EloquentCalendarEventRepository::class,
+            Domain\Contracts\CalendarEventRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentCalendarEventRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Productivity\Application\UseCases\CreateAssignment::class,
-            fn ($app) => new \Modules\Productivity\Application\UseCases\CreateAssignment(
-                $app->make(\Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface::class),
+            Application\UseCases\CreateAssignment::class,
+            fn ($app) => new Application\UseCases\CreateAssignment(
+                $app->make(Domain\Contracts\AssignmentRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Application\UseCases\UpdateAssignmentProgress::class,
-            fn ($app) => new \Modules\Productivity\Application\UseCases\UpdateAssignmentProgress(
-                $app->make(\Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface::class),
+            Application\UseCases\UpdateAssignmentProgress::class,
+            fn ($app) => new Application\UseCases\UpdateAssignmentProgress(
+                $app->make(Domain\Contracts\AssignmentRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Application\UseCases\CreateExam::class,
-            fn ($app) => new \Modules\Productivity\Application\UseCases\CreateExam(
-                $app->make(\Modules\Productivity\Domain\Contracts\ExamRepositoryInterface::class),
+            Application\UseCases\CreateExam::class,
+            fn ($app) => new Application\UseCases\CreateExam(
+                $app->make(Domain\Contracts\ExamRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Application\UseCases\UpdateExamStatus::class,
-            fn ($app) => new \Modules\Productivity\Application\UseCases\UpdateExamStatus(
-                $app->make(\Modules\Productivity\Domain\Contracts\ExamRepositoryInterface::class),
+            Application\UseCases\UpdateExamStatus::class,
+            fn ($app) => new Application\UseCases\UpdateExamStatus(
+                $app->make(Domain\Contracts\ExamRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Application\UseCases\CreateProject::class,
-            fn ($app) => new \Modules\Productivity\Application\UseCases\CreateProject(
-                $app->make(\Modules\Productivity\Domain\Contracts\ProjectRepositoryInterface::class),
+            Application\UseCases\CreateProject::class,
+            fn ($app) => new Application\UseCases\CreateProject(
+                $app->make(Domain\Contracts\ProjectRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Application\UseCases\UpdateProjectProgress::class,
-            fn ($app) => new \Modules\Productivity\Application\UseCases\UpdateProjectProgress(
-                $app->make(\Modules\Productivity\Domain\Contracts\ProjectRepositoryInterface::class),
+            Application\UseCases\UpdateProjectProgress::class,
+            fn ($app) => new Application\UseCases\UpdateProjectProgress(
+                $app->make(Domain\Contracts\ProjectRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Services\ProductivityScoreEngine::class,
-            fn ($app) => new \Modules\Productivity\Domain\Services\ProductivityScoreEngine(
-                $app->make(\Modules\Productivity\Domain\Contracts\TaskRepositoryInterface::class),
-                $app->make(\Modules\Productivity\Domain\Contracts\GoalRepositoryInterface::class),
+            Domain\Services\ProductivityScoreEngine::class,
+            fn ($app) => new Domain\Services\ProductivityScoreEngine(
+                $app->make(Domain\Contracts\TaskRepositoryInterface::class),
+                $app->make(Domain\Contracts\GoalRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Services\PriorityEngine::class,
-            fn ($app) => new \Modules\Productivity\Domain\Services\PriorityEngine(
-                $app->make(\Modules\Productivity\Domain\Contracts\TaskRepositoryInterface::class),
-                $app->make(\Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface::class),
-                $app->make(\Modules\Productivity\Domain\Contracts\ExamRepositoryInterface::class),
+            Domain\Services\PriorityEngine::class,
+            fn ($app) => new Domain\Services\PriorityEngine(
+                $app->make(Domain\Contracts\TaskRepositoryInterface::class),
+                $app->make(Domain\Contracts\AssignmentRepositoryInterface::class),
+                $app->make(Domain\Contracts\ExamRepositoryInterface::class),
             ),
         );
 
         $this->app->bind(
-            \Modules\Productivity\Domain\Services\NotificationService::class,
-            fn ($app) => new \Modules\Productivity\Domain\Services\NotificationService(
-                $app->make(\Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface::class),
-                $app->make(\Modules\Productivity\Domain\Contracts\TaskRepositoryInterface::class),
-                $app->make(\Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface::class),
-                $app->make(\Modules\Productivity\Domain\Contracts\ExamRepositoryInterface::class),
+            Domain\Services\NotificationService::class,
+            fn ($app) => new Domain\Services\NotificationService(
+                $app->make(Domain\Contracts\ReminderRepositoryInterface::class),
+                $app->make(Domain\Contracts\TaskRepositoryInterface::class),
+                $app->make(Domain\Contracts\AssignmentRepositoryInterface::class),
+                $app->make(Domain\Contracts\ExamRepositoryInterface::class),
             ),
         );
     }
@@ -134,6 +134,6 @@ final class ProductivityServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(database_path('migrations'));
-        $this->loadRoutesFrom(__DIR__.'/Presentation/Http/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/Presentation/Http/routes.php');
     }
 }

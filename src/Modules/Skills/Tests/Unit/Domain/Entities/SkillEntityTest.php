@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Domain\Entities;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Skills\Domain\Entities\Skill;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class SkillEntityTest extends TestCase
 {

@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Modules\Shared\Domain\Contracts\PermissionRepositoryInterface;
+use Modules\Shared\Domain\Contracts\RoleRepositoryInterface;
 use Modules\Shared\Domain\Entities\Permission;
 use Modules\Shared\Domain\Entities\Role;
 use Modules\Shared\Domain\Enums\Role as RoleEnum;
 use Modules\Shared\Domain\ValueObjects\Permission as PermissionValue;
-use Modules\Shared\Domain\Contracts\RoleRepositoryInterface;
-use Modules\Shared\Domain\Contracts\PermissionRepositoryInterface;
 
 final class AuthorizationSeeder extends Seeder
 {

@@ -20,7 +20,6 @@ use Modules\Academic\Domain\Services\GpaCalculationService;
 use Modules\Academic\Domain\ValueObjects\AcademicRecordId;
 use Modules\Academic\Domain\ValueObjects\EnrollmentId;
 use Modules\Academic\Domain\ValueObjects\Grade;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 
 final readonly class RecordAcademicGrade
@@ -75,12 +74,12 @@ final readonly class RecordAcademicGrade
                 $earnedCredits = array_sum(
                     array_column(
                         array_filter($gradedRecords, fn ($r) => $r['grade_points'] >= 2.0),
-                        'credit_hours'
-                    )
+                        'credit_hours',
+                    ),
                 );
                 $graduationPath->updateProgress(
                     \Modules\Academic\Domain\ValueObjects\Credits::of($earnedCredits),
-                    $newGpa->value()
+                    $newGpa->value(),
                 );
                 $this->graduationPaths->save($graduationPath);
             }

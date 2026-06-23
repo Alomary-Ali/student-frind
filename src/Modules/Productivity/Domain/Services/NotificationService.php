@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Domain\Services;
 
-use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Reminder;
-use Modules\Productivity\Domain\Enums\NotificationType;
 use Modules\Productivity\Domain\Enums\ReminderType;
-use Modules\Productivity\Domain\ValueObjects\ReminderId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 
 final readonly class NotificationService
@@ -83,7 +81,7 @@ final readonly class NotificationService
             $reminder = Reminder::create(
                 userId: $userId,
                 message: "مؤشر الإنتاجية منخفض ({$score}%) - يرجى مراجعة المهام والأهداف",
-                triggerAt: (new \DateTime())->format('Y-m-d H:i:s'),
+                triggerAt: (new \DateTime)->format('Y-m-d H:i:s'),
                 type: ReminderType::IN_APP,
                 relatedEntityType: 'system',
                 relatedEntityId: null,

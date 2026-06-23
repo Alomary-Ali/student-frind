@@ -66,7 +66,7 @@ final class SemesterEntityTest extends TestCase
             new DateTimeImmutable('+90 days'),
             true,
             null,
-            new DateTimeImmutable(),
+            new DateTimeImmutable,
         );
 
         $this->assertFalse($semester->isCurrentlyActive());
@@ -82,7 +82,7 @@ final class SemesterEntityTest extends TestCase
             new DateTimeImmutable('+30 days'),
             false,
             null,
-            new DateTimeImmutable(),
+            new DateTimeImmutable,
         );
 
         $this->assertFalse($semester->isCurrentlyActive());
@@ -93,7 +93,7 @@ final class SemesterEntityTest extends TestCase
         $id = SemesterId::generate();
         $start = new DateTimeImmutable('2026-01-01');
         $end = new DateTimeImmutable('2026-06-30');
-        $createdAt = new DateTimeImmutable();
+        $createdAt = new DateTimeImmutable;
         $institutionId = 'inst-1';
 
         $semester = Semester::reconstitute(

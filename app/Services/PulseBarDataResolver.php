@@ -32,6 +32,7 @@ final class PulseBarDataResolver
         $cacheKey = $this->cacheKey($userId);
         $data = $this->fetchFreshData($userId);
         Cache::put($cacheKey, $data, self::CACHE_TTL);
+
         return $data;
     }
 
@@ -75,18 +76,22 @@ final class PulseBarDataResolver
             }
 
             $skillsCount = null;
+
             try {
                 $skillProfile = EloquentSkillProfile::where('student_id', $studentId)->first();
                 if ($skillProfile) {
                     $skillsCount = $skillProfile->skills()->count();
                 }
-            } catch (\Throwable) {}
+            } catch (\Throwable) {
+            }
 
             $coursesCount = null;
+
             try {
                 $courses = $student->enrollments();
                 $coursesCount = is_countable($courses) ? count($courses) : 0;
-            } catch (\Throwable) {}
+            } catch (\Throwable) {
+            }
 
             return [
                 'gpa' => $gpa,

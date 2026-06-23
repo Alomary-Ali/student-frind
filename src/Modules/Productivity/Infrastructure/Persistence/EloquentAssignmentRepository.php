@@ -16,13 +16,14 @@ final class EloquentAssignmentRepository implements AssignmentRepositoryInterfac
     {
         $model = EloquentAssignment::updateOrCreate(
             ['id' => $assignment->id()->value()],
-            $assignment->toArray()
+            $assignment->toArray(),
         );
     }
 
     public function findById(AssignmentId $id): ?Assignment
     {
         $model = EloquentAssignment::find($id->value());
+
         return $model ? $this->toDomain($model) : null;
     }
 

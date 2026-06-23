@@ -49,7 +49,7 @@ final class EloquentCalendarEventRepository implements CalendarEventRepositoryIn
         $model = EloquentCalendarEvent::find($event->id()->value());
 
         if ($model === null) {
-            $model = new EloquentCalendarEvent();
+            $model = new EloquentCalendarEvent;
             $model->id = $event->id()->value();
         }
 

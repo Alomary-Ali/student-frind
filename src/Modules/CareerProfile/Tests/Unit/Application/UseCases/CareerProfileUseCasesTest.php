@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\CareerProfile\Tests\Unit\Application\UseCases;
 
-use Modules\CareerProfile\Application\UseCases\CreateCareerProfile;
-use Modules\CareerProfile\Application\UseCases\GetCareerProfile;
-use Modules\CareerProfile\Application\UseCases\UpdateCareerProfile;
+use Modules\Academic\Domain\ValueObjects\StudentId;
+use Modules\CareerProfile\Application\Mappers\CareerProfileMapper;
 use Modules\CareerProfile\Application\UseCases\AddExperience;
 use Modules\CareerProfile\Application\UseCases\AddPortfolioItem;
 use Modules\CareerProfile\Application\UseCases\CreateCareerGoal;
-use Modules\CareerProfile\Application\Mappers\CareerProfileMapper;
+use Modules\CareerProfile\Application\UseCases\CreateCareerProfile;
+use Modules\CareerProfile\Application\UseCases\GetCareerProfile;
+use Modules\CareerProfile\Application\UseCases\UpdateCareerProfile;
 use Modules\CareerProfile\Domain\Contracts\CareerProfileRepositoryInterface;
 use Modules\CareerProfile\Domain\Entities\CareerProfile;
 use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use Tests\TestCase;
 
@@ -31,7 +31,7 @@ final class CareerProfileUseCasesTest extends TestCase
 
         $this->profiles = $this->createMock(CareerProfileRepositoryInterface::class);
         $this->events = $this->createMock(EventDispatcherInterface::class);
-        $this->mapper = new CareerProfileMapper();
+        $this->mapper = new CareerProfileMapper;
         $this->studentId = StudentId::generate()->value();
     }
 

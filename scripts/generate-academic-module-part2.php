@@ -6,7 +6,6 @@ declare(strict_types=1);
  * Academic Module Part 2 Generator — Application, Infrastructure, Presentation
  * Run: php scripts/generate-academic-module-part2.php
  */
-
 $base = dirname(__DIR__) . '/src/Modules/Academic';
 $count = 0;
 

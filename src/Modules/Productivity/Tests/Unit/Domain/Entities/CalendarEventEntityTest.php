@@ -108,7 +108,7 @@ final class CalendarEventEntityTest extends TestCase
         $taskId = TaskId::generate();
         $startsAt = new DateTimeImmutable('2026-07-01 10:00:00');
         $endsAt = new DateTimeImmutable('2026-07-01 12:00:00');
-        $createdAt = new DateTimeImmutable();
+        $createdAt = new DateTimeImmutable;
 
         $event = CalendarEvent::reconstitute(
             id: $id,

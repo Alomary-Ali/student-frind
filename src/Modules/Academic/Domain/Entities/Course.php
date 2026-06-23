@@ -42,7 +42,7 @@ final class Course
             creditHours: $creditHours,
             isActive: true,
             institutionId: $institutionId,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $course->raise(new CourseCreated(
@@ -50,7 +50,7 @@ final class Course
             code: $code,
             title: $title,
             creditHours: $creditHours->value(),
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $course;
@@ -81,14 +81,45 @@ final class Course
         $this->isActive = false;
     }
 
-    public function id(): CourseId { return $this->id; }
-    public function code(): string { return $this->code; }
-    public function title(): string { return $this->title; }
-    public function description(): string { return $this->description; }
-    public function creditHours(): Credits { return $this->creditHours; }
-    public function isActive(): bool { return $this->isActive; }
-    public function institutionId(): ?string { return $this->institutionId; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
+    public function id(): CourseId
+    {
+        return $this->id;
+    }
+
+    public function code(): string
+    {
+        return $this->code;
+    }
+
+    public function title(): string
+    {
+        return $this->title;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function creditHours(): Credits
+    {
+        return $this->creditHours;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    public function institutionId(): ?string
+    {
+        return $this->institutionId;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 
     private function raise(object $event): void
     {

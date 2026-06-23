@@ -93,7 +93,7 @@ final readonly class Permission
             throw new \InvalidArgumentException('Permission cannot be empty');
         }
 
-        if (!preg_match('/^[a-z]+\.[a-z]+$/', $this->value)) {
+        if (! preg_match('/^[a-z]+\.[a-z]+$/', $this->value)) {
             throw new \InvalidArgumentException('Permission must be in format: resource.action');
         }
     }

@@ -34,8 +34,8 @@ final class CreateTaskTest extends TestCase
         $user = User::factory()->create();
         $this->userId = $user->id;
 
-        $this->taskRepository = new EloquentTaskRepository();
-        $this->goalRepository = new EloquentGoalRepository();
+        $this->taskRepository = new EloquentTaskRepository;
+        $this->goalRepository = new EloquentGoalRepository;
         $this->useCase = new CreateTask(
             tasks: $this->taskRepository,
             goals: $this->goalRepository,

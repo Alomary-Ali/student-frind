@@ -4,36 +4,33 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Tests\Unit\Application\UseCases;
 
+use Modules\Productivity\Application\DTOs\CalendarEventDto;
 use Modules\Productivity\Application\DTOs\CreateCalendarEventDto;
 use Modules\Productivity\Application\DTOs\CreateReminderDto;
 use Modules\Productivity\Application\DTOs\GoalDto;
-use Modules\Productivity\Application\DTOs\TaskDto;
-use Modules\Productivity\Application\DTOs\CalendarEventDto;
-use Modules\Productivity\Application\DTOs\ReminderDto;
 use Modules\Productivity\Application\DTOs\ProductivityDashboardDto;
 use Modules\Productivity\Application\DTOs\ProductivitySnapshotDto;
+use Modules\Productivity\Application\DTOs\ReminderDto;
+use Modules\Productivity\Application\DTOs\TaskDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
-use Modules\Productivity\Application\UseCases\UpdateGoalProgress;
 use Modules\Productivity\Application\UseCases\CompleteTask;
-use Modules\Productivity\Application\UseCases\GetProductivityDashboard;
-use Modules\Productivity\Application\UseCases\GenerateProductivitySnapshot;
 use Modules\Productivity\Application\UseCases\CreateCalendarEvent;
 use Modules\Productivity\Application\UseCases\CreateReminder;
-use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
+use Modules\Productivity\Application\UseCases\GenerateProductivitySnapshot;
+use Modules\Productivity\Application\UseCases\GetProductivityDashboard;
+use Modules\Productivity\Application\UseCases\UpdateGoalProgress;
 use Modules\Productivity\Domain\Contracts\CalendarEventRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\ProductivitySnapshotRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Goal;
 use Modules\Productivity\Domain\Entities\Task;
-use Modules\Productivity\Domain\Entities\CalendarEvent;
-use Modules\Productivity\Domain\Entities\Reminder;
 use Modules\Productivity\Domain\Exceptions\GoalNotFoundException;
 use Modules\Productivity\Domain\Exceptions\TaskNotFoundException;
 use Modules\Productivity\Domain\ValueObjects\GoalId;
-use Modules\Productivity\Domain\ValueObjects\TaskId;
-use Modules\Productivity\Domain\ValueObjects\GoalProgress;
 use Modules\Productivity\Domain\ValueObjects\PriorityLevel;
+use Modules\Productivity\Domain\ValueObjects\TaskId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -43,7 +40,7 @@ final class ProductivityUseCasesTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->mapper = new ProductivityMapper();
+        $this->mapper = new ProductivityMapper;
     }
 
     private function createTestGoal(): Goal

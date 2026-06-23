@@ -8,7 +8,8 @@ interface TransactionManagerInterface
 {
     /**
      * @template T
-     * @param callable(): T $callback
+     *
+     * @param  callable(): T  $callback
      * @return T
      */
     public function runInTransaction(callable $callback): mixed;

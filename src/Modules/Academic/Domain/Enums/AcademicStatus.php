@@ -6,11 +6,11 @@ namespace Modules\Academic\Domain\Enums;
 
 enum AcademicStatus: string
 {
-    case Active     = 'active';
-    case Inactive   = 'inactive';
-    case Graduated  = 'graduated';
-    case Withdrawn  = 'withdrawn';
-    case Suspended  = 'suspended';
+    case Active = 'active';
+    case Inactive = 'inactive';
+    case Graduated = 'graduated';
+    case Withdrawn = 'withdrawn';
+    case Suspended = 'suspended';
 
     public function canEnroll(): bool
     {
@@ -20,8 +20,8 @@ enum AcademicStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::Active    => 'Active',
-            self::Inactive  => 'Inactive',
+            self::Active => 'Active',
+            self::Inactive => 'Inactive',
             self::Graduated => 'Graduated',
             self::Withdrawn => 'Withdrawn',
             self::Suspended => 'Suspended',

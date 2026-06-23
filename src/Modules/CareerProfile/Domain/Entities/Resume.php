@@ -30,7 +30,7 @@ final class Resume
             $careerProfileId,
             $template,
             $content,
-            new DateTimeImmutable()
+            new DateTimeImmutable,
         );
     }
 
@@ -46,7 +46,7 @@ final class Resume
             $careerProfileId,
             $template,
             $content,
-            $generatedAt
+            $generatedAt,
         );
     }
 
@@ -78,12 +78,12 @@ final class Resume
     public function updateContent(string $content): void
     {
         $this->content = $content;
-        $this->generatedAt = new DateTimeImmutable();
+        $this->generatedAt = new DateTimeImmutable;
     }
 
     public function changeTemplate(ResumeTemplate $template): void
     {
         $this->template = $template;
-        $this->generatedAt = new DateTimeImmutable();
+        $this->generatedAt = new DateTimeImmutable;
     }
 }

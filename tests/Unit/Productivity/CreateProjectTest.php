@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Productivity;
 
+use Illuminate\Support\Facades\Event;
 use Modules\Productivity\Application\DTOs\CreateProjectDto;
 use Modules\Productivity\Application\UseCases\CreateProject;
 use Modules\Productivity\Domain\Contracts\ProjectRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Project;
 use Modules\Productivity\Domain\Events\ProjectCreated;
-use Modules\Productivity\Domain\ValueObjects\ProjectId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Event;
 
 final class CreateProjectTest extends TestCase
 {
@@ -29,7 +28,7 @@ final class CreateProjectTest extends TestCase
             userId: UserId::generate()->value(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: (new \DateTimeImmutable())->format('Y-m-d H:i:s'),
+            startDate: (new \DateTimeImmutable)->format('Y-m-d H:i:s'),
             dueDate: (new \DateTimeImmutable('+60 days'))->format('Y-m-d H:i:s'),
         );
 
@@ -52,7 +51,7 @@ final class CreateProjectTest extends TestCase
             userId: UserId::generate()->value(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: (new \DateTimeImmutable())->format('Y-m-d H:i:s'),
+            startDate: (new \DateTimeImmutable)->format('Y-m-d H:i:s'),
             dueDate: (new \DateTimeImmutable('+60 days'))->format('Y-m-d H:i:s'),
         );
 

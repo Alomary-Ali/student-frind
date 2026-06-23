@@ -40,7 +40,7 @@ final class AcademicRecord
             studentId: $studentId,
             courseId: $courseId,
             grade: $grade,
-            recordedAt: new DateTimeImmutable(),
+            recordedAt: new DateTimeImmutable,
             recordedByUserId: $recordedByUserId,
         );
 
@@ -69,13 +69,40 @@ final class AcademicRecord
         return new self($id, $enrollmentId, $studentId, $courseId, $grade, $recordedAt, $recordedByUserId);
     }
 
-    public function id(): AcademicRecordId { return $this->id; }
-    public function enrollmentId(): EnrollmentId { return $this->enrollmentId; }
-    public function studentId(): string { return $this->studentId; }
-    public function courseId(): string { return $this->courseId; }
-    public function grade(): Grade { return $this->grade; }
-    public function recordedAt(): DateTimeImmutable { return $this->recordedAt; }
-    public function recordedByUserId(): string { return $this->recordedByUserId; }
+    public function id(): AcademicRecordId
+    {
+        return $this->id;
+    }
+
+    public function enrollmentId(): EnrollmentId
+    {
+        return $this->enrollmentId;
+    }
+
+    public function studentId(): string
+    {
+        return $this->studentId;
+    }
+
+    public function courseId(): string
+    {
+        return $this->courseId;
+    }
+
+    public function grade(): Grade
+    {
+        return $this->grade;
+    }
+
+    public function recordedAt(): DateTimeImmutable
+    {
+        return $this->recordedAt;
+    }
+
+    public function recordedByUserId(): string
+    {
+        return $this->recordedByUserId;
+    }
 
     private function raise(object $event): void
     {

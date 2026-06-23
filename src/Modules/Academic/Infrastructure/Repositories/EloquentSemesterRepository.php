@@ -36,7 +36,7 @@ final class EloquentSemesterRepository implements SemesterRepositoryInterface
                 'end_date' => $semester->endDate()->format('Y-m-d'),
                 'is_active' => $semester->isActive(),
                 'institution_id' => $semester->institutionId(),
-            ]
+            ],
         );
 
         // Invalidate cache
@@ -53,7 +53,7 @@ final class EloquentSemesterRepository implements SemesterRepositoryInterface
     {
         $createdAt = $model->created_at
             ? new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s'))
-            : new DateTimeImmutable();
+            : new DateTimeImmutable;
 
         return Semester::reconstitute(
             id: SemesterId::fromString($model->id),

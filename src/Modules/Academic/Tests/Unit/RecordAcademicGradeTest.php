@@ -51,7 +51,7 @@ final class RecordAcademicGradeTest extends TestCase
         $this->transactionManager = $this->createMock(TransactionManagerInterface::class);
         $this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
         $this->auditLogger = $this->createMock(AcademicAuditLoggerInterface::class);
-        $this->gpaService = new GpaCalculationService();
+        $this->gpaService = new GpaCalculationService;
 
         $this->useCase = new RecordAcademicGrade(
             students: $this->studentRepository,
@@ -73,7 +73,7 @@ final class RecordAcademicGradeTest extends TestCase
             courseId: CourseId::fromString('660e8400-e29b-41d4-a716-446655440030'),
             semesterId: SemesterId::fromString('660e8400-e29b-41d4-a716-446655440041'),
             status: EnrollmentStatus::Enrolled,
-            enrolledAt: new \DateTimeImmutable(),
+            enrolledAt: new \DateTimeImmutable,
         );
 
         $this->transactionManager->method('runInTransaction')

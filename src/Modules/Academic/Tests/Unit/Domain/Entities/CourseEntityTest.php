@@ -63,7 +63,7 @@ final class CourseEntityTest extends TestCase
             Credits::of(3),
             false,
             null,
-            new DateTimeImmutable(),
+            new DateTimeImmutable,
         );
 
         $this->expectException(CourseNotActiveException::class);

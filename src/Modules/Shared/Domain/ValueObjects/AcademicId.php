@@ -27,7 +27,7 @@ final readonly class AcademicId
             throw new InvalidArgumentException('Academic ID cannot be empty');
         }
 
-        if (!preg_match('/^\d{8}$/', $value)) {
+        if (! preg_match('/^\d{8}$/', $value)) {
             throw new InvalidArgumentException('Academic ID must be 8 digits');
         }
     }

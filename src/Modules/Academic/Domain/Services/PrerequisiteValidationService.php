@@ -13,33 +13,34 @@ final class PrerequisiteValidationService
     /**
      * Validate that a student has met all prerequisites for a course.
      *
-     * @param array<string, mixed> $prerequisites Array of prerequisite data
-     * @param array<Enrollment> $completedEnrollments Student's completed enrollments
+     * @param  array<string, mixed>  $prerequisites  Array of prerequisite data
+     * @param  array<Enrollment>  $completedEnrollments  Student's completed enrollments
+     *
      * @throws PrerequisiteNotMetException
      */
     public function validatePrerequisites(
         array $prerequisites,
-        array $completedEnrollments
+        array $completedEnrollments,
     ): void {
         foreach ($prerequisites as $prerequisite) {
             $prerequisiteCourseId = $prerequisite['prerequisite_course_id'];
             $isRequired = $prerequisite['is_required'] ?? true;
             $minimumGrade = $prerequisite['minimum_grade'] ?? 2.0;
 
-            if (!$isRequired) {
+            if (! $isRequired) {
                 continue;
             }
 
             $hasCompleted = $this->hasCompletedCourse(
                 $prerequisiteCourseId,
                 $completedEnrollments,
-                $minimumGrade
+                $minimumGrade,
             );
 
-            if (!$hasCompleted) {
+            if (! $hasCompleted) {
                 throw new PrerequisiteNotMetException(
                     $prerequisiteCourseId,
-                    $minimumGrade
+                    $minimumGrade,
                 );
             }
         }
@@ -48,15 +49,12 @@ final class PrerequisiteValidationService
     /**
      * Check if student has completed a specific course with minimum grade.
      *
-     * @param string $courseId
-     * @param array<Enrollment> $completedEnrollments
-     * @param float $minimumGrade
-     * @return bool
+     * @param  array<Enrollment>  $completedEnrollments
      */
     private function hasCompletedCourse(
         string $courseId,
         array $completedEnrollments,
-        float $minimumGrade
+        float $minimumGrade,
     ): bool {
         foreach ($completedEnrollments as $enrollment) {
             if ($enrollment->courseId()->value() === $courseId) {

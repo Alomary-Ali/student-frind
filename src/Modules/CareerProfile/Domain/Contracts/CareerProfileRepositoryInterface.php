@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\CareerProfile\Domain\Contracts;
 
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\CareerProfile\Domain\Entities\CareerProfile;
 use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 
 interface CareerProfileRepositoryInterface
 {

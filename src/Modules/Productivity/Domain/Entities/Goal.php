@@ -52,7 +52,7 @@ final class Goal
             progress: GoalProgress::zero(),
             status: GoalStatus::Active,
             goalType: $goalType,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $goal->raise(new GoalCreated(
@@ -61,7 +61,7 @@ final class Goal
             title: $title,
             targetDate: $targetDate->format('Y-m-d H:i:s'),
             priority: $priority->value(),
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $goal;
@@ -123,7 +123,7 @@ final class Goal
             goalId: $this->id->value(),
             userId: $this->userId,
             title: $this->title,
-            completedAt: new DateTimeImmutable(),
+            completedAt: new DateTimeImmutable,
         ));
     }
 
@@ -189,7 +189,7 @@ final class Goal
 
     public function isOverdue(): bool
     {
-        return $this->targetDate < new DateTimeImmutable() && ! $this->status->isCompleted();
+        return $this->targetDate < new DateTimeImmutable && ! $this->status->isCompleted();
     }
 
     private function raise(object $event): void

@@ -23,28 +23,28 @@ final class CareerProfileServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \Modules\CareerProfile\Domain\Contracts\CareerProfileRepositoryInterface::class,
-            \Modules\CareerProfile\Infrastructure\Persistence\EloquentCareerProfileRepository::class,
+            Domain\Contracts\CareerProfileRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentCareerProfileRepository::class,
         );
 
         $this->app->bind(
-            \Modules\CareerProfile\Domain\Contracts\PortfolioItemRepositoryInterface::class,
-            \Modules\CareerProfile\Infrastructure\Persistence\EloquentPortfolioItemRepository::class,
+            Domain\Contracts\PortfolioItemRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentPortfolioItemRepository::class,
         );
 
         $this->app->bind(
-            \Modules\CareerProfile\Domain\Contracts\ExperienceRepositoryInterface::class,
-            \Modules\CareerProfile\Infrastructure\Persistence\EloquentExperienceRepository::class,
+            Domain\Contracts\ExperienceRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentExperienceRepository::class,
         );
 
         $this->app->bind(
-            \Modules\CareerProfile\Domain\Contracts\ResumeRepositoryInterface::class,
-            \Modules\CareerProfile\Infrastructure\Persistence\EloquentResumeRepository::class,
+            Domain\Contracts\ResumeRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentResumeRepository::class,
         );
 
         $this->app->bind(
-            \Modules\CareerProfile\Domain\Contracts\CareerGoalRepositoryInterface::class,
-            \Modules\CareerProfile\Infrastructure\Persistence\EloquentCareerGoalRepository::class,
+            Domain\Contracts\CareerGoalRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentCareerGoalRepository::class,
         );
     }
 

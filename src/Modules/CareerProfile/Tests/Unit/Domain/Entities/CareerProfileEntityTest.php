@@ -201,7 +201,7 @@ final class CareerProfileEntityTest extends TestCase
 
     public function test_can_reconstitute_profile(): void
     {
-        $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable;
         $profile = CareerProfile::reconstitute(
             $this->profileId,
             $this->studentId,

@@ -13,7 +13,7 @@ final class RoleMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
@@ -27,7 +27,7 @@ final class RoleMiddleware
             'required_roles' => $roles,
         ]);
 
-        if (!$user) {
+        if (! $user) {
             if ($request->expectsJson()) {
                 return response()->json([
                     'success' => false,
@@ -37,10 +37,11 @@ final class RoleMiddleware
                     'meta' => null,
                 ], 401);
             }
+
             return redirect()->route('login');
         }
 
-        if (!in_array($user->role, $roles)) {
+        if (! in_array($user->role, $roles)) {
             \Illuminate\Support\Facades\Log::warning('RoleMiddleware rejected access', [
                 'user_role' => $user->role,
                 'required_roles' => $roles,
@@ -54,6 +55,7 @@ final class RoleMiddleware
                     'meta' => null,
                 ], 403);
             }
+
             return redirect()->route('home')->with('error', 'ليس لديك صلاحية الوصول إلى هذه الصفحة.');
         }
 

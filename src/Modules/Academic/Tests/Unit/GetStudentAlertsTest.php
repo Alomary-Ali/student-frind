@@ -24,7 +24,7 @@ final class GetStudentAlertsTest extends TestCase
     protected function setUp(): void
     {
         $this->alerts = $this->createMock(AcademicAlertRepositoryInterface::class);
-        $this->mapper = new AcademicMapper();
+        $this->mapper = new AcademicMapper;
         $this->useCase = new GetStudentAlerts($this->alerts, $this->mapper);
     }
 

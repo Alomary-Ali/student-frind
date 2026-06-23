@@ -50,7 +50,7 @@ final class EloquentProductivitySnapshotRepository implements ProductivitySnapsh
         $model = EloquentProductivitySnapshot::find($snapshot->id()->value());
 
         if ($model === null) {
-            $model = new EloquentProductivitySnapshot();
+            $model = new EloquentProductivitySnapshot;
             $model->id = $snapshot->id()->value();
         }
 

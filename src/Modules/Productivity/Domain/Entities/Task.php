@@ -50,7 +50,7 @@ final class Task
             priority: $priority,
             status: TaskStatus::Pending,
             linkedGoalId: $linkedGoalId,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
             completedAt: null,
         );
 
@@ -61,7 +61,7 @@ final class Task
             dueDate: $dueDate?->format('Y-m-d H:i:s'),
             priority: $priority->value(),
             linkedGoalId: $linkedGoalId?->value(),
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $task;
@@ -115,7 +115,7 @@ final class Task
             userId: $this->userId,
             title: $this->title,
             linkedGoalId: $this->linkedGoalId?->value(),
-            completedAt: new DateTimeImmutable(),
+            completedAt: new DateTimeImmutable,
         ));
     }
 
@@ -222,7 +222,7 @@ final class Task
     public function isOverdue(): bool
     {
         return $this->dueDate !== null
-            && $this->dueDate < new DateTimeImmutable()
+            && $this->dueDate < new DateTimeImmutable
             && ! $this->status->isCompleted();
     }
 

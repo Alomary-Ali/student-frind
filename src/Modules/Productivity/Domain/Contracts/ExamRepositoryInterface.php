@@ -11,8 +11,12 @@ use Modules\Shared\Domain\ValueObjects\UserId;
 interface ExamRepositoryInterface
 {
     public function save(Exam $exam): void;
+
     public function findById(ExamId $id): ?Exam;
+
     public function findByUserId(UserId $userId): array;
+
     public function findUpcomingByUserId(UserId $userId, int $days = 7): array;
+
     public function delete(ExamId $id): void;
 }

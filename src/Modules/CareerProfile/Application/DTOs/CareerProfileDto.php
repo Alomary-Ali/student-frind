@@ -7,10 +7,10 @@ namespace Modules\CareerProfile\Application\DTOs;
 final readonly class CareerProfileDto
 {
     /**
-     * @param array<PortfolioItemDto> $portfolioItems
-     * @param array<ExperienceDto> $experiences
-     * @param array<ResumeDto> $resumes
-     * @param array<CareerGoalDto> $careerGoals
+     * @param  array<PortfolioItemDto>  $portfolioItems
+     * @param  array<ExperienceDto>  $experiences
+     * @param  array<ResumeDto>  $resumes
+     * @param  array<CareerGoalDto>  $careerGoals
      */
     public function __construct(
         public string $id,

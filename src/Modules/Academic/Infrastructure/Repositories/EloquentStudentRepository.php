@@ -66,7 +66,7 @@ final class EloquentStudentRepository implements StudentRepositoryInterface
                 'department_id' => $student->departmentId(),
                 'major_id' => $student->majorId(),
                 'level' => $student->level(),
-            ]
+            ],
         );
 
         foreach ($student->enrollments() as $enrollment) {
@@ -78,7 +78,7 @@ final class EloquentStudentRepository implements StudentRepositoryInterface
                     'semester_id' => $enrollment->semesterId()->value(),
                     'status' => $enrollment->status()->value,
                     'enrolled_at' => $enrollment->enrolledAt(),
-                ]
+                ],
             );
         }
     }
@@ -90,7 +90,7 @@ final class EloquentStudentRepository implements StudentRepositoryInterface
         foreach ($model->enrollments as $enrollmentModel) {
             $enrolledAt = $enrollmentModel->enrolled_at
                 ? new DateTimeImmutable($enrollmentModel->enrolled_at->format('Y-m-d H:i:s'))
-                : new DateTimeImmutable();
+                : new DateTimeImmutable;
 
             $enrollments[] = Enrollment::reconstitute(
                 id: EnrollmentId::fromString($enrollmentModel->id),
@@ -104,7 +104,7 @@ final class EloquentStudentRepository implements StudentRepositoryInterface
 
         $createdAt = $model->created_at
             ? new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s'))
-            : new DateTimeImmutable();
+            : new DateTimeImmutable;
 
         return Student::reconstitute(
             id: StudentId::fromString($model->id),

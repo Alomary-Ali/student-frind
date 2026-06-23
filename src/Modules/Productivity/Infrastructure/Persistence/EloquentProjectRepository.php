@@ -16,13 +16,14 @@ final class EloquentProjectRepository implements ProjectRepositoryInterface
     {
         $model = EloquentProject::updateOrCreate(
             ['id' => $project->id()->value()],
-            $project->toArray()
+            $project->toArray(),
         );
     }
 
     public function findById(ProjectId $id): ?Project
     {
         $model = EloquentProject::find($id->value());
+
         return $model ? $this->toDomain($model) : null;
     }
 

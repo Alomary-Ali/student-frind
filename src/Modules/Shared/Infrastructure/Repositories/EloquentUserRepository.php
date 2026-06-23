@@ -30,7 +30,7 @@ final class EloquentUserRepository implements UserRepositoryInterface
                 'role' => $user->role()->value,
                 'status' => $user->status()->value,
                 'email_verified_at' => $user->emailVerifiedAt(),
-            ]
+            ],
         );
     }
 
@@ -108,10 +108,10 @@ final class EloquentUserRepository implements UserRepositoryInterface
             return false;
         }
 
-        return $lockedUntil > new \DateTimeImmutable();
+        return $lockedUntil > new DateTimeImmutable;
     }
 
-    public function getLockedUntil(string $userId): ?\DateTimeImmutable
+    public function getLockedUntil(string $userId): ?DateTimeImmutable
     {
         $value = EloquentUser::where('id', $userId)->value('locked_until');
 
@@ -120,13 +120,13 @@ final class EloquentUserRepository implements UserRepositoryInterface
         }
 
         if ($value instanceof \Illuminate\Support\Carbon) {
-            return new \DateTimeImmutable($value->toIso8601String());
+            return new DateTimeImmutable($value->toIso8601String());
         }
 
-        return new \DateTimeImmutable($value);
+        return new DateTimeImmutable($value);
     }
 
-    public function setLockedUntil(string $userId, ?\DateTimeImmutable $lockedUntil): void
+    public function setLockedUntil(string $userId, ?DateTimeImmutable $lockedUntil): void
     {
         EloquentUser::where('id', $userId)->update([
             'locked_until' => $lockedUntil?->format('Y-m-d H:i:s'),

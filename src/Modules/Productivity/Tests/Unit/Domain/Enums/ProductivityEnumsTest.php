@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Tests\Unit\Domain\Enums;
 
+use Modules\Productivity\Domain\Enums\AssignmentStatus;
+use Modules\Productivity\Domain\Enums\EventType;
+use Modules\Productivity\Domain\Enums\ExamType;
 use Modules\Productivity\Domain\Enums\GoalStatus;
 use Modules\Productivity\Domain\Enums\GoalType;
-use Modules\Productivity\Domain\Enums\TaskStatus;
-use Modules\Productivity\Domain\Enums\TaskPriority;
-use Modules\Productivity\Domain\Enums\AssignmentStatus;
-use Modules\Productivity\Domain\Enums\ExamType;
-use Modules\Productivity\Domain\Enums\ProjectStatus;
-use Modules\Productivity\Domain\Enums\EventType;
 use Modules\Productivity\Domain\Enums\NotificationType;
-use Modules\Productivity\Domain\Enums\ReminderType;
-use Modules\Productivity\Domain\Enums\ReminderStatus;
+use Modules\Productivity\Domain\Enums\ProjectStatus;
 use Modules\Productivity\Domain\Enums\ReadinessStatus;
+use Modules\Productivity\Domain\Enums\ReminderStatus;
+use Modules\Productivity\Domain\Enums\ReminderType;
+use Modules\Productivity\Domain\Enums\TaskPriority;
+use Modules\Productivity\Domain\Enums\TaskStatus;
 use PHPUnit\Framework\TestCase;
 
 final class ProductivityEnumsTest extends TestCase

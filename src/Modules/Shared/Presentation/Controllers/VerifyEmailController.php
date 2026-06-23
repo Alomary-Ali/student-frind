@@ -26,7 +26,7 @@ final class VerifyEmailController extends Controller
 
         try {
             $userDto = $this->verifyUserEmail->execute(
-                $request->input('user_id')
+                $request->input('user_id'),
             );
 
             return (new UserResource($userDto))

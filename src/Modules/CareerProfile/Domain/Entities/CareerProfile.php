@@ -6,19 +6,19 @@ namespace Modules\CareerProfile\Domain\Entities;
 
 use DateTimeImmutable;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\CareerProfile\Domain\Events\CareerProfileCreated;
-use Modules\CareerProfile\Domain\Events\PortfolioItemAdded;
-use Modules\CareerProfile\Domain\Events\ExperienceAdded;
-use Modules\CareerProfile\Domain\Events\ResumeGenerated;
-use Modules\CareerProfile\Domain\Events\CareerGoalCreated;
-use Modules\CareerProfile\Domain\Events\CareerGoalCompleted;
-use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
-use Modules\CareerProfile\Domain\ValueObjects\PortfolioItemId;
-use Modules\CareerProfile\Domain\ValueObjects\ExperienceId;
-use Modules\CareerProfile\Domain\ValueObjects\ResumeId;
-use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
-use Modules\CareerProfile\Domain\Enums\ResumeTemplate;
 use Modules\CareerProfile\Domain\Enums\GoalStatus;
+use Modules\CareerProfile\Domain\Enums\ResumeTemplate;
+use Modules\CareerProfile\Domain\Events\CareerGoalCompleted;
+use Modules\CareerProfile\Domain\Events\CareerGoalCreated;
+use Modules\CareerProfile\Domain\Events\CareerProfileCreated;
+use Modules\CareerProfile\Domain\Events\ExperienceAdded;
+use Modules\CareerProfile\Domain\Events\PortfolioItemAdded;
+use Modules\CareerProfile\Domain\Events\ResumeGenerated;
+use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
+use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
+use Modules\CareerProfile\Domain\ValueObjects\ExperienceId;
+use Modules\CareerProfile\Domain\ValueObjects\PortfolioItemId;
+use Modules\CareerProfile\Domain\ValueObjects\ResumeId;
 
 final class CareerProfile
 {
@@ -48,7 +48,7 @@ final class CareerProfile
         array $interests = [],
         array $languages = [],
     ): self {
-        $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable;
         $profile = new self(
             $id,
             $studentId,
@@ -61,14 +61,14 @@ final class CareerProfile
             [],
             [],
             $now,
-            $now
+            $now,
         );
 
         $profile->raise(new CareerProfileCreated(
             $id->value(),
             $studentId->value(),
             $major,
-            $now
+            $now,
         ));
 
         return $profile;
@@ -100,7 +100,7 @@ final class CareerProfile
             $resumes,
             $careerGoals,
             $createdAt,
-            $updatedAt
+            $updatedAt,
         );
     }
 
@@ -174,7 +174,7 @@ final class CareerProfile
         $this->summary = $summary;
         $this->interests = $interests;
         $this->languages = $languages;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
     }
 
     public function addPortfolioItem(
@@ -196,16 +196,16 @@ final class CareerProfile
             $githubUrl,
             $startDate,
             $endDate,
-            $technologies
+            $technologies,
         );
         $this->portfolioItems[] = $item;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
 
         $this->raise(new PortfolioItemAdded(
             $id->value(),
             $this->id->value(),
             $title,
-            $this->updatedAt
+            $this->updatedAt,
         ));
     }
 
@@ -226,17 +226,17 @@ final class CareerProfile
             $description,
             $startDate,
             $endDate,
-            $isCurrent
+            $isCurrent,
         );
         $this->experiences[] = $experience;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
 
         $this->raise(new ExperienceAdded(
             $id->value(),
             $this->id->value(),
             $company,
             $position,
-            $this->updatedAt
+            $this->updatedAt,
         ));
     }
 
@@ -249,16 +249,16 @@ final class CareerProfile
             $id,
             $this->id,
             $template,
-            $content
+            $content,
         );
         $this->resumes[] = $resume;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
 
         $this->raise(new ResumeGenerated(
             $id->value(),
             $this->id->value(),
             $template->value,
-            $this->updatedAt
+            $this->updatedAt,
         ));
     }
 
@@ -271,16 +271,16 @@ final class CareerProfile
             $id,
             $this->id,
             $title,
-            $targetDate
+            $targetDate,
         );
         $this->careerGoals[] = $goal;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
 
         $this->raise(new CareerGoalCreated(
             $id->value(),
             $this->id->value(),
             $title,
-            $this->updatedAt
+            $this->updatedAt,
         ));
     }
 
@@ -290,14 +290,14 @@ final class CareerProfile
             if ($goal->id()->equals($goalId)) {
                 $oldStatus = $goal->status();
                 $goal->updateProgress($progress);
-                $this->updatedAt = new DateTimeImmutable();
+                $this->updatedAt = new DateTimeImmutable;
 
                 if ($goal->status() === GoalStatus::COMPLETED && $oldStatus !== GoalStatus::COMPLETED) {
                     $this->raise(new CareerGoalCompleted(
                         $goalId->value(),
                         $this->id->value(),
                         $goal->title(),
-                        $this->updatedAt
+                        $this->updatedAt,
                     ));
                 }
                 break;

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Modules\Skills\Infrastructure\Persistence;
 
 use DateTimeImmutable;
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
 use Modules\Skills\Domain\Entities\LearningPath;
 use Modules\Skills\Domain\ValueObjects\LearningPathId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentLearningPath;
 
 final class EloquentLearningPathRepository implements LearningPathRepositoryInterface
@@ -43,7 +43,7 @@ final class EloquentLearningPathRepository implements LearningPathRepositoryInte
         $model = EloquentLearningPath::find($learningPath->id()->value());
 
         if ($model === null) {
-            $model = new EloquentLearningPath();
+            $model = new EloquentLearningPath;
             $model->id = $learningPath->id()->value();
         }
 
@@ -70,7 +70,7 @@ final class EloquentLearningPathRepository implements LearningPathRepositoryInte
             targetRole: $model->target_role,
             steps: $model->steps ?? [],
             progress: (int) $model->progress,
-            estimatedCompletionDate: $model->estimated_completion_date ? new DateTimeImmutable($model->estimated_completion_date->format('Y-m-d H:i:s')) : null
+            estimatedCompletionDate: $model->estimated_completion_date ? new DateTimeImmutable($model->estimated_completion_date->format('Y-m-d H:i:s')) : null,
         );
     }
 }

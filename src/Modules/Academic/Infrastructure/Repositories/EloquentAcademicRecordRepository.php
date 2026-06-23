@@ -13,8 +13,6 @@ use Modules\Academic\Domain\ValueObjects\EnrollmentId;
 use Modules\Academic\Domain\ValueObjects\Grade;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Academic\Infrastructure\Persistence\EloquentAcademicRecord;
-use Modules\Academic\Infrastructure\Persistence\EloquentCourse;
-use Modules\Academic\Infrastructure\Persistence\EloquentEnrollment;
 
 final class EloquentAcademicRecordRepository implements AcademicRecordRepositoryInterface
 {
@@ -30,7 +28,7 @@ final class EloquentAcademicRecordRepository implements AcademicRecordRepository
                 'grade_points' => $record->grade()->gradePoints(),
                 'recorded_at' => $record->recordedAt(),
                 'recorded_by_user_id' => $record->recordedByUserId(),
-            ]
+            ],
         );
     }
 

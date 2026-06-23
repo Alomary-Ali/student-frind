@@ -34,7 +34,7 @@ final class AcademicMapperTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->mapper = new AcademicMapper();
+        $this->mapper = new AcademicMapper;
     }
 
     public function test_to_student_dto_maps_all_fields(): void

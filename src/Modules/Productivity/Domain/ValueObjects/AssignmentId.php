@@ -25,7 +25,7 @@ final readonly class AssignmentId
 
     private function validate(string $value): void
     {
-        if (!\Ramsey\Uuid\Uuid::isValid($value)) {
+        if (! \Ramsey\Uuid\Uuid::isValid($value)) {
             throw new InvalidAssignmentIdException($value);
         }
     }

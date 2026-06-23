@@ -8,17 +8,18 @@ use Modules\Academic\Domain\Entities\AcademicAlert;
 use Modules\Academic\Domain\Enums\AlertSeverity;
 use Modules\Academic\Domain\Enums\AlertType;
 use Modules\Academic\Domain\ValueObjects\AlertId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Academic\Domain\ValueObjects\Gpa;
+use Modules\Academic\Domain\ValueObjects\StudentId;
 
 final class AcademicAlertService
 {
     /**
      * Check if student has low GPA and should be alerted.
      */
-    public function checkLowGpa(Gpa $currentGpa, Gpa $threshold = null): bool
+    public function checkLowGpa(Gpa $currentGpa, ?Gpa $threshold = null): bool
     {
         $threshold = $threshold ?? Gpa::of(2.0);
+
         return $currentGpa->value() < $threshold->value();
     }
 
@@ -61,6 +62,7 @@ final class AcademicAlertService
         int $expectedCredits,
     ): AcademicAlert {
         $deficit = $creditsRequired - $creditsEarned;
+
         return AcademicAlert::create(
             id: AlertId::generate(),
             studentId: $studentId,

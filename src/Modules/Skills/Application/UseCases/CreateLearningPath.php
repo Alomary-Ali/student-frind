@@ -7,8 +7,8 @@ namespace Modules\Skills\Application\UseCases;
 use DateTimeImmutable;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
-use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Application\DTOs\LearningPathDto;
+use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
 use Modules\Skills\Domain\Events\LearningPathCreated;
@@ -53,7 +53,7 @@ final readonly class CreateLearningPath
                 studentId: $learningPath->studentId()->value(),
                 title: $learningPath->title(),
                 targetRole: $learningPath->targetRole(),
-                occurredAt: new DateTimeImmutable(),
+                occurredAt: new DateTimeImmutable,
             ),
         ]);
 

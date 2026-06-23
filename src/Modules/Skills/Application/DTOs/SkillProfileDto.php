@@ -7,8 +7,8 @@ namespace Modules\Skills\Application\DTOs;
 final readonly class SkillProfileDto
 {
     /**
-     * @param array<SkillDto> $skills
-     * @param array<CertificationDto> $certifications
+     * @param  array<SkillDto>  $skills
+     * @param  array<CertificationDto>  $certifications
      */
     public function __construct(
         public string $id,

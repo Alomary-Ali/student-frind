@@ -15,7 +15,7 @@ final class LinkedInOptimizer
         $recommendations = [];
 
         // 1. Check Headline / Major
-        if (!empty($profile->major())) {
+        if (! empty($profile->major())) {
             $score += 20;
         } else {
             $recommendations[] = 'قم بإضافة المسمى المهني أو التخصص الدراسي الخاص بك إلى عنوان ملفك الشخصي.';

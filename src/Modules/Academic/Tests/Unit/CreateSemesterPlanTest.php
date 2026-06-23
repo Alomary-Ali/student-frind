@@ -51,7 +51,7 @@ final class CreateSemesterPlanTest extends TestCase
             creditHours: Credits::of(3),
             isActive: true,
             institutionId: 'institution-uuid',
-            createdAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
         );
 
         $course2 = Course::reconstitute(
@@ -62,7 +62,7 @@ final class CreateSemesterPlanTest extends TestCase
             creditHours: Credits::of(3),
             isActive: true,
             institutionId: 'institution-uuid',
-            createdAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
         );
 
         $this->courseRepository->expects($this->exactly(2))

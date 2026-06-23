@@ -10,14 +10,14 @@ final class PrerequisiteNotMetException extends RuntimeException
 {
     public function __construct(
         private readonly string $prerequisiteCourseId,
-        private readonly float $minimumGrade
+        private readonly float $minimumGrade,
     ) {
         parent::__construct(
             sprintf(
                 'Prerequisite course %s not met. Minimum grade required: %.2f',
                 $prerequisiteCourseId,
-                $minimumGrade
-            )
+                $minimumGrade,
+            ),
         );
     }
 

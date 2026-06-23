@@ -23,34 +23,34 @@ final class SharedServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \Modules\Shared\Domain\Contracts\UserRepositoryInterface::class,
-            \Modules\Shared\Infrastructure\Repositories\EloquentUserRepository::class
+            Domain\Contracts\UserRepositoryInterface::class,
+            Infrastructure\Repositories\EloquentUserRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Shared\Domain\Contracts\EventDispatcherInterface::class,
-            \Modules\Shared\Infrastructure\Integrations\LaravelEventDispatcher::class
+            Domain\Contracts\EventDispatcherInterface::class,
+            Infrastructure\Integrations\LaravelEventDispatcher::class,
         );
 
         $this->app->bind(
-            \Modules\Shared\Domain\Contracts\AuthServiceInterface::class,
-            \Modules\Shared\Infrastructure\Auth\SanctumAuthService::class
+            Domain\Contracts\AuthServiceInterface::class,
+            Infrastructure\Auth\SanctumAuthService::class,
         );
 
         // Register Authorization Repositories
         $this->app->bind(
-            \Modules\Shared\Domain\Contracts\RoleRepositoryInterface::class,
-            \Modules\Shared\Infrastructure\Repositories\EloquentRoleRepository::class
+            Domain\Contracts\RoleRepositoryInterface::class,
+            Infrastructure\Repositories\EloquentRoleRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Shared\Domain\Contracts\PermissionRepositoryInterface::class,
-            \Modules\Shared\Infrastructure\Repositories\EloquentPermissionRepository::class
+            Domain\Contracts\PermissionRepositoryInterface::class,
+            Infrastructure\Repositories\EloquentPermissionRepository::class,
         );
 
         // Register Use Cases
         $this->app->bind(
-            \Modules\Shared\Application\UseCases\AuthenticateUser::class
+            Application\UseCases\AuthenticateUser::class,
         );
     }
 

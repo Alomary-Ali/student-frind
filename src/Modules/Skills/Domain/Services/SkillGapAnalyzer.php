@@ -19,7 +19,7 @@ final class SkillGapAnalyzer
     public function analyze(SkillProfile $profile, string $roleKey): array
     {
         $roleKey = mb_strtolower($roleKey);
-        if (!array_key_exists($roleKey, self::$roleRequiredSkills)) {
+        if (! array_key_exists($roleKey, self::$roleRequiredSkills)) {
             return [
                 'role' => $roleKey,
                 'current_skills' => [],

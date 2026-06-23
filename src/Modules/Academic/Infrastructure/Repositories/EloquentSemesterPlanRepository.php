@@ -7,10 +7,10 @@ namespace Modules\Academic\Infrastructure\Repositories;
 use DateTimeImmutable;
 use Modules\Academic\Domain\Contracts\SemesterPlanRepositoryInterface;
 use Modules\Academic\Domain\Entities\SemesterPlan;
+use Modules\Academic\Domain\ValueObjects\SemesterId;
 use Modules\Academic\Domain\ValueObjects\SemesterPlanId;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Academic\Domain\ValueObjects\SemesterId;
-use Modules\Academic\Infrastructure\Persistence\EloquentSemesterPlan as EloquentSemesterPlan;
+use Modules\Academic\Infrastructure\Persistence\EloquentSemesterPlan;
 
 final class EloquentSemesterPlanRepository implements SemesterPlanRepositoryInterface
 {
@@ -44,7 +44,7 @@ final class EloquentSemesterPlanRepository implements SemesterPlanRepositoryInte
                 'submitted_at' => $plan->submittedAt()?->format('Y-m-d H:i:s'),
                 'approved_by' => $plan->approvedBy(),
                 'approved_at' => $plan->approvedAt()?->format('Y-m-d H:i:s'),
-            ]
+            ],
         );
     }
 

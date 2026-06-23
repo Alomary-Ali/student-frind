@@ -9,29 +9,24 @@ use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
+use Modules\Skills\Domain\Contracts\AchievementRepositoryInterface;
+use Modules\Skills\Domain\Contracts\CertificationRepositoryInterface;
+use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
 use Modules\Skills\Domain\Contracts\SkillRepositoryInterface;
-use Modules\Skills\Domain\Contracts\CertificationRepositoryInterface;
-use Modules\Skills\Domain\Contracts\AchievementRepositoryInterface;
-use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
-use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Skill;
-use Modules\Skills\Domain\Entities\Certification;
 use Modules\Skills\Domain\Entities\Achievement;
+use Modules\Skills\Domain\Entities\Certification;
 use Modules\Skills\Domain\Entities\LearningPath;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
-use Modules\Skills\Domain\ValueObjects\AchievementId;
-use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use Modules\Skills\Domain\Entities\Skill;
+use Modules\Skills\Domain\Entities\SkillProfile;
+use Modules\Skills\Domain\Enums\AchievementType;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\Enums\AchievementType;
-use Modules\Skills\Infrastructure\Persistence\EloquentSkillProfileRepository;
-use Modules\Skills\Infrastructure\Persistence\EloquentSkillRepository;
-use Modules\Skills\Infrastructure\Persistence\EloquentCertificationRepository;
-use Modules\Skills\Infrastructure\Persistence\EloquentAchievementRepository;
-use Modules\Skills\Infrastructure\Persistence\EloquentLearningPathRepository;
+use Modules\Skills\Domain\ValueObjects\AchievementId;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Tests\TestCase;
 
 final class SkillsRepositoriesTest extends TestCase
@@ -77,7 +72,7 @@ final class SkillsRepositoriesTest extends TestCase
         $profile->addSkill(SkillId::generate(), 'PHP', SkillCategory::PROGRAMMING, SkillLevel::ADVANCED, 3);
         $profile->addCertification(
             CertificationId::generate(), 'AWS', 'Amazon',
-            new DateTimeImmutable('2026-01-15'), new DateTimeImmutable('2028-01-15')
+            new DateTimeImmutable('2026-01-15'), new DateTimeImmutable('2028-01-15'),
         );
         $repo->save($profile);
 
@@ -137,7 +132,7 @@ final class SkillsRepositoriesTest extends TestCase
         $certRepo = app(CertificationRepositoryInterface::class);
         $cert = Certification::create(
             CertificationId::generate(), $profile->id(), 'OCA Java', 'Oracle',
-            new DateTimeImmutable('2026-01-15')
+            new DateTimeImmutable('2026-01-15'),
         );
         $certRepo->save($cert);
 
@@ -155,7 +150,7 @@ final class SkillsRepositoriesTest extends TestCase
         $certRepo = app(CertificationRepositoryInterface::class);
         $cert = Certification::create(
             CertificationId::generate(), $profile->id(), 'GCP', 'Google',
-            new DateTimeImmutable('2026-02-01')
+            new DateTimeImmutable('2026-02-01'),
         );
         $certRepo->save($cert);
 
@@ -169,7 +164,7 @@ final class SkillsRepositoriesTest extends TestCase
 
         $achievement = Achievement::create(
             AchievementId::generate(), $this->studentId, AchievementType::ACADEMIC,
-            'النجم الأكاديمي', 'إكمال 5 مساقات'
+            'النجم الأكاديمي', 'إكمال 5 مساقات',
         );
         $repo->save($achievement);
 

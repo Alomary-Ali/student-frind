@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Skills\Domain\Entities;
 
 use DateTimeImmutable;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 
 final class Certification
 {
@@ -39,7 +39,7 @@ final class Certification
             $issueDate,
             $expiryDate,
             $credentialUrl,
-            $verificationCode
+            $verificationCode,
         );
     }
 
@@ -61,7 +61,7 @@ final class Certification
             $issueDate,
             $expiryDate,
             $credentialUrl,
-            $verificationCode
+            $verificationCode,
         );
     }
 
@@ -111,6 +111,6 @@ final class Certification
             return false;
         }
 
-        return $this->expiryDate < new DateTimeImmutable();
+        return $this->expiryDate < new DateTimeImmutable;
     }
 }

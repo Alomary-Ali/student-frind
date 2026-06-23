@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Security\Productivity;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\Productivity\Infrastructure\Persistence\Eloquent\EloquentAssignment;
 use Tests\TestCase;
 
 final class ProductivitySecurityTest extends TestCase

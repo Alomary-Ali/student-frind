@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Tests\Unit\Domain\ValueObjects;
 
-use PHPUnit\Framework\TestCase;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
-use Modules\Skills\Domain\ValueObjects\AchievementId;
-use Modules\Skills\Domain\ValueObjects\LearningPathId;
-use Modules\Skills\Domain\Exceptions\InvalidSkillProfileIdException;
-use Modules\Skills\Domain\Exceptions\InvalidSkillIdException;
-use Modules\Skills\Domain\Exceptions\InvalidCertificationIdException;
 use Modules\Skills\Domain\Exceptions\InvalidAchievementIdException;
+use Modules\Skills\Domain\Exceptions\InvalidCertificationIdException;
 use Modules\Skills\Domain\Exceptions\InvalidLearningPathIdException;
+use Modules\Skills\Domain\Exceptions\InvalidSkillIdException;
+use Modules\Skills\Domain\Exceptions\InvalidSkillProfileIdException;
+use Modules\Skills\Domain\ValueObjects\AchievementId;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class SkillsValueObjectsTest extends TestCase
 {

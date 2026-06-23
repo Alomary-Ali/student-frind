@@ -1,3 +1,6 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
     level: 6
     paths:
@@ -7,9 +10,3 @@ parameters:
         - vendor
         - database/migrations
         - node_modules
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
-    ignoreErrors:
-        # Laravel magic methods
-        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder#'
-        - '#Call to an undefined method Illuminate\\Database\\Query\\Builder#'

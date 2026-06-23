@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Domain\Entities;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Entities\Achievement;
-use Modules\Skills\Domain\ValueObjects\AchievementId;
 use Modules\Skills\Domain\Enums\AchievementType;
+use Modules\Skills\Domain\ValueObjects\AchievementId;
+use PHPUnit\Framework\TestCase;
 
 final class AchievementEntityTest extends TestCase
 {
@@ -20,7 +20,7 @@ final class AchievementEntityTest extends TestCase
 
         $achievement = Achievement::create(
             $id, $studentId, AchievementType::ACADEMIC,
-            'النجم الأكاديمي', 'إكمال 5 مساقات دراسية بنجاح.'
+            'النجم الأكاديمي', 'إكمال 5 مساقات دراسية بنجاح.',
         );
 
         $this->assertSame($id, $achievement->id());
@@ -39,7 +39,7 @@ final class AchievementEntityTest extends TestCase
 
         $achievement = Achievement::create(
             $id, $studentId, AchievementType::PRODUCTIVITY,
-            'سيد الإنتاجية', 'إنجاز 10 مهام', '/assets/badges/productivity_master.png'
+            'سيد الإنتاجية', 'إنجاز 10 مهام', '/assets/badges/productivity_master.png',
         );
 
         $this->assertSame('/assets/badges/productivity_master.png', $achievement->badgeUrl());
@@ -54,7 +54,7 @@ final class AchievementEntityTest extends TestCase
         $achievement = Achievement::reconstitute(
             $id, $studentId, AchievementType::COMMUNITY,
             'قائد مجتمعي', 'المشاركة في فعاليات مجتمعية',
-            '/assets/badges/community_leader.png', $unlockedAt
+            '/assets/badges/community_leader.png', $unlockedAt,
         );
 
         $this->assertSame('قائد مجتمعي', $achievement->title());
@@ -63,12 +63,12 @@ final class AchievementEntityTest extends TestCase
 
     public function test_create_sets_unlocked_at_to_now(): void
     {
-        $before = new DateTimeImmutable();
+        $before = new DateTimeImmutable;
         $achievement = Achievement::create(
             AchievementId::generate(), StudentId::generate(),
-            AchievementType::CAREER, 'جامع المهارات', 'إضافة 5 مهارات مهنية'
+            AchievementType::CAREER, 'جامع المهارات', 'إضافة 5 مهارات مهنية',
         );
-        $after = new DateTimeImmutable();
+        $after = new DateTimeImmutable;
 
         $this->assertGreaterThanOrEqual($before->getTimestamp(), $achievement->unlockedAt()->getTimestamp());
         $this->assertLessThanOrEqual($after->getTimestamp(), $achievement->unlockedAt()->getTimestamp());

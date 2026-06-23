@@ -45,8 +45,8 @@ final class Exam
             location: $location,
             status: 'scheduled',
             readinessStatus: $readinessStatus,
-            createdAt: new \DateTimeImmutable(),
-            updatedAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
+            updatedAt: new \DateTimeImmutable,
         );
     }
 
@@ -133,18 +133,19 @@ final class Exam
 
     public function isUpcoming(): bool
     {
-        return $this->examDate > new \DateTimeImmutable() && $this->status === 'scheduled';
+        return $this->examDate > new \DateTimeImmutable && $this->status === 'scheduled';
     }
 
     public function isPast(): bool
     {
-        return $this->examDate < new \DateTimeImmutable();
+        return $this->examDate < new \DateTimeImmutable;
     }
 
     public function isSoon(int $days = 7): bool
     {
-        $soon = (new \DateTimeImmutable())->modify("+{$days} days");
-        return $this->examDate <= $soon && $this->examDate > new \DateTimeImmutable();
+        $soon = (new \DateTimeImmutable)->modify("+{$days} days");
+
+        return $this->examDate <= $soon && $this->examDate > new \DateTimeImmutable;
     }
 
     public function markAsCompleted(): void

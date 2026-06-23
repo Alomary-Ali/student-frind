@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Skills\Application\UseCases;
 
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
-use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Application\DTOs\LearningPathDto;
+use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface;
 use Modules\Skills\Domain\ValueObjects\LearningPathId;
 

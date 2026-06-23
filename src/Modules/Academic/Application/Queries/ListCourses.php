@@ -21,7 +21,7 @@ final readonly class ListCourses
         return [
             'data' => array_map(
                 fn ($course) => $this->mapper->toCourseDto($course),
-                $courses->items()
+                $courses->items(),
             ),
             'pagination' => [
                 'current_page' => $courses->currentPage(),

@@ -7,10 +7,10 @@ namespace Modules\Skills\Infrastructure\Persistence;
 use DateTimeImmutable;
 use Modules\Skills\Domain\Contracts\SkillRepositoryInterface;
 use Modules\Skills\Domain\Entities\Skill;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkill;
 
 final class EloquentSkillRepository implements SkillRepositoryInterface
@@ -31,7 +31,7 @@ final class EloquentSkillRepository implements SkillRepositoryInterface
         $model = EloquentSkill::find($skill->id()->value());
 
         if ($model === null) {
-            $model = new EloquentSkill();
+            $model = new EloquentSkill;
             $model->id = $skill->id()->value();
         }
 
@@ -58,7 +58,7 @@ final class EloquentSkillRepository implements SkillRepositoryInterface
             category: SkillCategory::from($model->category),
             level: SkillLevel::from($model->level),
             yearsOfExperience: (int) $model->years_of_experience,
-            lastUsed: new DateTimeImmutable($model->last_used->format('Y-m-d H:i:s'))
+            lastUsed: new DateTimeImmutable($model->last_used->format('Y-m-d H:i:s')),
         );
     }
 }

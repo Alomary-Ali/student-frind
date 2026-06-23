@@ -7,7 +7,7 @@ namespace Modules\Skills\Application\DTOs;
 final readonly class LearningPathDto
 {
     /**
-     * @param array<array<string,mixed>> $steps
+     * @param  array<array<string,mixed>>  $steps
      */
     public function __construct(
         public string $id,
@@ -17,6 +17,5 @@ final readonly class LearningPathDto
         public array $steps,
         public int $progress,
         public ?string $estimatedCompletionDate,
-    ) {
-    }
+    ) {}
 }

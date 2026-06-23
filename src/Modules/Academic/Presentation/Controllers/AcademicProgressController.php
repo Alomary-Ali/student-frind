@@ -7,8 +7,8 @@ namespace Modules\Academic\Presentation\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Modules\Academic\Application\Queries\GetStudentAcademicProfile;
 use Modules\Academic\Application\Queries\GetGraduationProgress;
+use Modules\Academic\Application\Queries\GetStudentAcademicProfile;
 use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
 use Modules\Academic\Domain\Exceptions\StudentNotFoundException;
 

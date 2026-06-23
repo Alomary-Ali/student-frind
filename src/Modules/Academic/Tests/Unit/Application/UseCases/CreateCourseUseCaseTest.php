@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Academic\Tests\Unit\Application\UseCases;
 
-use Modules\Academic\Application\DTOs\CreateCourseDto;
 use Modules\Academic\Application\DTOs\CourseDto;
+use Modules\Academic\Application\DTOs\CreateCourseDto;
 use Modules\Academic\Application\Mappers\AcademicMapper;
 use Modules\Academic\Application\UseCases\CreateCourse;
 use Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface;
@@ -27,7 +27,7 @@ final class CreateCourseUseCaseTest extends TestCase
         $this->courseRepository = $this->createMock(CourseRepositoryInterface::class);
         $this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
         $this->auditLogger = $this->createMock(AcademicAuditLoggerInterface::class);
-        $this->mapper = new AcademicMapper();
+        $this->mapper = new AcademicMapper;
 
         $this->useCase = new CreateCourse(
             courses: $this->courseRepository,

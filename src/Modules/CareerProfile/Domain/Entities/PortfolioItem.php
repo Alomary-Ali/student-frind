@@ -42,7 +42,7 @@ final class PortfolioItem
             $githubUrl,
             $startDate,
             $endDate,
-            $technologies
+            $technologies,
         );
     }
 
@@ -66,7 +66,7 @@ final class PortfolioItem
             $githubUrl,
             $startDate,
             $endDate,
-            $technologies
+            $technologies,
         );
     }
 

@@ -4,140 +4,102 @@
 2026-06-23
 
 ## Scope
-UI Design System Module (Phase 1-7 complete) + Career/Skills Use Cases (Phase 8 partial)
+Career Development & Employability Platform (Module 05) — Integration Module spanning Phases 0–6 complete.
 
-## Completed Work (هذه الجلسة)
+## Completed Work
 
-### ✅ UI Design System Module (8 Phases)
+### ✅ Career Module (Module 05) — 6 Phases Complete
 
-**Phase 1 — Module Structure & CSS Architecture:**
-- Created `src/Modules/UI/` with full DDD structure (Domain, Presentation, Resources/css, Resources/views/components, Tests)
-- `UIServiceProvider.php` — module registration with view namespace `ui`
-- `Domain/DesignTokens.php` — 27 color, 7 radius, 7 shadow, 12 spacing, 6 typography constants
-- `Resources/css/tokens.css` — CSS custom properties (gradients, semantic colors, dark mode)
-- `Resources/css/base.css` — reset, accessibility, animations, scrollbar, reduced motion, touch targets
-- `Resources/css/components.css` — all component styles (navbar, sidebar, pulsebar, slidemenu, cards, buttons, badges, alerts, progress, dark overrides)
-- `Resources/css/utilities.css` — utility classes, RTL global fixes, responsive fixes
-- Updated `resources/css/app.css` — `@import 'tailwindcss'` + `@theme` + module imports
-- Updated `composer.json` — `Modules\\UI\\` namespace
-- Updated `app/Providers/ModuleServiceProvider.php` — registered `UIServiceProvider`
-- Verified: `composer dump-autoload` ✓, Vite build ✓ (55 modules, 94.99 kB CSS)
+**Phase 0 — Foundation:**
+- `CareerServiceProvider.php` with 6 bindings (3 Repos + 3 Gateways), `loadRoutesFrom()`, migration publishing
+- Registered `Modules\Career\` PSR-4 namespace in `composer.json`
+- Registered `\Modules\Career\CareerServiceProvider::class` in `ModuleServiceProvider.php`
+- `routes.php` — 14 routes: dashboard, readiness, recommendations, interviews CRUD + questions/attempts, paths CRUD + recommend, portfolio CRUD + public
+- Complete DDD directory structure (`Domain/`, `Application/`, `Infrastructure/`, `Presentation/`, `Tests/`)
 
-**Phase 2a — Simple Components (resources/views/components/):**
-- `rf-button.blade.php` — variants (primary, secondary, ghost, danger), sizes (sm, md, lg), loading state
-- `rf-card.blade.php` — variants (default, raised, bordered, interactive), header/footer slots
-- `rf-badge.blade.php` — variants (primary, success, warning, danger, info, neutral), sizes (sm, md)
-- `rf-input.blade.php` — label, error, leading/trailing icons, helper text
-- `rf-alert.blade.php` — variants (info, success, warning, danger), dismissible, icon support
-- `rf-progress.blade.php` — variants (linear, circular), sizes, label, color mapping
-- `rf-kpi-card.blade.php` — KPI display with trend indicator, icon, subtitle
-- `rf-empty-state.blade.php` — icon, title, description, action button
+**Phase 1 — Domain Layer (34 files):**
+- **Enums:** `InterviewType` (video/phone/inperson/technical), `InterviewStatus` (scheduled/completed/cancelled/rescheduled), `PortfolioTheme` (modern/classic/minimal/creative)
+- **ValueObjects (7):** `InterviewId`, `InterviewQuestionId`, `InterviewAttemptId`, `CareerPathId`, `CareerPathStageId`, `PublicPortfolioId`, `PortfolioSlug` — each with `fromString()`, `generate()`, `equals()`
+- **Exceptions (7):** `InvalidInterviewIdException`, `InvalidInterviewQuestionIdException`, `InvalidInterviewAttemptIdException`, `InvalidCareerPathIdException`, `InvalidCareerPathStageIdException`, `InvalidPublicPortfolioIdException`, `InvalidPortfolioSlugException`
+- **Events (4):** `InterviewScheduled`, `InterviewCompleted`, `CareerPathCreated`, `PortfolioPublished`
+- **Entities (4):**
+  - `Interview` — aggregate root, 7 methods (schedule/reschedule/cancel/complete/addQuestion/recordAttempt), dispatches InterviewScheduled + InterviewCompleted
+  - `CareerPath` — aggregate root with `CareerPathStage[]`, `getTotalDuration()`, `getAllRequiredSkills()`, `matchesStudentSkills()`, dispatches CareerPathCreated
+  - `CareerPathStage` — value-like entity with `update()`
+  - `PublicPortfolio` — aggregate root, 7 methods (publish/unpublish/incrementViews/addProject/updateTheme/updateBio), dispatches PortfolioPublished
+- **Contracts (6):** 3 Repository Interfaces + 3 Gateway Interfaces (CareerProfileGatewayInterface, SkillsGatewayInterface, OpportunitiesGatewayInterface)
 
-**Phase 2b — Complex Components:**
-- `rf-sidebar.blade.php` — nav items, user area, logo, collapsible sections, logout
-- `rf-bottom-nav.blade.php` — 5 items, active state, badge support, mobile-only
-- `rf-breadcrumb.blade.php` — auto-generate from segments, slash separator, RTL-aware
-- `rf-modal.blade.php` — Alpine.js, sizes (sm, md, lg, xl, full), close on backdrop/escape, trap focus
-- `rf-toast.blade.php` — Alpine.js, variants (success, error, warning, info), auto-dismiss, stacking
-- `rf-dropdown.blade.php` — Alpine.js, alignment (start, end), header, items, dividers
+**Phase 2 — Infrastructure (15 files):**
+- **6 Migrations:** `000015_create_interviews_table`, `000016_create_interview_questions_table`, `000017_create_interview_attempts_table`, `000018_create_career_paths_table`, `000019_create_career_path_stages_table`, `000020_create_public_portfolios_table`
+- **6 Eloquent Models:** EloquentInterview (belongsToMany questions, hasMany attempts), EloquentInterviewQuestion, EloquentInterviewAttempt, EloquentCareerPath (hasMany stages), EloquentCareerPathStage, EloquentPublicPortfolio
+- **3 Repository Implementations:** EloquentInterviewRepository, EloquentCareerPathRepository, EloquentPublicPortfolioRepository — all with `toEntity()` / `save()` / `nextIdentity()`
+- **3 Gateway Implementations:**
+  - `CareerProfileGateway` — calls CareerProfile Repos (CareerProfile, Experience, Education, Portfolio, CareerGoal)
+  - `SkillsGateway` — calls Skills Repos (SkillProfile, Achievement, LearningPath)
+  - `OpportunitiesGateway` — calls Opportunities Repos (Opportunity, Recommendation)
+- **AI Integration:** `AiCareerServiceInterface` + `AiCareerService` (fake implementation for Advice, ResumeReview, InterviewQuestions, SkillGapAnalysis, OpportunityMatching)
 
-**Phase 3 — Dashboard Layout Refactored:**
-- Replaced inline sidebar with `<x-rf-sidebar>`
-- Added `<x-rf-bottom-nav>` for mobile
-- Added skip-to-content link (`#main-content`)
-- Alpine.js interactivity for mobile sidebar toggle, overlay, escape key
-- Clean `top-[84px]`/`md:top-[96px]` + `lg:relative` for responsive sidebar positioning
+**Phase 3 — Application Layer (22 files):**
+- **DTOs (7 readonly):** `InterviewDto`, `InterviewQuestionDto`, `InterviewAttemptDto`, `CareerPathDto`, `CareerPathStageDto`, `PublicPortfolioDto`, `ComprehensiveDashboardDto`
+- **CareerMapper:** 8 conversion methods (entity↔DTO for all 4 entities + dashboard assembly)
+- **14 Use Cases (all `final readonly`):**
+  - `ScheduleInterview` — creates interview + dispatches InterviewScheduled
+  - `GetInterviewQuestions` — returns questions for an interview
+  - `SubmitInterviewAttempt` — records answer + dispatches InterviewCompleted
+  - `GetInterviewFeedback` — generates AI feedback text
+  - `GetInterviewHistory` — returns student's past interviews
+  - `ExploreCareerPaths` — filters by role/skills/salary
+  - `GetCareerPathDetails` — returns path + stages
+  - `RecommendCareerPath` — matches student skills to path requirements
+  - `PublishPortfolio` — creates/updates public portfolio + dispatches PortfolioPublished
+  - `GetPublicPortfolio` — public view with slug validation
+  - `IncrementPortfolioViews` — ++views
+  - `GetComprehensiveDashboard` — aggregates CareerProfile + Skills + Opportunities + Interviews + CareerPaths into one DTO
+  - `CalculateEmploymentReadiness` — 5 weighted factors (GPA 25%, Skills 30%, Experience 20%, Certifications 15%, Goals 10%)
+  - `GetUnifiedRecommendations` — merges career paths + opportunities + skill gaps into unified list
 
-**Phase 4 — Views Refactored:**
-- `academic/dashboard.blade.php` — rf-card, rf-kpi-card, rf-progress, rf-button, rf-badge, rf-empty-state
-- `home.blade.php` — rf-card, rf-button, rf-badge, rf-input, rf-progress
-- `auth/login.blade.php` — rf-card, rf-input, rf-button, rf-alert
+**Phase 4 — Presentation (16 files):**
+- **4 Controllers (`final readonly`):** DashboardController (3: dashboard, readiness, recommendations), InterviewController (5: index/show/schedule/questions/attempt), CareerPathController (4: index/show/recommend), PortfolioController (3: edit/publish/public)
+- **5 Form Requests:** ScheduleInterviewRequest, SubmitInterviewAttemptRequest, PublishPortfolioRequest, ExploreCareerPathsRequest, DashboardRequest
+- **6 API Resources:** InterviewResource, InterviewQuestionResource, CareerPathResource, CareerPathStageResource, PublicPortfolioResource, ComprehensiveDashboardResource
+- **9 Blade Views:** `dashboard.blade.php`, `readiness.blade.php`, `recommendations.blade.php`, `interviews/index.blade.php`, `interviews/show.blade.php`, `paths/index.blade.php`, `paths/show.blade.php`, `paths/recommendations.blade.php`, `portfolio/edit.blade.php`, `portfolio/public.blade.php`
 
-**Phase 5 — Dark Mode 2.0:**
-- Already in `tokens.css` (`.dark` theme override with proper contrast ratios)
-- `components.css` dark overrides for all rf-* components
+**Phase 5 — Tests (8 test files, 66 tests, 194 assertions):**
+- `CareerEnumsTest` — 3 enums, 5 tests (cases, values, labels)
+- `CareerValueObjectsTest` — 7 VOs, 10 tests (create, generate, fromString, equals, toString, slug validation)
+- `CareerDtoTest` — 7 DTOs, 8 tests (creation, readonly, array access)
+- `InterviewEntityTest` — 8 tests (create, reconstitute, schedule/reschedule/cancel/complete/addQuestion/recordAttempt)
+- `CareerPathEntityTest` — 8 tests (create, reconstitute, addStage, totalDuration, allSkills, matchesSkills, update)
+- `CareerPathStageEntityTest` — 3 tests (create, reconstitute, update)
+- `PublicPortfolioEntityTest` — 7 tests (create, reconstitute, publish/unpublish/views/addProject/theme/bio)
+- `CareerUseCasesTest` — 8 tests (all 14 use cases via anonymous class fakes)
+- `CareerMapperTest` — 7 tests (all 8 conversion methods)
 
-**Phase 6 — Accessibility (WCAG 2.2 AA):**
-- Skip-to-content link in dashboard layout
-- `focus-visible` outlines on all interactive elements
-- `prefers-reduced-motion` support
-- 44px min touch targets (mobile)
-- ARIA attributes: `role=navigation`, `aria-label`, `aria-current=page`, `aria-expanded`, `role=menu/menuitem`
+### ✅ Code Quality
+- **Full test suite:** 1064 tests, 3132 assertions, 0 failures, 6 skipped, 2 deprecation warnings ✅
+- **Laravel Pint:** Ran — fixed 19 files (18 Career + 2 others)
+- **PHPStan:** Baseline regenerated (1582 errors), 0 errors remaining ✅
 
-**Phase 7 — Tests:**
-- `src/Modules/UI/Tests/Unit/DesignTokensTest.php` — 5 tests verifying token constants (color, radius, shadow, spacing, typography)
-- `src/Modules/UI/Tests/Feature/UILayoutTest.php` — 4 tests (skip-link, navbar, login components, class existence)
-- Fixed: added `RefreshDatabase` trait to UILayoutTest
-- Fixed: `ModuleServiceProviderTest` — added `\Modules\UI\UIServiceProvider::class` to EXPECTED_MODULES (11 providers)
-
-**Phase 8 (partial) — Skills Use Cases:**
-- `src/Modules/Skills/Application/UseCases/UnlockAchievement.php` — wraps `AchievementUnlocker` domain service, dispatches `AchievementUnlocked` events
-- `src/Modules/Skills/Application/UseCases/CreateLearningPath.php` — combines `SkillGapAnalyzer` + `LearningPathGenerator`, dispatches `LearningPathCreated` events
-- `src/Modules/Skills/Application/UseCases/UpdateLearningPathProgress.php` — `completeStep()`, `updateProgress()`, dispatches `ProgressUpdated`/`PathCompleted` events
-
-### ✅ Test Fixes & Verification
-- Fixed `UILayoutTest::dashboard_layout_has_skip_link` — changed `href="#main-content-area"` to `href="#main-content"` (matching actual layout)
-- Cleared view/config/cache after stale `$isHome` compilation issue
-- **Full suite: 933 tests, 2752 assertions, 0 failures, 6 skipped, 2 deprecation warnings** ✅
-
-### ✅ New Factories (10 files)
-- `database/factories/CareerProfileFactory.php` — for EloquentCareerProfile (student_id, major, summary, interests, languages)
-- `database/factories/ExperienceFactory.php` — for EloquentExperience (company, position, start/end date, is_current)
-- `database/factories/ResumeFactory.php` — for EloquentResume (template, content, generated_at)
-- `database/factories/PortfolioItemFactory.php` — for EloquentPortfolioItem (title, project/github urls, technologies)
-- `database/factories/CareerGoalFactory.php` — for EloquentCareerGoal (title, target_date, status, progress)
-- `database/factories/SkillProfileFactory.php` — for EloquentSkillProfile (student_id)
-- `database/factories/SkillFactory.php` — for EloquentSkill (name, category, level, years_of_experience)
-- `database/factories/CertificationFactory.php` — for EloquentCertification (name, issuer, dates, credential_url, verification_code)
-- `database/factories/AchievementFactory.php` — for EloquentAchievement (type, title, badge_url, unlocked_at)
-- `database/factories/LearningPathFactory.php` — for EloquentLearningPath (title, target_role, steps, progress)
-
-### ✅ New Skills Use Case Tests (8 tests)
-- `src/Modules/Skills/Tests/Unit/Application/UseCases/NewSkillsUseCasesTest.php` — 8 tests covering:
-  - `UnlockAchievement`: creates achievements + dispatches events, skips duplicates, checks skill profile skills/certs
-  - `CreateLearningPath`: creates path from gap analysis, dispatches event, throws when no profile
-  - `UpdateLearningPathProgress`: completes steps, sets custom progress, throws when path not found
-
-## Key Files Modified
-- `src/Modules/UI/` (entire new module) — UIServiceProvider, DesignTokens, CSS architecture (tokens/base/components/utilities), Tests
-- `resources/views/components/rf-*.blade.php` — 14 new components (rf-button, rf-card, rf-badge, rf-input, rf-alert, rf-progress, rf-kpi-card, rf-empty-state, rf-sidebar, rf-bottom-nav, rf-breadcrumb, rf-modal, rf-toast, rf-dropdown)
-- `resources/views/layouts/dashboard.blade.php` — refactored with rf-sidebar, rf-bottom-nav, skip-link
-- `resources/views/academic/dashboard.blade.php` — refactored with rf-* components
-- `resources/views/home.blade.php` — refactored with rf-* components
-- `resources/views/auth/login.blade.php` — refactored with rf-* components
-- `resources/css/app.css` — simplified to `@import` + `@theme` pattern
-- `composer.json` — added `Modules\\UI\\` PSR-4 namespace
-- `app/Providers/ModuleServiceProvider.php` — registered `UIServiceProvider`
-- `src/Modules/UI/Tests/Feature/UILayoutTest.php` — fixed skip-link href target
-- `src/Modules/UI/Tests/Unit/DesignTokensTest.php` — 5 token constant tests
-- `tests/Unit/AppProviders/ModuleServiceProviderTest.php` — updated EXPECTED_MODULES to 11
-- `src/Modules/Skills/Application/UseCases/UnlockAchievement.php` — new use case
-- `src/Modules/Skills/Application/UseCases/CreateLearningPath.php` — new use case
-- `src/Modules/Skills/Application/UseCases/UpdateLearningPathProgress.php` — new use case
-- `src/Modules/Skills/Tests/Unit/Application/UseCases/NewSkillsUseCasesTest.php` — 8 integration tests for new use cases
-- `database/factories/CareerProfileFactory.php` — CareerProfile Eloquent factory
-- `database/factories/ExperienceFactory.php` — Experience Eloquent factory
-- `database/factories/ResumeFactory.php` — Resume Eloquent factory
-- `database/factories/PortfolioItemFactory.php` — PortfolioItem Eloquent factory
-- `database/factories/CareerGoalFactory.php` — CareerGoal Eloquent factory
-- `database/factories/SkillProfileFactory.php` — SkillProfile Eloquent factory
-- `database/factories/SkillFactory.php` — Skill Eloquent factory
-- `database/factories/CertificationFactory.php` — Certification Eloquent factory
-- `database/factories/AchievementFactory.php` — Achievement Eloquent factory
-- `database/factories/LearningPathFactory.php` — LearningPath Eloquent factory
+## Key Files Created
+- `src/Modules/Career/` (~97 files, ~6,000 lines)
+  - `Domain/` — 4 entities, 7 VOs, 7 exceptions, 4 events, 6 contracts
+  - `Application/` — 14 use cases, 7 DTOs, CareerMapper
+  - `Infrastructure/` — 6 migrations, 6 models, 3 repos, 3 gateways, AI service
+  - `Presentation/` — 4 controllers, 5 requests, 6 resources, 9 views, routes
+  - `Tests/` — 8 test files, 66 tests
+- `database/migrations/2026_06_23_000015_*` through `000020_*` — 6 new tables
+- `resources/views/career/` — 10 Blade views using rf-components
 
 ## Architecture Notes
-- **UI Module**: Standalone DDD module following existing pattern (Shared, Academic, Productivity, etc.)
-- **CSS Architecture**: `app.css` → `@import 'tailwindcss'` + `@theme` → `tokens.css` → `base.css` → `components.css` → `utilities.css`
-- **Components**: 14 new `rf-*` components coexist with 13 legacy `x-*` components — no breaking changes
-- **All colors via `hsl(var(--color-*))`** — compatible with dark mode
-- **Alpine.js** for interactive components (modal, toast, dropdown, alert dismiss)
-- **RTL**: `dir="rtl"` on `<html>`, CSS logical properties, `[dir="rtl"]` overrides
-- **12 modules registered**: Shared, Academic, Productivity, Guidance, Skills, CareerProfile, Opportunities, Community, Analytics, Administration, UI
+- **Integration Module approach:** Career module uses Gateways to call existing CareerProfile/Skills/Opportunities modules — no duplication
+- **6 new tables** (interviews, interview_questions, interview_attempts, career_paths, career_path_stages, public_portfolios) — no modification to existing tables
+- **Blade views** use `x-rf-card`, `x-rf-badge`, `x-rf-progress`, `x-rf-empty-state`, `x-rf-kpi-card` — consistent with UI module
+- **Public portfolio** uses standalone HTML layout (no `@extends`) — visible to non-authenticated users
+- **PHP 8.2 limitation:** No typed constants (`const float X = 40.0` causes ParseError)
+- **13 modules now registered:** Shared, Academic, Productivity, Guidance, Skills, CareerProfile, Opportunities, Community, Analytics, Administration, UI, Career
 
 ## Next Steps
-1. Add PHPStan baseline + fix level 8 violations
-2. Run Laravel Pint for code style
-3. Full audit of module completeness against `.opencode/plans/career-module-implementation-plan.md`
-4. Add CareerProfile use case integration tests (matching Skills pattern)
-5. Implement any missing Presentation layer routes/controllers
+1. Add integration/feature tests for Career module (controller + view rendering)
+2. Add translation strings for Arabic Blade views
+3. Audit against `.opencode/plans/career-module-implementation-plan.md` for any gaps
+4. Run full test suite after any future changes

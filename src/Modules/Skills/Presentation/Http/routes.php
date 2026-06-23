@@ -11,5 +11,7 @@ Route::middleware(['web', 'auth', 'role:student'])
     ->group(function () {
         Route::get('/', [SkillsController::class, 'index'])->name('index');
         Route::post('/skills', [SkillsController::class, 'storeSkill'])->name('skills.store')->middleware('throttle:30,1');
+        Route::post('/skills/{id}/level', [SkillsController::class, 'updateSkillLevel'])->name('skills.level.update')->middleware('throttle:30,1');
         Route::post('/certifications', [SkillsController::class, 'storeCertification'])->name('certifications.store')->middleware('throttle:30,1');
+        Route::post('/gap-analysis', [SkillsController::class, 'analyzeGap'])->name('gap-analysis')->middleware('throttle:30,1');
     });

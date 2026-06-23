@@ -46,7 +46,7 @@ final class AcademicAlert
             message: $message,
             metadata: $metadata,
             isResolved: false,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
             resolvedAt: null,
             resolvedBy: null,
         );
@@ -56,7 +56,7 @@ final class AcademicAlert
             studentId: $studentId->value(),
             alertType: $alertType->value,
             severity: $severity->value,
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $alert;
@@ -95,7 +95,7 @@ final class AcademicAlert
         }
 
         $this->isResolved = true;
-        $this->resolvedAt = new DateTimeImmutable();
+        $this->resolvedAt = new DateTimeImmutable;
         $this->resolvedBy = $resolvedBy;
 
         $this->raise(new AlertResolved(
@@ -106,16 +106,55 @@ final class AcademicAlert
         ));
     }
 
-    public function id(): AlertId { return $this->id; }
-    public function studentId(): StudentId { return $this->studentId; }
-    public function alertType(): AlertType { return $this->alertType; }
-    public function severity(): AlertSeverity { return $this->severity; }
-    public function message(): string { return $this->message; }
-    public function metadata(): ?array { return $this->metadata; }
-    public function isResolved(): bool { return $this->isResolved; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
-    public function resolvedAt(): ?DateTimeImmutable { return $this->resolvedAt; }
-    public function resolvedBy(): ?string { return $this->resolvedBy; }
+    public function id(): AlertId
+    {
+        return $this->id;
+    }
+
+    public function studentId(): StudentId
+    {
+        return $this->studentId;
+    }
+
+    public function alertType(): AlertType
+    {
+        return $this->alertType;
+    }
+
+    public function severity(): AlertSeverity
+    {
+        return $this->severity;
+    }
+
+    public function message(): string
+    {
+        return $this->message;
+    }
+
+    public function metadata(): ?array
+    {
+        return $this->metadata;
+    }
+
+    public function isResolved(): bool
+    {
+        return $this->isResolved;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function resolvedAt(): ?DateTimeImmutable
+    {
+        return $this->resolvedAt;
+    }
+
+    public function resolvedBy(): ?string
+    {
+        return $this->resolvedBy;
+    }
 
     private function raise(object $event): void
     {

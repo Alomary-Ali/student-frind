@@ -7,9 +7,9 @@ namespace Modules\CareerProfile\Infrastructure\Persistence;
 use DateTimeImmutable;
 use Modules\CareerProfile\Domain\Contracts\CareerGoalRepositoryInterface;
 use Modules\CareerProfile\Domain\Entities\CareerGoal;
+use Modules\CareerProfile\Domain\Enums\GoalStatus;
 use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
-use Modules\CareerProfile\Domain\Enums\GoalStatus;
 use Modules\CareerProfile\Infrastructure\Persistence\Eloquent\EloquentCareerGoal;
 
 final class EloquentCareerGoalRepository implements CareerGoalRepositoryInterface
@@ -30,7 +30,7 @@ final class EloquentCareerGoalRepository implements CareerGoalRepositoryInterfac
         $model = EloquentCareerGoal::find($goal->id()->value());
 
         if ($model === null) {
-            $model = new EloquentCareerGoal();
+            $model = new EloquentCareerGoal;
             $model->id = $goal->id()->value();
         }
 
@@ -55,7 +55,7 @@ final class EloquentCareerGoalRepository implements CareerGoalRepositoryInterfac
             title: $model->title,
             targetDate: new DateTimeImmutable($model->target_date->format('Y-m-d H:i:s')),
             status: GoalStatus::from($model->status),
-            progress: (int) $model->progress
+            progress: (int) $model->progress,
         );
     }
 }

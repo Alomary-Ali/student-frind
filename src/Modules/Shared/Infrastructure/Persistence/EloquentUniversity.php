@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Shared\Infrastructure\Persistence;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Model;
 
 final class EloquentUniversity extends Model
 {

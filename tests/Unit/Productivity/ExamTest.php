@@ -6,7 +6,6 @@ namespace Tests\Unit\Productivity;
 
 use Modules\Productivity\Domain\Entities\Exam;
 use Modules\Productivity\Domain\Enums\ExamType;
-use Modules\Productivity\Domain\ValueObjects\ExamId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 

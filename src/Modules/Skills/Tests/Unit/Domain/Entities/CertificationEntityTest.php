@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Domain\Entities;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Skills\Domain\Entities\Certification;
 use Modules\Skills\Domain\ValueObjects\CertificationId;
 use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class CertificationEntityTest extends TestCase
 {
@@ -39,7 +39,7 @@ final class CertificationEntityTest extends TestCase
 
         $cert = Certification::create(
             $id, $profileId, 'Google Cloud', 'Google', $issueDate,
-            $expiryDate, 'https://example.com/cert', 'VER123'
+            $expiryDate, 'https://example.com/cert', 'VER123',
         );
 
         $this->assertSame($expiryDate, $cert->expiryDate());
@@ -67,7 +67,7 @@ final class CertificationEntityTest extends TestCase
             'Old Cert',
             'Some Issuer',
             new DateTimeImmutable('2020-01-01'),
-            new DateTimeImmutable('2021-01-01')
+            new DateTimeImmutable('2021-01-01'),
         );
 
         $this->assertTrue($cert->isExpired());
@@ -81,7 +81,7 @@ final class CertificationEntityTest extends TestCase
             'New Cert',
             'Some Issuer',
             new DateTimeImmutable('2026-01-01'),
-            new DateTimeImmutable('2030-01-01')
+            new DateTimeImmutable('2030-01-01'),
         );
 
         $this->assertFalse($cert->isExpired());
@@ -94,7 +94,7 @@ final class CertificationEntityTest extends TestCase
             SkillProfileId::generate(),
             'No Expiry Cert',
             'Some Issuer',
-            new DateTimeImmutable('2026-01-01')
+            new DateTimeImmutable('2026-01-01'),
         );
 
         $this->assertFalse($cert->isExpired());

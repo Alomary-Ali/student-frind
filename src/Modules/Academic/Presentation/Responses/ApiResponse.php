@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 final class ApiResponse
 {
     /**
-     * @param array<string, mixed>|null $data
+     * @param  array<string, mixed>|null  $data
      */
     public static function success(
         mixed $data = null,
@@ -24,7 +24,7 @@ final class ApiResponse
     }
 
     /**
-     * @param array<string, mixed>|null $errors
+     * @param  array<string, mixed>|null  $errors
      */
     public static function error(
         string $code,

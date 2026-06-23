@@ -9,7 +9,7 @@ interface EventDispatcherInterface
     /**
      * Dispatch multiple domain events.
      *
-     * @param list<object> $events
+     * @param  list<object>  $events
      */
     public function dispatch(array $events): void;
 }

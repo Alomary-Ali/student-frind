@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Productivity;
 
+use Illuminate\Support\Facades\Event;
 use Modules\Productivity\Application\DTOs\CreateAssignmentDto;
 use Modules\Productivity\Application\UseCases\CreateAssignment;
 use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Assignment;
 use Modules\Productivity\Domain\Events\AssignmentCreated;
-use Modules\Productivity\Domain\ValueObjects\AssignmentId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Event;
 
 final class CreateAssignmentTest extends TestCase
 {

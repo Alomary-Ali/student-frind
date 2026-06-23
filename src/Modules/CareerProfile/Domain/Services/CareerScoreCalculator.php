@@ -12,7 +12,7 @@ final class CareerScoreCalculator
     public function calculate(
         CareerProfile $profile,
         ?SkillProfile $skillProfile,
-        float $gpa
+        float $gpa,
     ): int {
         // 1. Skills (25%)
         $skillsScore = 0;

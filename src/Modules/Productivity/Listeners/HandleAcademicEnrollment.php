@@ -9,7 +9,6 @@ use Modules\Productivity\Application\DTOs\CreateReminderDto;
 use Modules\Productivity\Application\DTOs\CreateTaskDto;
 use Modules\Productivity\Application\UseCases\CreateReminder;
 use Modules\Productivity\Application\UseCases\CreateTask;
-use Modules\Productivity\Domain\Enums\ReminderType;
 use Modules\Productivity\Domain\ValueObjects\PriorityLevel;
 
 final readonly class HandleAcademicEnrollment
@@ -24,7 +23,7 @@ final readonly class HandleAcademicEnrollment
         $taskDto = new CreateTaskDto(
             userId: $event->userId,
             title: "Review course enrollment for {$event->courseId}",
-            description: "Review your enrollment details and prepare for the upcoming semester",
+            description: 'Review your enrollment details and prepare for the upcoming semester',
             dueDate: null,
             priority: PriorityLevel::medium()->value(),
             linkedGoalId: null,

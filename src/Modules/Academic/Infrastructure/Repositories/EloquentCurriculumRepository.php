@@ -34,7 +34,7 @@ final class EloquentCurriculumRepository implements CurriculumRepositoryInterfac
                 'description' => $curriculum->description(),
                 'total_credits_required' => $curriculum->totalCreditsRequired()->value(),
                 'institution_id' => $curriculum->institutionId(),
-            ]
+            ],
         );
 
         foreach ($curriculum->courses() as $course) {
@@ -47,7 +47,7 @@ final class EloquentCurriculumRepository implements CurriculumRepositoryInterfac
                     'id' => Uuid::uuid4()->toString(),
                     'is_required' => $course->isRequired(),
                     'semester_order' => $course->semesterOrder(),
-                ]
+                ],
             );
         }
     }

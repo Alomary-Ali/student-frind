@@ -27,7 +27,7 @@ final class ProductivityAuthorizationTest extends TestCase
             'status' => 'assigned',
         ]);
 
-        $policy = new AssignmentPolicy();
+        $policy = new AssignmentPolicy;
         $this->assertTrue($policy->view($user, $assignment));
     }
 
@@ -46,7 +46,7 @@ final class ProductivityAuthorizationTest extends TestCase
             'status' => 'assigned',
         ]);
 
-        $policy = new AssignmentPolicy();
+        $policy = new AssignmentPolicy;
         $this->assertFalse($policy->view($user2, $assignment));
     }
 
@@ -64,7 +64,7 @@ final class ProductivityAuthorizationTest extends TestCase
             'status' => 'assigned',
         ]);
 
-        $policy = new AssignmentPolicy();
+        $policy = new AssignmentPolicy;
         $this->assertTrue($policy->update($user, $assignment));
     }
 
@@ -82,7 +82,7 @@ final class ProductivityAuthorizationTest extends TestCase
             'status' => 'assigned',
         ]);
 
-        $policy = new AssignmentPolicy();
+        $policy = new AssignmentPolicy;
         $this->assertTrue($policy->delete($user, $assignment));
     }
 }

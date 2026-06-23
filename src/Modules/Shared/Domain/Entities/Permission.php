@@ -13,8 +13,7 @@ final readonly class Permission
         private PermissionId $id,
         private PermissionValue $name,
         private string $description,
-    ) {
-    }
+    ) {}
 
     public static function create(
         PermissionValue $name,

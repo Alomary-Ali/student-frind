@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Academic\Application\UseCases;
 
-use Modules\Academic\Application\DTOs\EnrollStudentDto;
 use Modules\Academic\Application\DTOs\EnrollmentDto;
+use Modules\Academic\Application\DTOs\EnrollStudentDto;
 use Modules\Academic\Application\Mappers\AcademicMapper;
 use Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface;
 use Modules\Academic\Domain\Contracts\CourseRepositoryInterface;
@@ -15,7 +15,6 @@ use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
 use Modules\Academic\Domain\Contracts\TransactionManagerInterface;
 use Modules\Academic\Domain\Exceptions\CourseNotFoundException;
 use Modules\Academic\Domain\Exceptions\DuplicateEnrollmentException;
-use Modules\Academic\Domain\Exceptions\PrerequisiteNotMetException;
 use Modules\Academic\Domain\Exceptions\SemesterNotFoundException;
 use Modules\Academic\Domain\Exceptions\StudentNotFoundException;
 use Modules\Academic\Domain\Services\PrerequisiteValidationService;
@@ -64,7 +63,7 @@ final readonly class EnrollStudentInCourse
 
             if ($this->enrollments->existsForStudentCourseSemester($studentId, $courseId, $semesterId)) {
                 throw DuplicateEnrollmentException::forStudentAndCourse(
-                    $dto->studentId, $dto->courseId, $dto->semesterId
+                    $dto->studentId, $dto->courseId, $dto->semesterId,
                 );
             }
 

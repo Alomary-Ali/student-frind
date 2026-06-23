@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Tests\Unit\Domain\Services;
 
+use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Productivity\Domain\Services\NotificationService;
 use Modules\Productivity\Domain\Services\PriorityEngine;
 use Modules\Productivity\Domain\Services\ProductivityScoreEngine;
-use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
-use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
 use PHPUnit\Framework\TestCase;
 
 final class ProductivityServicesTest extends TestCase

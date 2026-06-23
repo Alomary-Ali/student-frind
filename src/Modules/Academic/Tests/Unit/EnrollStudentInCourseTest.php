@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Academic\Tests\Unit;
 
-use Modules\Academic\Application\DTOs\EnrollStudentDto;
 use Modules\Academic\Application\DTOs\EnrollmentDto;
+use Modules\Academic\Application\DTOs\EnrollStudentDto;
 use Modules\Academic\Application\Mappers\AcademicMapper;
 use Modules\Academic\Application\UseCases\EnrollStudentInCourse;
 use Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface;
@@ -23,7 +23,6 @@ use Modules\Academic\Domain\Exceptions\StudentNotFoundException;
 use Modules\Academic\Domain\Services\PrerequisiteValidationService;
 use Modules\Academic\Domain\ValueObjects\CourseId;
 use Modules\Academic\Domain\ValueObjects\Credits;
-use Modules\Academic\Domain\ValueObjects\EnrollmentId;
 use Modules\Academic\Domain\ValueObjects\SemesterId;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
@@ -58,8 +57,8 @@ final class EnrollStudentInCourseTest extends TestCase
         $this->transactionManager = $this->createMock(TransactionManagerInterface::class);
         $this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
         $this->auditLogger = $this->createMock(AcademicAuditLoggerInterface::class);
-        $this->mapper = new AcademicMapper();
-        $this->prerequisiteValidationService = new PrerequisiteValidationService();
+        $this->mapper = new AcademicMapper;
+        $this->prerequisiteValidationService = new PrerequisiteValidationService;
 
         $this->useCase = new EnrollStudentInCourse(
             students: $this->studentRepository,
@@ -91,7 +90,7 @@ final class EnrollStudentInCourseTest extends TestCase
             creditHours: Credits::of(3),
             isActive: true,
             institutionId: 'institution-uuid',
-            createdAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
         );
 
         $this->semester = Semester::reconstitute(
@@ -102,7 +101,7 @@ final class EnrollStudentInCourseTest extends TestCase
             endDate: new \DateTimeImmutable('2026-12-31'),
             isActive: true,
             institutionId: 'institution-uuid',
-            createdAt: new \DateTimeImmutable(),
+            createdAt: new \DateTimeImmutable,
         );
 
         // تكوين mock لـ transactionManager لتنفيذ الكود داخل callback مباشرة

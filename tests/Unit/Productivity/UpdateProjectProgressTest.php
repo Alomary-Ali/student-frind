@@ -7,7 +7,6 @@ namespace Tests\Unit\Productivity;
 use Modules\Productivity\Application\UseCases\UpdateProjectProgress;
 use Modules\Productivity\Domain\Contracts\ProjectRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Project;
-use Modules\Productivity\Domain\ValueObjects\ProjectId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 
@@ -19,7 +18,7 @@ final class UpdateProjectProgressTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 
@@ -35,7 +34,7 @@ final class UpdateProjectProgressTest extends TestCase
 
         $result = $useCase->execute(
             $project->id()->value(),
-            50
+            50,
         );
 
         $this->assertInstanceOf(\Modules\Productivity\Application\DTOs\ProjectDto::class, $result);

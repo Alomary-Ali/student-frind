@@ -16,13 +16,14 @@ final class EloquentExamRepository implements ExamRepositoryInterface
     {
         $model = EloquentExam::updateOrCreate(
             ['id' => $exam->id()->value()],
-            $exam->toArray()
+            $exam->toArray(),
         );
     }
 
     public function findById(ExamId $id): ?Exam
     {
         $model = EloquentExam::find($id->value());
+
         return $model ? $this->toDomain($model) : null;
     }
 

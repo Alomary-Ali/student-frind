@@ -8,8 +8,8 @@ use Modules\Productivity\Application\DTOs\CreateExamDto;
 use Modules\Productivity\Application\DTOs\ExamDto;
 use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Exam;
-use Modules\Productivity\Domain\Events\ExamCreated;
 use Modules\Productivity\Domain\Enums\ExamType;
+use Modules\Productivity\Domain\Events\ExamCreated;
 use Modules\Shared\Domain\ValueObjects\UserId;
 
 final readonly class CreateExam

@@ -6,9 +6,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
 use Modules\Academic\Domain\Enums\AcademicStanding;
 use Modules\Academic\Domain\Enums\EnrollmentStatus;
+use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
 
 /**
  * @extends Factory<EloquentStudent>

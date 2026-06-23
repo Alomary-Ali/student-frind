@@ -5,30 +5,28 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Domain\Services;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Skill;
 use Modules\Skills\Domain\Entities\Achievement;
-use Modules\Skills\Domain\Entities\Certification;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\AchievementId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\Entities\SkillProfile;
+use Modules\Skills\Domain\Enums\AchievementType;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\Enums\AchievementType;
-use Modules\Skills\Domain\Services\SkillGapAnalyzer;
-use Modules\Skills\Domain\Services\LearningPathGenerator;
 use Modules\Skills\Domain\Services\AchievementUnlocker;
+use Modules\Skills\Domain\Services\LearningPathGenerator;
+use Modules\Skills\Domain\Services\SkillGapAnalyzer;
+use Modules\Skills\Domain\ValueObjects\AchievementId;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
 use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class SkillsServicesTest extends TestCase
 {
     public function test_skill_gap_analyzer_returns_missing_skills(): void
     {
         $profile = $this->createProfileWithSkills(['HTML', 'CSS']);
-        $analyzer = new SkillGapAnalyzer();
+        $analyzer = new SkillGapAnalyzer;
 
         $result = $analyzer->analyze($profile, 'frontend_developer');
 
@@ -42,7 +40,7 @@ final class SkillsServicesTest extends TestCase
     public function test_skill_gap_analyzer_returns_100_percent_when_all_match(): void
     {
         $profile = $this->createProfileWithSkills(['HTML', 'CSS', 'JavaScript', 'React', 'Git', 'TypeScript', 'TailwindCSS']);
-        $analyzer = new SkillGapAnalyzer();
+        $analyzer = new SkillGapAnalyzer;
 
         $result = $analyzer->analyze($profile, 'frontend_developer');
 
@@ -53,7 +51,7 @@ final class SkillsServicesTest extends TestCase
     public function test_skill_gap_analyzer_returns_zero_for_unknown_role(): void
     {
         $profile = $this->createProfileWithSkills(['PHP']);
-        $analyzer = new SkillGapAnalyzer();
+        $analyzer = new SkillGapAnalyzer;
 
         $result = $analyzer->analyze($profile, 'unknown_role');
 
@@ -75,14 +73,14 @@ final class SkillsServicesTest extends TestCase
 
     public function test_learning_path_generator_creates_path_with_steps(): void
     {
-        $generator = new LearningPathGenerator();
+        $generator = new LearningPathGenerator;
         $missingSkills = ['PHP', 'Laravel', 'SQL'];
 
         $path = $generator->generate(
             LearningPathId::generate(),
             StudentId::generate(),
             'backend_developer',
-            $missingSkills
+            $missingSkills,
         );
 
         $this->assertSame('backend_developer', $path->targetRole());
@@ -95,13 +93,13 @@ final class SkillsServicesTest extends TestCase
 
     public function test_learning_path_generator_uses_fallback_role_label(): void
     {
-        $generator = new LearningPathGenerator();
+        $generator = new LearningPathGenerator;
 
         $path = $generator->generate(
             LearningPathId::generate(),
             StudentId::generate(),
             'some_unknown_role',
-            ['Skill1']
+            ['Skill1'],
         );
 
         $this->assertStringContainsString('some_unknown_role', $path->title());
@@ -110,10 +108,10 @@ final class SkillsServicesTest extends TestCase
     public function test_achievement_unlocker_unlocks_academic_star(): void
     {
         $studentId = StudentId::generate();
-        $unlocker = new AchievementUnlocker();
+        $unlocker = new AchievementUnlocker;
 
         $unlocked = $unlocker->checkAndUnlock(
-            $studentId, [], null, 5, 0, 0
+            $studentId, [], null, 5, 0, 0,
         );
 
         $this->assertCount(1, $unlocked);
@@ -124,14 +122,14 @@ final class SkillsServicesTest extends TestCase
     {
         $studentId = StudentId::generate();
         $profile = $this->createProfileWithSkills(['S1', 'S2', 'S3', 'S4', 'S5', 'S6']);
-        $unlocker = new AchievementUnlocker();
+        $unlocker = new AchievementUnlocker;
 
         $unlocked = $unlocker->checkAndUnlock(
-            $studentId, [], $profile, 5, 10, 0
+            $studentId, [], $profile, 5, 10, 0,
         );
 
         $this->assertCount(3, $unlocked);
-        $titles = array_map(fn(Achievement $a) => $a->title(), $unlocked);
+        $titles = array_map(fn (Achievement $a) => $a->title(), $unlocked);
         $this->assertContains('النجم الأكاديمي', $titles);
         $this->assertContains('سيد الإنتاجية', $titles);
         $this->assertContains('جامع المهارات', $titles);
@@ -143,13 +141,13 @@ final class SkillsServicesTest extends TestCase
         $existing = [
             Achievement::create(
                 AchievementId::generate(), $studentId,
-                AchievementType::ACADEMIC, 'النجم الأكاديمي', 'Already earned'
+                AchievementType::ACADEMIC, 'النجم الأكاديمي', 'Already earned',
             ),
         ];
-        $unlocker = new AchievementUnlocker();
+        $unlocker = new AchievementUnlocker;
 
         $unlocked = $unlocker->checkAndUnlock(
-            $studentId, $existing, null, 5, 0, 0
+            $studentId, $existing, null, 5, 0, 0,
         );
 
         $this->assertEmpty($unlocked);
@@ -162,17 +160,17 @@ final class SkillsServicesTest extends TestCase
         $profile->addSkill(SkillId::generate(), 'S1', SkillCategory::PROGRAMMING, SkillLevel::ADVANCED);
         $profile->addCertification(
             CertificationId::generate(), 'AWS Certified', 'Amazon',
-            new DateTimeImmutable('2026-01-15')
+            new DateTimeImmutable('2026-01-15'),
         );
         $profile->releaseEvents();
 
-        $unlocker = new AchievementUnlocker();
+        $unlocker = new AchievementUnlocker;
 
         $unlocked = $unlocker->checkAndUnlock(
-            $studentId, [], $profile, 5, 10, 0
+            $studentId, [], $profile, 5, 10, 0,
         );
 
-        $titles = array_map(fn(Achievement $a) => $a->title(), $unlocked);
+        $titles = array_map(fn (Achievement $a) => $a->title(), $unlocked);
         $this->assertContains('الأخصائي المعتمد', $titles);
     }
 

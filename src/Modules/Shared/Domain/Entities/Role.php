@@ -11,14 +11,13 @@ use Modules\Shared\Domain\ValueObjects\RoleId;
 final readonly class Role
 {
     /**
-     * @param array<Permission> $permissions
+     * @param  array<Permission>  $permissions
      */
     private function __construct(
         private RoleId $id,
         private RoleEnum $name,
         private array $permissions,
-    ) {
-    }
+    ) {}
 
     public static function create(RoleEnum $name): self
     {
@@ -85,7 +84,7 @@ final readonly class Role
     {
         $newPermissions = array_filter(
             $this->permissions,
-            fn (Permission $p) => !$p->equals($permission),
+            fn (Permission $p) => ! $p->equals($permission),
         );
 
         return new self(

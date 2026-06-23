@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Tests\Unit\Application\DTOs;
 
-use PHPUnit\Framework\TestCase;
-use Modules\Skills\Application\DTOs\SkillProfileDto;
-use Modules\Skills\Application\DTOs\SkillDto;
-use Modules\Skills\Application\DTOs\CertificationDto;
 use Modules\Skills\Application\DTOs\AchievementDto;
+use Modules\Skills\Application\DTOs\CertificationDto;
 use Modules\Skills\Application\DTOs\LearningPathDto;
+use Modules\Skills\Application\DTOs\SkillDto;
+use Modules\Skills\Application\DTOs\SkillProfileDto;
+use PHPUnit\Framework\TestCase;
 
 final class SkillsDtoTest extends TestCase
 {
@@ -42,7 +42,7 @@ final class SkillsDtoTest extends TestCase
             levelLabel: 'متقدم',
             levelWeight: 3,
             yearsOfExperience: 4,
-            lastUsed: '2026-06-01'
+            lastUsed: '2026-06-01',
         );
 
         $this->assertSame('s1', $dto->id);
@@ -67,7 +67,7 @@ final class SkillsDtoTest extends TestCase
             expiryDate: '2030-01-15',
             credentialUrl: 'https://example.com/cert',
             verificationCode: 'VER123',
-            isExpired: false
+            isExpired: false,
         );
 
         $this->assertSame('c1', $dto->id);
@@ -96,7 +96,7 @@ final class SkillsDtoTest extends TestCase
             title: 'النجم الأكاديمي',
             description: 'إكمال 5 مساقات',
             badgeUrl: '/assets/badges/academic_star.png',
-            unlockedAt: '2026-06-01 10:00:00'
+            unlockedAt: '2026-06-01 10:00:00',
         );
 
         $this->assertSame('a1', $dto->id);
@@ -124,7 +124,7 @@ final class SkillsDtoTest extends TestCase
             targetRole: 'backend_developer',
             steps: $steps,
             progress: 0,
-            estimatedCompletionDate: '2026-12-31'
+            estimatedCompletionDate: '2026-12-31',
         );
 
         $this->assertSame('lp1', $dto->id);

@@ -70,7 +70,7 @@ final class EloquentGoalRepository implements GoalRepositoryInterface
         $model = EloquentGoal::find($goal->id()->value());
 
         if ($model === null) {
-            $model = new EloquentGoal();
+            $model = new EloquentGoal;
             $model->id = $goal->id()->value();
         }
 

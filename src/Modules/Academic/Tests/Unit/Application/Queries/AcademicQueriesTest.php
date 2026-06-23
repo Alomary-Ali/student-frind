@@ -5,15 +5,11 @@ declare(strict_types=1);
 namespace Modules\Academic\Tests\Unit\Application\Queries;
 
 use Modules\Academic\Application\Mappers\AcademicMapper;
-use Modules\Academic\Application\Queries\GetCurriculumCourses;
 use Modules\Academic\Application\Queries\GetGraduationProgress;
 use Modules\Academic\Application\Queries\GetStudentAcademicProfile;
 use Modules\Academic\Application\Queries\ListCourses;
 use Modules\Academic\Domain\Contracts\AcademicPlanReaderInterface;
-use Modules\Academic\Domain\Contracts\AcademicPlanRepositoryInterface;
 use Modules\Academic\Domain\Contracts\CourseRepositoryInterface;
-use Modules\Academic\Domain\Contracts\CurriculumRepositoryInterface;
-use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
 use Modules\Academic\Domain\ReadModels\GraduationProgress;
 use Modules\Academic\Domain\ReadModels\StudentAcademicProfile;
 use PHPUnit\Framework\TestCase;
@@ -113,18 +109,50 @@ final class AcademicQueriesTest extends TestCase
     public function test_list_courses_returns_paginated_result(): void
     {
         $courseRepository = $this->createMock(CourseRepositoryInterface::class);
-        $mapper = new AcademicMapper();
+        $mapper = new AcademicMapper;
         $query = new ListCourses($courseRepository, $mapper);
 
-        $paginatedResult = new class implements \IteratorAggregate {
-            public function items(): array { return []; }
-            public function currentPage(): int { return 1; }
-            public function perPage(): int { return 15; }
-            public function total(): int { return 0; }
-            public function lastPage(): int { return 1; }
-            public function firstItem(): ?int { return null; }
-            public function lastItem(): ?int { return null; }
-            public function getIterator(): \Traversable { return new \ArrayIterator([]); }
+        $paginatedResult = new class implements \IteratorAggregate
+        {
+            public function items(): array
+            {
+                return [];
+            }
+
+            public function currentPage(): int
+            {
+                return 1;
+            }
+
+            public function perPage(): int
+            {
+                return 15;
+            }
+
+            public function total(): int
+            {
+                return 0;
+            }
+
+            public function lastPage(): int
+            {
+                return 1;
+            }
+
+            public function firstItem(): ?int
+            {
+                return null;
+            }
+
+            public function lastItem(): ?int
+            {
+                return null;
+            }
+
+            public function getIterator(): \Traversable
+            {
+                return new \ArrayIterator([]);
+            }
         };
 
         $courseRepository->expects($this->once())
@@ -145,18 +173,50 @@ final class AcademicQueriesTest extends TestCase
     public function test_list_courses_with_custom_pagination(): void
     {
         $courseRepository = $this->createMock(CourseRepositoryInterface::class);
-        $mapper = new AcademicMapper();
+        $mapper = new AcademicMapper;
         $query = new ListCourses($courseRepository, $mapper);
 
-        $paginatedResult = new class implements \IteratorAggregate {
-            public function items(): array { return []; }
-            public function currentPage(): int { return 2; }
-            public function perPage(): int { return 10; }
-            public function total(): int { return 25; }
-            public function lastPage(): int { return 3; }
-            public function firstItem(): ?int { return 11; }
-            public function lastItem(): ?int { return 20; }
-            public function getIterator(): \Traversable { return new \ArrayIterator([]); }
+        $paginatedResult = new class implements \IteratorAggregate
+        {
+            public function items(): array
+            {
+                return [];
+            }
+
+            public function currentPage(): int
+            {
+                return 2;
+            }
+
+            public function perPage(): int
+            {
+                return 10;
+            }
+
+            public function total(): int
+            {
+                return 25;
+            }
+
+            public function lastPage(): int
+            {
+                return 3;
+            }
+
+            public function firstItem(): ?int
+            {
+                return 11;
+            }
+
+            public function lastItem(): ?int
+            {
+                return 20;
+            }
+
+            public function getIterator(): \Traversable
+            {
+                return new \ArrayIterator([]);
+            }
         };
 
         $courseRepository->expects($this->once())

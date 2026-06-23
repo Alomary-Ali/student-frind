@@ -36,7 +36,7 @@ final class Semester
             endDate: $endDate,
             isActive: true,
             institutionId: $institutionId,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
     }
 
@@ -55,19 +55,50 @@ final class Semester
 
     public function isCurrentlyActive(): bool
     {
-        $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable;
 
         return $this->isActive
             && $now >= $this->startDate
             && $now <= $this->endDate;
     }
 
-    public function id(): SemesterId { return $this->id; }
-    public function name(): string { return $this->name; }
-    public function code(): string { return $this->code; }
-    public function startDate(): DateTimeImmutable { return $this->startDate; }
-    public function endDate(): DateTimeImmutable { return $this->endDate; }
-    public function isActive(): bool { return $this->isActive; }
-    public function institutionId(): ?string { return $this->institutionId; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
+    public function id(): SemesterId
+    {
+        return $this->id;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function code(): string
+    {
+        return $this->code;
+    }
+
+    public function startDate(): DateTimeImmutable
+    {
+        return $this->startDate;
+    }
+
+    public function endDate(): DateTimeImmutable
+    {
+        return $this->endDate;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    public function institutionId(): ?string
+    {
+        return $this->institutionId;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 }

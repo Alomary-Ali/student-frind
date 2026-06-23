@@ -28,7 +28,7 @@ final class UserMapperTest extends TestCase
         $user->verifyEmail();
         $user->releaseEvents();
 
-        $mapper = new UserMapper();
+        $mapper = new UserMapper;
         $dto = $mapper->toDto($user);
 
         $this->assertSame($user->id()->value(), $dto->id);
@@ -54,7 +54,7 @@ final class UserMapperTest extends TestCase
         );
         $user->releaseEvents();
 
-        $mapper = new UserMapper();
+        $mapper = new UserMapper;
         $dto = $mapper->toDto($user);
 
         $this->assertSame('advisor', $dto->role);
@@ -74,7 +74,7 @@ final class UserMapperTest extends TestCase
         );
         $user->releaseEvents();
 
-        $mapper = new UserMapper();
+        $mapper = new UserMapper;
         $dto = $mapper->toDto($user);
 
         $this->assertMatchesRegularExpression(

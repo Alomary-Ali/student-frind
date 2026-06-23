@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\AppMiddleware;
 
+use App\Http\Middleware\TenantMiddleware;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Testing\TestResponse;
-use App\Http\Middleware\TenantMiddleware;
 use Tests\TestCase;
 
 final class TenantMiddlewareTest extends TestCase
@@ -20,9 +20,9 @@ final class TenantMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => null);
 
-        $middleware = new TenantMiddleware();
+        $middleware = new TenantMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'))
+            $middleware->handle($request, fn ($req) => response('ok')),
         );
 
         $response->assertRedirect(route('login'));
@@ -34,9 +34,9 @@ final class TenantMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => $user);
 
-        $middleware = new TenantMiddleware();
+        $middleware = new TenantMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'))
+            $middleware->handle($request, fn ($req) => response('ok')),
         );
 
         $response->assertOk();
@@ -62,9 +62,9 @@ final class TenantMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => $user);
 
-        $middleware = new TenantMiddleware();
+        $middleware = new TenantMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'))
+            $middleware->handle($request, fn ($req) => response('ok')),
         );
 
         $response->assertOk();

@@ -23,13 +23,12 @@ final class LoginController extends Controller
         try {
             $this->authenticateUser->execute(
                 $request->input('academic_id'),
-                $request->input('password')
+                $request->input('password'),
             );
 
             $request->session()->regenerate();
 
             return redirect()->route('academic.dashboard');
-
         } catch (AccountLockedException $e) {
             return back()->withErrors([
                 'academic_id' => $e->getMessage(),

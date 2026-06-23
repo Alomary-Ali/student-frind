@@ -9,19 +9,17 @@ use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Productivity\Domain\Contracts\CalendarEventRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\ProductivitySnapshotRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
-use Modules\Productivity\Domain\Entities\Goal;
-use Modules\Productivity\Domain\Entities\Task;
 use Modules\Productivity\Domain\Entities\CalendarEvent;
 use Modules\Productivity\Domain\Entities\Reminder;
+use Modules\Productivity\Domain\Entities\Task;
 use Modules\Productivity\Domain\Enums\ReminderType;
 use Modules\Productivity\Domain\ValueObjects\CalendarEventId;
-use Modules\Productivity\Domain\ValueObjects\GoalId;
 use Modules\Productivity\Domain\ValueObjects\PriorityLevel;
 use Modules\Productivity\Domain\ValueObjects\ReminderId;
 use Modules\Productivity\Domain\ValueObjects\TaskId;
-use Modules\Productivity\Domain\Contracts\ProductivitySnapshotRepositoryInterface;
 use Modules\Productivity\Infrastructure\Persistence\EloquentCalendarEventRepository;
 use Modules\Productivity\Infrastructure\Persistence\EloquentGoalRepository;
 use Modules\Productivity\Infrastructure\Persistence\EloquentProductivitySnapshotRepository;
@@ -47,10 +45,10 @@ final class ProductivityControllersTest extends TestCase
         $this->userId = $user->id;
         \Laravel\Sanctum\Sanctum::actingAs($user);
 
-        $this->goalRepository = new EloquentGoalRepository();
-        $this->taskRepository = new EloquentTaskRepository();
-        $this->reminderRepository = new EloquentReminderRepository();
-        $this->eventRepository = new EloquentCalendarEventRepository();
+        $this->goalRepository = new EloquentGoalRepository;
+        $this->taskRepository = new EloquentTaskRepository;
+        $this->reminderRepository = new EloquentReminderRepository;
+        $this->eventRepository = new EloquentCalendarEventRepository;
 
         $this->app->bind(
             ProductivitySnapshotRepositoryInterface::class,

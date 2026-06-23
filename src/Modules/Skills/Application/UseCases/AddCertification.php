@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Modules\Skills\Application\UseCases;
 
 use DateTimeImmutable;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Modules\Academic\Domain\ValueObjects\StudentId;
+use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use Modules\Skills\Application\DTOs\SkillProfileDto;
 use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
 use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use Modules\Skills\Domain\ValueObjects\CertificationId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 
 final readonly class AddCertification
 {
@@ -22,21 +22,21 @@ final readonly class AddCertification
         private SkillProfileRepositoryInterface $profiles,
         private EventDispatcherInterface $events,
         private SkillsMapper $mapper,
-    ) {
-    }
+    ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
+     *
      * @throws ValidationException
      */
     public function execute(string $studentId, array $data): SkillProfileDto
     {
         $validated = Validator::make($data, [
-            'name'              => 'required|string|max:255',
-            'issuer'            => 'required|string|max:255',
-            'issue_date'        => 'required|date',
-            'expiry_date'       => 'nullable|date|after_or_equal:issue_date',
-            'credential_url'    => 'nullable|url|max:500',
+            'name' => 'required|string|max:255',
+            'issuer' => 'required|string|max:255',
+            'issue_date' => 'required|date',
+            'expiry_date' => 'nullable|date|after_or_equal:issue_date',
+            'credential_url' => 'nullable|url|max:500',
             'verification_code' => 'nullable|string|max:100',
         ])->validate();
 

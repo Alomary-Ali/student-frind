@@ -1,19 +1,20 @@
 #!/usr/bin/env php
 <?php
 
+declare(strict_types=1);
+
 /**
  * رفيق الطالب — Rulebook Validator
  * تحقق من سلامة الكود قبل أي Merge
  *
  * Usage: php scripts/validate-rulebook.php
  */
-
 $rootDir = dirname(__DIR__);
 $viewsDir = $rootDir . '/resources/views';
-$srcDir   = $rootDir . '/src';
-$errors   = [];
+$srcDir = $rootDir . '/src';
+$errors = [];
 $warnings = [];
-$passed   = 0;
+$passed = 0;
 
 echo "\n📘 رفيق الطالب — Rulebook Validator\n";
 echo str_repeat('─', 50) . "\n\n";
@@ -24,17 +25,25 @@ echo str_repeat('─', 50) . "\n\n";
 echo "🔍 §7 — Checking for standalone HTML views...\n";
 
 $viewFiles = new RecursiveIteratorIterator(
-    new RecursiveDirectoryIterator($viewsDir)
+    new RecursiveDirectoryIterator($viewsDir),
 );
 
 foreach ($viewFiles as $file) {
-    if ($file->getExtension() !== 'php') continue;
+    if ($file->getExtension() !== 'php') {
+        continue;
+    }
 
     // Skip the root layouts
     $relativePath = str_replace($viewsDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
-    if (str_starts_with($relativePath, 'layouts')) continue;
-    if (str_starts_with($relativePath, 'components')) continue;
-    if (str_starts_with($relativePath, 'auth')) continue; // auth has own layout
+    if (str_starts_with($relativePath, 'layouts')) {
+        continue;
+    }
+    if (str_starts_with($relativePath, 'components')) {
+        continue;
+    }
+    if (str_starts_with($relativePath, 'auth')) {
+        continue;
+    } // auth has own layout
 
     $content = file_get_contents($file->getPathname());
 
@@ -44,9 +53,9 @@ foreach ($viewFiles as $file) {
         $passed++;
     }
 
-    if (!str_contains($content, "@extends('layouts.dashboard')") && !str_contains($content, '@extends("layouts.dashboard")')) {
+    if (! str_contains($content, "@extends('layouts.dashboard')") && ! str_contains($content, '@extends("layouts.dashboard")')) {
         // Only warn for blade files that are page-level (not partials)
-        if (!str_starts_with(basename($relativePath), '_')) {
+        if (! str_starts_with(basename($relativePath), '_')) {
             $warnings[] = "[§7] Missing @extends('layouts.dashboard'): {$relativePath}";
         }
     }
@@ -59,16 +68,18 @@ echo "🔍 §11 — Checking for mock/hardcoded data in views...\n";
 
 $mockPatterns = [
     '/\@foreach\s*\(\s*\[/' => '@foreach with hardcoded array',
-    '/\$data\s*=\s*\[/'     => 'Hardcoded $data array in Controller',
-    '/fake\(\)/'            => 'Faker helper in production',
-    '/Str::random\(/'       => 'Str::random() in production',
-    '/rand\(\d/'            => 'rand() with hardcoded values',
+    '/\$data\s*=\s*\[/' => 'Hardcoded $data array in Controller',
+    '/fake\(\)/' => 'Faker helper in production',
+    '/Str::random\(/' => 'Str::random() in production',
+    '/rand\(\d/' => 'rand() with hardcoded values',
 ];
 
 foreach ($viewFiles as $file) {
-    if ($file->getExtension() !== 'php') continue;
+    if ($file->getExtension() !== 'php') {
+        continue;
+    }
 
-    $content      = file_get_contents($file->getPathname());
+    $content = file_get_contents($file->getPathname());
     $relativePath = str_replace($viewsDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
 
     foreach ($mockPatterns as $pattern => $description) {
@@ -100,17 +111,21 @@ $domainAppDirs = [
 
 foreach ($domainAppDirs as $pattern) {
     $dirs = glob($pattern, GLOB_ONLYDIR);
-    if (!$dirs) continue;
+    if (! $dirs) {
+        continue;
+    }
 
     foreach ($dirs as $dir) {
         $phpFiles = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($dir)
+            new RecursiveDirectoryIterator($dir),
         );
 
         foreach ($phpFiles as $file) {
-            if ($file->getExtension() !== 'php') continue;
+            if ($file->getExtension() !== 'php') {
+                continue;
+            }
 
-            $content      = file_get_contents($file->getPathname());
+            $content = file_get_contents($file->getPathname());
             $relativePath = str_replace($rootDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
 
             foreach ($forbiddenImports as $import) {
@@ -133,22 +148,28 @@ $phpDirs = [
 ];
 
 foreach ($phpDirs as $dir) {
-    if (!is_dir($dir)) continue;
+    if (! is_dir($dir)) {
+        continue;
+    }
 
     $phpFiles = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($dir)
+        new RecursiveDirectoryIterator($dir),
     );
 
     foreach ($phpFiles as $file) {
-        if ($file->getExtension() !== 'php') continue;
+        if ($file->getExtension() !== 'php') {
+            continue;
+        }
 
         $content = file_get_contents($file->getPathname());
         $relativePath = str_replace($rootDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
 
         // Skip config files and service providers bootstrapping
-        if (str_contains($relativePath, 'config/')) continue;
+        if (str_contains($relativePath, 'config/')) {
+            continue;
+        }
 
-        if (!str_contains($content, 'declare(strict_types=1)')) {
+        if (! str_contains($content, 'declare(strict_types=1)')) {
             $warnings[] = "[§3] Missing declare(strict_types=1): {$relativePath}";
         } else {
             $passed++;
@@ -165,13 +186,15 @@ $domainDirs = glob($srcDir . '/*/Domain', GLOB_ONLYDIR) ?: [];
 
 foreach ($domainDirs as $dir) {
     $phpFiles = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($dir)
+        new RecursiveDirectoryIterator($dir),
     );
 
     foreach ($phpFiles as $file) {
-        if ($file->getExtension() !== 'php') continue;
+        if ($file->getExtension() !== 'php') {
+            continue;
+        }
 
-        $content      = file_get_contents($file->getPathname());
+        $content = file_get_contents($file->getPathname());
         $relativePath = str_replace($rootDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
 
         if (str_contains($content, 'DB::') || str_contains($content, 'use Illuminate\Support\Facades\DB')) {
@@ -191,14 +214,14 @@ echo str_repeat('─', 50) . "\n\n";
 
 echo "✅ Passed checks: {$passed}\n";
 
-if (!empty($warnings)) {
+if (! empty($warnings)) {
     echo "\n⚠️  WARNINGS (" . count($warnings) . "):\n";
     foreach ($warnings as $w) {
         echo "   {$w}\n";
     }
 }
 
-if (!empty($errors)) {
+if (! empty($errors)) {
     echo "\n❌ ERRORS (" . count($errors) . ") — These block merge:\n";
     foreach ($errors as $e) {
         echo "   {$e}\n";

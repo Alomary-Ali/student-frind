@@ -34,7 +34,7 @@ final class EloquentGraduationPathRepository implements GraduationPathRepository
                 'completion_percentage' => $path->completionPercentage(),
                 'is_on_track' => $path->isOnTrack(),
                 'estimated_graduation_date' => $path->estimatedGraduationDate()?->format('Y-m-d'),
-            ]
+            ],
         );
     }
 

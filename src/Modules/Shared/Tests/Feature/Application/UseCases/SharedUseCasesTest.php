@@ -41,7 +41,7 @@ final class SharedUseCasesTest extends TestCase
             ->willReturn(true);
 
         $dispatcher = $this->createMock(EventDispatcherInterface::class);
-        $mapper = new UserMapper();
+        $mapper = new UserMapper;
         $useCase = new RegisterUser($repo, $dispatcher, $mapper);
 
         $this->expectException(EmailAlreadyTakenException::class);

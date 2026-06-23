@@ -36,7 +36,7 @@ final class LearningPath
             $targetRole,
             $steps,
             0,
-            $estimatedCompletionDate
+            $estimatedCompletionDate,
         );
     }
 
@@ -56,7 +56,7 @@ final class LearningPath
             $targetRole,
             $steps,
             $progress,
-            $estimatedCompletionDate
+            $estimatedCompletionDate,
         );
     }
 
@@ -115,7 +115,7 @@ final class LearningPath
         foreach ($this->steps as &$step) {
             if (isset($step['id']) && $step['id'] === $stepId) {
                 $step['completed'] = true;
-                $step['completed_at'] = (new DateTimeImmutable())->format('Y-m-d H:i:s');
+                $step['completed_at'] = (new DateTimeImmutable)->format('Y-m-d H:i:s');
                 break;
             }
         }
@@ -126,6 +126,7 @@ final class LearningPath
     {
         if (count($this->steps) === 0) {
             $this->progress = 0;
+
             return;
         }
 

@@ -24,7 +24,7 @@ interface RoleRepositoryInterface
     public function delete(RoleId $id): void;
 
     /**
-     * @param array<string> $userIds
+     * @param  array<string>  $userIds
      * @return array<Role>
      */
     public function findByUserIds(array $userIds): array;

@@ -21,6 +21,7 @@ final class StudentDemoSeeder extends Seeder
         $user = DB::table('users')->where('academic_id', '20210001')->first();
         if ($user === null) {
             $this->command->error('User 20210001 not found. Run TestUsersSeeder first.');
+
             return;
         }
 
@@ -29,6 +30,7 @@ final class StudentDemoSeeder extends Seeder
         $student = DB::table('academic_students')->where('user_id', $userId)->first();
         if ($student === null) {
             $this->command->error('Academic student record not found for user 20210001.');
+
             return;
         }
 
@@ -41,6 +43,7 @@ final class StudentDemoSeeder extends Seeder
 
         if ($sem1 === null || $sem2 === null || $semCurrent === null) {
             $this->command->error('Required semesters not found. Run SemesterSeeder first.');
+
             return;
         }
 
@@ -102,13 +105,15 @@ final class StudentDemoSeeder extends Seeder
         $sem1Courses = [
             ['code' => 'CS101',  'grade' => 'A',  'points' => 4.0],
             ['code' => 'CS102',  'grade' => 'B+', 'points' => 3.3],
-            ['code' => 'MATH101','grade' => 'A-', 'points' => 3.7],
+            ['code' => 'MATH101', 'grade' => 'A-', 'points' => 3.7],
             ['code' => 'ENG101', 'grade' => 'B',  'points' => 3.0],
         ];
 
         foreach ($sem1Courses as $c) {
             $courseId = $courses[$c['code']] ?? null;
-            if ($courseId === null) continue;
+            if ($courseId === null) {
+                continue;
+            }
 
             $enrollment = DB::table('academic_enrollments')
                 ->where('student_id', $student->id)
@@ -160,13 +165,15 @@ final class StudentDemoSeeder extends Seeder
         $sem2Courses = [
             ['code' => 'CS201',  'grade' => 'B+', 'points' => 3.3],
             ['code' => 'CS202',  'grade' => 'B',  'points' => 3.0],
-            ['code' => 'MATH201','grade' => 'B-', 'points' => 2.7],
+            ['code' => 'MATH201', 'grade' => 'B-', 'points' => 2.7],
             ['code' => 'CS203',  'grade' => 'A-', 'points' => 3.7],
         ];
 
         foreach ($sem2Courses as $c) {
             $courseId = $courses[$c['code']] ?? null;
-            if ($courseId === null) continue;
+            if ($courseId === null) {
+                continue;
+            }
 
             $enrollment = DB::table('academic_enrollments')
                 ->where('student_id', $student->id)
@@ -219,7 +226,9 @@ final class StudentDemoSeeder extends Seeder
 
         foreach ($currentCourses as $code) {
             $courseId = $courses[$code] ?? null;
-            if ($courseId === null) continue;
+            if ($courseId === null) {
+                continue;
+            }
 
             $enrollment = DB::table('academic_enrollments')
                 ->where('student_id', $student->id)

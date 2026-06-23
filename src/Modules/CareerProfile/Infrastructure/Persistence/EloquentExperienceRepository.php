@@ -7,8 +7,8 @@ namespace Modules\CareerProfile\Infrastructure\Persistence;
 use DateTimeImmutable;
 use Modules\CareerProfile\Domain\Contracts\ExperienceRepositoryInterface;
 use Modules\CareerProfile\Domain\Entities\Experience;
-use Modules\CareerProfile\Domain\ValueObjects\ExperienceId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
+use Modules\CareerProfile\Domain\ValueObjects\ExperienceId;
 use Modules\CareerProfile\Infrastructure\Persistence\Eloquent\EloquentExperience;
 
 final class EloquentExperienceRepository implements ExperienceRepositoryInterface
@@ -29,7 +29,7 @@ final class EloquentExperienceRepository implements ExperienceRepositoryInterfac
         $model = EloquentExperience::find($experience->id()->value());
 
         if ($model === null) {
-            $model = new EloquentExperience();
+            $model = new EloquentExperience;
             $model->id = $experience->id()->value();
         }
 
@@ -58,7 +58,7 @@ final class EloquentExperienceRepository implements ExperienceRepositoryInterfac
             description: $model->description,
             startDate: new DateTimeImmutable($model->start_date->format('Y-m-d H:i:s')),
             endDate: $model->end_date ? new DateTimeImmutable($model->end_date->format('Y-m-d H:i:s')) : null,
-            isCurrent: (bool) $model->is_current
+            isCurrent: (bool) $model->is_current,
         );
     }
 }

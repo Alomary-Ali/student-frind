@@ -8,8 +8,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Modules\Productivity\Application\DTOs\CreateGoalDto;
-use Modules\Productivity\Application\DTOs\GoalDto;
-use Modules\Productivity\Application\DTOs\TaskDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
 use Modules\Productivity\Application\UseCases\CreateGoal;
 use Modules\Productivity\Application\UseCases\UpdateGoalProgress;

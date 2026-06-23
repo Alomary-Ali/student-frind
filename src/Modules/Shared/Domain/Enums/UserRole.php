@@ -6,22 +6,22 @@ namespace Modules\Shared\Domain\Enums;
 
 enum UserRole: string
 {
-    case Student        = 'student';
-    case Advisor        = 'advisor';
+    case Student = 'student';
+    case Advisor = 'advisor';
     case CareerCounselor = 'career_counselor';
-    case Admin          = 'admin';
-    case Mentor         = 'mentor';
-    case Employer       = 'employer';
+    case Admin = 'admin';
+    case Mentor = 'mentor';
+    case Employer = 'employer';
 
     public function label(): string
     {
-        return match($this) {
-            self::Student         => 'Student',
-            self::Advisor         => 'Academic Advisor',
+        return match ($this) {
+            self::Student => 'Student',
+            self::Advisor => 'Academic Advisor',
             self::CareerCounselor => 'Career Counselor',
-            self::Admin           => 'Administrator',
-            self::Mentor          => 'Mentor',
-            self::Employer        => 'Employer',
+            self::Admin => 'Administrator',
+            self::Mentor => 'Mentor',
+            self::Employer => 'Employer',
         };
     }
 

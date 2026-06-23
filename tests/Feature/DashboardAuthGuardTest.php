@@ -22,15 +22,15 @@ final class DashboardAuthGuardTest extends TestCase
         return [
             // Academic
             'academic.dashboard' => ['/academic/dashboard'],
-            'academic.courses'   => ['/academic/courses'],
-            'academic.plan'      => ['/academic/plan'],
-            'academic.progress'  => ['/academic/progress'],
+            'academic.courses' => ['/academic/courses'],
+            'academic.plan' => ['/academic/plan'],
+            'academic.progress' => ['/academic/progress'],
 
             // Productivity
             'productivity.dashboard' => ['/productivity/dashboard'],
-            'productivity.goals'     => ['/productivity/goals'],
-            'productivity.tasks'     => ['/productivity/tasks'],
-            'productivity.calendar'  => ['/productivity/calendar'],
+            'productivity.goals' => ['/productivity/goals'],
+            'productivity.tasks' => ['/productivity/tasks'],
+            'productivity.calendar' => ['/productivity/calendar'],
             'productivity.reminders' => ['/productivity/reminders'],
         ];
     }
@@ -66,7 +66,7 @@ final class DashboardAuthGuardTest extends TestCase
         $this->assertContains(
             $response->status(),
             [200, 302],
-            "Route $url returned unexpected status {$response->status()}"
+            "Route $url returned unexpected status {$response->status()}",
         );
     }
 
@@ -86,7 +86,7 @@ final class DashboardAuthGuardTest extends TestCase
             $this->assertContains(
                 $response->status(),
                 [401, 403],
-                "API route $method $route should require authentication"
+                "API route $method $route should require authentication",
             );
         }
     }

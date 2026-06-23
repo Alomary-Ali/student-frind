@@ -45,7 +45,7 @@ final class EloquentEnrollmentRepository implements EnrollmentRepositoryInterfac
                 'semester_id' => $enrollment->semesterId()->value(),
                 'status' => $enrollment->status()->value,
                 'enrolled_at' => $enrollment->enrolledAt()->format('Y-m-d H:i:s'),
-            ]
+            ],
         );
     }
 
@@ -72,7 +72,7 @@ final class EloquentEnrollmentRepository implements EnrollmentRepositoryInterfac
     {
         $enrolledAt = $model->enrolled_at
             ? new DateTimeImmutable($model->enrolled_at->format('Y-m-d H:i:s'))
-            : new DateTimeImmutable();
+            : new DateTimeImmutable;
 
         return Enrollment::reconstitute(
             id: EnrollmentId::fromString($model->id),

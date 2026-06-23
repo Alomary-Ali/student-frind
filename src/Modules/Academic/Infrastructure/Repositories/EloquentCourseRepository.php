@@ -47,7 +47,7 @@ final class EloquentCourseRepository implements CourseRepositoryInterface
                 'credit_hours' => $course->creditHours()->value(),
                 'is_active' => $course->isActive(),
                 'institution_id' => $course->institutionId(),
-            ]
+            ],
         );
 
         // Invalidate cache
@@ -97,7 +97,7 @@ final class EloquentCourseRepository implements CourseRepositoryInterface
     {
         $createdAt = $model->created_at
             ? new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s'))
-            : new DateTimeImmutable();
+            : new DateTimeImmutable;
 
         return Course::reconstitute(
             id: CourseId::fromString($model->id),

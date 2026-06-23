@@ -29,7 +29,7 @@ final class EloquentCertificationRepository implements CertificationRepositoryIn
         $model = EloquentCertification::find($certification->id()->value());
 
         if ($model === null) {
-            $model = new EloquentCertification();
+            $model = new EloquentCertification;
             $model->id = $certification->id()->value();
         }
 
@@ -58,7 +58,7 @@ final class EloquentCertificationRepository implements CertificationRepositoryIn
             issueDate: new DateTimeImmutable($model->issue_date->format('Y-m-d H:i:s')),
             expiryDate: $model->expiry_date ? new DateTimeImmutable($model->expiry_date->format('Y-m-d H:i:s')) : null,
             credentialUrl: $model->credential_url,
-            verificationCode: $model->verification_code
+            verificationCode: $model->verification_code,
         );
     }
 }

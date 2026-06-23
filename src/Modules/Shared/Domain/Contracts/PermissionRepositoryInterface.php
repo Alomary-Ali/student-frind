@@ -25,7 +25,6 @@ interface PermissionRepositoryInterface
     public function delete(PermissionId $id): void;
 
     /**
-     * @param RoleId $roleId
      * @return array<Permission>
      */
     public function findByRoleId(RoleId $roleId): array;

@@ -6,7 +6,6 @@ namespace Modules\Productivity\Presentation\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Modules\Productivity\Application\DTOs\CreateReminderDto;
-use Modules\Productivity\Application\DTOs\ReminderDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
 use Modules\Productivity\Application\UseCases\CreateReminder;
 use Modules\Productivity\Domain\Contracts\ReminderRepositoryInterface;

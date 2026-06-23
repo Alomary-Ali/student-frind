@@ -13,7 +13,6 @@ use Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface;
 use Modules\Academic\Domain\Contracts\StudentRepositoryInterface;
 use Modules\Academic\Domain\Entities\Student;
 use Modules\Academic\Domain\Exceptions\StudentAlreadyExistsException;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use Modules\Shared\Domain\Contracts\UserRepositoryInterface;
 use Modules\Shared\Domain\Entities\User;
@@ -41,7 +40,7 @@ final class CreateStudentUseCaseTest extends TestCase
         $this->userRepository = $this->createMock(UserRepositoryInterface::class);
         $this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
         $this->auditLogger = $this->createMock(AcademicAuditLoggerInterface::class);
-        $this->mapper = new AcademicMapper();
+        $this->mapper = new AcademicMapper;
 
         $this->useCase = new CreateStudent(
             students: $this->studentRepository,
@@ -70,8 +69,8 @@ final class CreateStudentUseCaseTest extends TestCase
             passwordHash: 'hash',
             role: UserRole::Student,
             status: UserStatus::Active,
-            emailVerifiedAt: new DateTimeImmutable(),
-            createdAt: new DateTimeImmutable(),
+            emailVerifiedAt: new DateTimeImmutable,
+            createdAt: new DateTimeImmutable,
         );
 
         $this->userRepository->expects($this->once())
@@ -145,8 +144,8 @@ final class CreateStudentUseCaseTest extends TestCase
             passwordHash: 'hash',
             role: UserRole::Student,
             status: UserStatus::Active,
-            emailVerifiedAt: new DateTimeImmutable(),
-            createdAt: new DateTimeImmutable(),
+            emailVerifiedAt: new DateTimeImmutable,
+            createdAt: new DateTimeImmutable,
         );
 
         $this->userRepository->expects($this->once())

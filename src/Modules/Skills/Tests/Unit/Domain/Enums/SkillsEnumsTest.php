@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Tests\Unit\Domain\Enums;
 
-use PHPUnit\Framework\TestCase;
+use Modules\Skills\Domain\Enums\AchievementType;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\Enums\AchievementType;
+use PHPUnit\Framework\TestCase;
 
 final class SkillsEnumsTest extends TestCase
 {

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Academic\Domain\Contracts;
 
 use Modules\Academic\Domain\Entities\SemesterPlan;
+use Modules\Academic\Domain\ValueObjects\SemesterId;
 use Modules\Academic\Domain\ValueObjects\SemesterPlanId;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Academic\Domain\ValueObjects\SemesterId;
 
 interface SemesterPlanRepositoryInterface
 {

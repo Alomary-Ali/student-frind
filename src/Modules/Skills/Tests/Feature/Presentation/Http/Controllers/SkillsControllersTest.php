@@ -7,8 +7,6 @@ namespace Modules\Skills\Tests\Feature\Presentation\Http\Controllers;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
-use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkillProfile;
-use Modules\Skills\Infrastructure\Persistence\Eloquent\EloquentSkill;
 use Tests\TestCase;
 
 final class SkillsControllersTest extends TestCase

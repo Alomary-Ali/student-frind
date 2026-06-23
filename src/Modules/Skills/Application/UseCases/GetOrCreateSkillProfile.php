@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Application\UseCases;
 
+use Modules\Academic\Domain\ValueObjects\StudentId;
+use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use Modules\Skills\Application\DTOs\SkillProfileDto;
 use Modules\Skills\Application\Mappers\SkillsMapper;
 use Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface;
 use Modules\Skills\Domain\Entities\SkillProfile;
 use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 
 final readonly class GetOrCreateSkillProfile
 {
@@ -18,8 +18,7 @@ final readonly class GetOrCreateSkillProfile
         private SkillProfileRepositoryInterface $profiles,
         private EventDispatcherInterface $events,
         private SkillsMapper $mapper,
-    ) {
-    }
+    ) {}
 
     public function execute(string $studentId): SkillProfileDto
     {

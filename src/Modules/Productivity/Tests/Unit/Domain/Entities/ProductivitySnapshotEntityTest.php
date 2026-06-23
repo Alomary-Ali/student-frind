@@ -78,7 +78,7 @@ final class ProductivitySnapshotEntityTest extends TestCase
     {
         $id = ProductivitySnapshotId::generate();
         $snapshotDate = new DateTimeImmutable('2026-06-23');
-        $createdAt = new DateTimeImmutable();
+        $createdAt = new DateTimeImmutable;
 
         $snapshot = ProductivitySnapshot::reconstitute(
             id: $id,

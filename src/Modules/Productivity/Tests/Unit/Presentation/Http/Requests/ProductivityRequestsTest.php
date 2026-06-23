@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Tests\Unit\Presentation\Http\Requests;
 
-use Modules\Productivity\Presentation\Http\Requests\CreateGoalRequest;
-use Modules\Productivity\Presentation\Http\Requests\CreateTaskRequest;
-use Modules\Productivity\Presentation\Http\Requests\CreateReminderRequest;
-use Modules\Productivity\Presentation\Http\Requests\CreateCalendarEventRequest;
 use Modules\Productivity\Presentation\Http\Requests\CreateAssignmentRequest;
+use Modules\Productivity\Presentation\Http\Requests\CreateCalendarEventRequest;
 use Modules\Productivity\Presentation\Http\Requests\CreateExamRequest;
+use Modules\Productivity\Presentation\Http\Requests\CreateGoalRequest;
 use Modules\Productivity\Presentation\Http\Requests\CreateProjectRequest;
+use Modules\Productivity\Presentation\Http\Requests\CreateReminderRequest;
+use Modules\Productivity\Presentation\Http\Requests\CreateTaskRequest;
 use PHPUnit\Framework\TestCase;
 
 final class ProductivityRequestsTest extends TestCase
 {
     public function test_create_goal_request_rules(): void
     {
-        $request = new CreateGoalRequest();
+        $request = new CreateGoalRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);
@@ -35,13 +35,13 @@ final class ProductivityRequestsTest extends TestCase
 
     public function test_create_goal_request_authorize(): void
     {
-        $request = new CreateGoalRequest();
+        $request = new CreateGoalRequest;
         $this->assertTrue($request->authorize());
     }
 
     public function test_create_task_request_rules(): void
     {
-        $request = new CreateTaskRequest();
+        $request = new CreateTaskRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);
@@ -59,7 +59,7 @@ final class ProductivityRequestsTest extends TestCase
 
     public function test_create_reminder_request_rules(): void
     {
-        $request = new CreateReminderRequest();
+        $request = new CreateReminderRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);
@@ -75,7 +75,7 @@ final class ProductivityRequestsTest extends TestCase
 
     public function test_create_calendar_event_request_rules(): void
     {
-        $request = new CreateCalendarEventRequest();
+        $request = new CreateCalendarEventRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);
@@ -92,7 +92,7 @@ final class ProductivityRequestsTest extends TestCase
 
     public function test_create_assignment_request_rules(): void
     {
-        $request = new CreateAssignmentRequest();
+        $request = new CreateAssignmentRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);
@@ -108,7 +108,7 @@ final class ProductivityRequestsTest extends TestCase
 
     public function test_create_exam_request_rules(): void
     {
-        $request = new CreateExamRequest();
+        $request = new CreateExamRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);
@@ -125,7 +125,7 @@ final class ProductivityRequestsTest extends TestCase
 
     public function test_create_project_request_rules(): void
     {
-        $request = new CreateProjectRequest();
+        $request = new CreateProjectRequest;
         $rules = $request->rules();
 
         $this->assertArrayHasKey('user_id', $rules);

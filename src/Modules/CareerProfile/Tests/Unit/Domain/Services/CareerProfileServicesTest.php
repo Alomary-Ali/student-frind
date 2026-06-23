@@ -12,24 +12,24 @@ use Modules\CareerProfile\Domain\Enums\GoalStatus;
 use Modules\CareerProfile\Domain\Services\CareerScoreCalculator;
 use Modules\CareerProfile\Domain\Services\LinkedInOptimizer;
 use Modules\CareerProfile\Domain\Services\ResumeGenerator;
-use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
+use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 use Modules\CareerProfile\Domain\ValueObjects\ExperienceId;
 use Modules\CareerProfile\Domain\ValueObjects\PortfolioItemId;
-use Modules\Skills\Domain\Entities\SkillProfile;
 use Modules\Skills\Domain\Entities\Skill;
+use Modules\Skills\Domain\Entities\SkillProfile;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
 use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 use PHPUnit\Framework\TestCase;
 
 final class CareerProfileServicesTest extends TestCase
 {
     public function test_career_score_calculator_returns_zero_for_empty_profile(): void
     {
-        $calculator = new CareerScoreCalculator();
+        $calculator = new CareerScoreCalculator;
         $profile = CareerProfile::create(CareerProfileId::generate(), StudentId::generate(), 'التخصص');
 
         $score = $calculator->calculate($profile, null, 0.0);
@@ -40,7 +40,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_career_score_calculator_returns_max_score(): void
     {
-        $calculator = new CareerScoreCalculator();
+        $calculator = new CareerScoreCalculator;
         $profileId = CareerProfileId::generate();
         $profile = CareerProfile::create($profileId, StudentId::generate(), 'الهندسة');
 
@@ -103,8 +103,8 @@ final class CareerProfileServicesTest extends TestCase
                 CertificationStub::create(CertificationId::generate(), SkillProfileId::generate(), 'AWS', 'Amazon', new DateTimeImmutable('2026-01-01')),
                 CertificationStub::create(CertificationId::generate(), SkillProfileId::generate(), 'Google', 'Google', new DateTimeImmutable('2026-02-01')),
             ],
-            new DateTimeImmutable(),
-            new DateTimeImmutable(),
+            new DateTimeImmutable,
+            new DateTimeImmutable,
         );
 
         $score = $calculator->calculate($profile, $skillProfile, 4.0);
@@ -114,7 +114,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_career_score_calculator_handles_skill_profile_null(): void
     {
-        $calculator = new CareerScoreCalculator();
+        $calculator = new CareerScoreCalculator;
         $profile = CareerProfile::create(CareerProfileId::generate(), StudentId::generate(), 'الهندسة');
 
         $score = $calculator->calculate($profile, null, 2.0);
@@ -125,7 +125,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_linkedin_optimizer_returns_100_with_complete_profile(): void
     {
-        $optimizer = new LinkedInOptimizer();
+        $optimizer = new LinkedInOptimizer;
         $profileId = CareerProfileId::generate();
         $profile = CareerProfile::create($profileId, StudentId::generate(), 'علوم الحاسب', str_repeat('a', 101));
 
@@ -172,8 +172,8 @@ final class CareerProfileServicesTest extends TestCase
             [
                 CertificationStub::create(CertificationId::generate(), SkillProfileId::generate(), 'AWS', 'Amazon', new DateTimeImmutable('2026-01-01')),
             ],
-            new DateTimeImmutable(),
-            new DateTimeImmutable(),
+            new DateTimeImmutable,
+            new DateTimeImmutable,
         );
 
         $result = $optimizer->optimize($profile, $skillProfile);
@@ -184,7 +184,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_linkedin_optimizer_gives_recommendations_for_empty_profile(): void
     {
-        $optimizer = new LinkedInOptimizer();
+        $optimizer = new LinkedInOptimizer;
         $profile = CareerProfile::create(CareerProfileId::generate(), StudentId::generate(), '');
 
         $result = $optimizer->optimize($profile, null);
@@ -195,7 +195,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_linkedin_optimizer_handles_short_summary(): void
     {
-        $optimizer = new LinkedInOptimizer();
+        $optimizer = new LinkedInOptimizer;
         $profile = CareerProfile::create(CareerProfileId::generate(), StudentId::generate(), 'الهندسة', 'ملخص قصير');
 
         $result = $optimizer->optimize($profile, null);
@@ -206,7 +206,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_resume_generator_generates_markdown(): void
     {
-        $generator = new ResumeGenerator();
+        $generator = new ResumeGenerator;
 
         $profileId = CareerProfileId::generate();
         $studentId = StudentId::generate();
@@ -231,7 +231,7 @@ final class CareerProfileServicesTest extends TestCase
 
     public function test_resume_generator_handles_empty_profile(): void
     {
-        $generator = new ResumeGenerator();
+        $generator = new ResumeGenerator;
         $profile = CareerProfile::create(CareerProfileId::generate(), StudentId::generate(), 'غير محدد');
 
         $result = $generator->generate($profile, null, 'طالب', 'student@test.com');
@@ -261,8 +261,23 @@ class CertificationStub
         return new self($id, $skillProfileId, $name, $issuer, $issueDate);
     }
 
-    public function name(): string { return $this->name; }
-    public function issuer(): string { return $this->issuer; }
-    public function issueDate(): DateTimeImmutable { return $this->issueDate; }
-    public function id(): CertificationId { return $this->id; }
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function issuer(): string
+    {
+        return $this->issuer;
+    }
+
+    public function issueDate(): DateTimeImmutable
+    {
+        return $this->issueDate;
+    }
+
+    public function id(): CertificationId
+    {
+        return $this->id;
+    }
 }

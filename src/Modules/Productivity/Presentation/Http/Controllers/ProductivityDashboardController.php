@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Productivity\Presentation\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Modules\Productivity\Application\DTOs\ProductivityDashboardDto;
-use Modules\Productivity\Application\DTOs\ProductivitySnapshotDto;
 use Modules\Productivity\Application\UseCases\GenerateProductivitySnapshot;
 use Modules\Productivity\Application\UseCases\GetProductivityDashboard;
 

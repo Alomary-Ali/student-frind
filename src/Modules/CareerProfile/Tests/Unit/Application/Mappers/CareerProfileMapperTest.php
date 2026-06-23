@@ -7,12 +7,11 @@ namespace Modules\CareerProfile\Tests\Unit\Application\Mappers;
 use DateTimeImmutable;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\CareerProfile\Application\Mappers\CareerProfileMapper;
-use Modules\CareerProfile\Domain\Entities\CareerProfile;
 use Modules\CareerProfile\Domain\Entities\CareerGoal;
+use Modules\CareerProfile\Domain\Entities\CareerProfile;
 use Modules\CareerProfile\Domain\Entities\Experience;
 use Modules\CareerProfile\Domain\Entities\PortfolioItem;
 use Modules\CareerProfile\Domain\Entities\Resume;
-use Modules\CareerProfile\Domain\Enums\GoalStatus;
 use Modules\CareerProfile\Domain\Enums\ResumeTemplate;
 use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
@@ -27,7 +26,7 @@ final class CareerProfileMapperTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->mapper = new CareerProfileMapper();
+        $this->mapper = new CareerProfileMapper;
     }
 
     public function test_to_career_profile_dto(): void

@@ -9,8 +9,8 @@ use Modules\Shared\Domain\Entities\Role;
 use Modules\Shared\Domain\Enums\Role as RoleEnum;
 use Modules\Shared\Domain\ValueObjects\Permission;
 use Modules\Shared\Domain\ValueObjects\RoleId;
-use Modules\Shared\Infrastructure\Persistence\EloquentRole;
 use Modules\Shared\Infrastructure\Persistence\EloquentPermission;
+use Modules\Shared\Infrastructure\Persistence\EloquentRole;
 
 final class EloquentRoleRepository implements RoleRepositoryInterface
 {
@@ -51,7 +51,7 @@ final class EloquentRoleRepository implements RoleRepositoryInterface
         $model = EloquentRole::find($role->id()->value());
 
         if ($model === null) {
-            $model = new EloquentRole();
+            $model = new EloquentRole;
             $model->id = $role->id()->value();
         }
 
@@ -74,7 +74,7 @@ final class EloquentRoleRepository implements RoleRepositoryInterface
     }
 
     /**
-     * @param array<string> $userIds
+     * @param  array<string>  $userIds
      * @return array<Role>
      */
     public function findByUserIds(array $userIds): array
@@ -105,7 +105,7 @@ final class EloquentRoleRepository implements RoleRepositoryInterface
         $model = EloquentPermission::where('name', $permission->value())->first();
 
         if ($model === null) {
-            $model = new EloquentPermission();
+            $model = new EloquentPermission;
             $model->id = \Illuminate\Support\Str::uuid()->toString();
             $model->name = $permission->value();
             $model->description = $this->getPermissionDescription($permission->value());

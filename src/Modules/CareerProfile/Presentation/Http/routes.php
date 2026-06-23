@@ -14,4 +14,6 @@ Route::middleware(['web', 'auth', 'role:student'])
         Route::post('/portfolio', [CareerProfileController::class, 'storePortfolioItem'])->name('portfolio.store')->middleware('throttle:30,1');
         Route::post('/experience', [CareerProfileController::class, 'storeExperience'])->name('experience.store')->middleware('throttle:30,1');
         Route::post('/goals', [CareerProfileController::class, 'storeCareerGoal'])->name('goals.store')->middleware('throttle:30,1');
+        Route::post('/resume', [CareerProfileController::class, 'generateResume'])->name('resume.generate')->middleware('throttle:30,1');
+        Route::post('/goals/{id}/progress', [CareerProfileController::class, 'updateGoalProgress'])->name('goals.progress')->middleware('throttle:30,1');
     });

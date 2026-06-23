@@ -28,7 +28,7 @@ final readonly class GetStudentAlerts
 
         return array_map(
             fn ($alert) => $this->mapper->toAcademicAlertDto($alert),
-            $alerts
+            $alerts,
         );
     }
 
@@ -44,7 +44,7 @@ final readonly class GetStudentAlerts
 
         return array_map(
             fn ($alert) => $this->mapper->toAcademicAlertDto($alert),
-            $alerts
+            $alerts,
         );
     }
 }

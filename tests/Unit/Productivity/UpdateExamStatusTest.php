@@ -8,7 +8,6 @@ use Modules\Productivity\Application\UseCases\UpdateExamStatus;
 use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Exam;
 use Modules\Productivity\Domain\Enums\ExamType;
-use Modules\Productivity\Domain\ValueObjects\ExamId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 
@@ -37,7 +36,7 @@ final class UpdateExamStatusTest extends TestCase
 
         $result = $useCase->execute(
             $exam->id()->value(),
-            'completed'
+            'completed',
         );
 
         $this->assertInstanceOf(\Modules\Productivity\Application\DTOs\ExamDto::class, $result);

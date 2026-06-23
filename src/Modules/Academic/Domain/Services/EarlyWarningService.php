@@ -11,8 +11,7 @@ final class EarlyWarningService
     /**
      * Generate academic alerts for a student based on their performance.
      *
-     * @param Student $student
-     * @param array<string, mixed> $graduationProgress
+     * @param  array<string, mixed>  $graduationProgress
      * @return array<string, mixed>
      */
     public function generateAlerts(Student $student, array $graduationProgress): array
@@ -43,7 +42,7 @@ final class EarlyWarningService
         }
 
         // Check for graduation delay risk
-        if (isset($graduationProgress['on_track']) && !$graduationProgress['on_track']) {
+        if (isset($graduationProgress['on_track']) && ! $graduationProgress['on_track']) {
             $alerts[] = [
                 'alert_type' => 'graduation_delay',
                 'severity' => 'high',

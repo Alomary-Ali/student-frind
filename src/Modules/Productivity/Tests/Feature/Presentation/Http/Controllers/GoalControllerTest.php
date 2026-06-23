@@ -28,7 +28,7 @@ final class GoalControllerTest extends TestCase
         $this->userId = $user->id;
         \Laravel\Sanctum\Sanctum::actingAs($user);
 
-        $this->goalRepository = new EloquentGoalRepository();
+        $this->goalRepository = new EloquentGoalRepository;
     }
 
     public function test_can_create_goal_via_api(): void

@@ -17,7 +17,7 @@ final readonly class UpdateAssignmentProgress
     public function execute(string $assignmentId, string $status, ?string $submissionUrl = null): AssignmentDto
     {
         $assignment = $this->assignmentRepository->findById(
-            AssignmentId::fromString($assignmentId)
+            AssignmentId::fromString($assignmentId),
         );
 
         if ($assignment === null) {

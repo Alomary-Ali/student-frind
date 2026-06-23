@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\CareerProfile\Presentation\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Modules\CareerProfile\Application\UseCases\CreateCareerProfile;
-use Modules\CareerProfile\Application\UseCases\GetCareerProfile;
-use Modules\CareerProfile\Application\UseCases\UpdateCareerProfile;
-use Modules\CareerProfile\Application\UseCases\AddPortfolioItem;
-use Modules\CareerProfile\Application\UseCases\AddExperience;
-use Modules\CareerProfile\Application\UseCases\CreateCareerGoal;
 use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
+use Modules\CareerProfile\Application\UseCases\AddExperience;
+use Modules\CareerProfile\Application\UseCases\AddPortfolioItem;
+use Modules\CareerProfile\Application\UseCases\CreateCareerGoal;
+use Modules\CareerProfile\Application\UseCases\CreateCareerProfile;
+use Modules\CareerProfile\Application\UseCases\GenerateResume;
+use Modules\CareerProfile\Application\UseCases\GetCareerProfile;
+use Modules\CareerProfile\Application\UseCases\UpdateCareerGoalProgress;
+use Modules\CareerProfile\Application\UseCases\UpdateCareerProfile;
 
 final readonly class CareerProfileController
 {
@@ -24,8 +26,9 @@ final readonly class CareerProfileController
         private AddPortfolioItem $addPortfolioItem,
         private AddExperience $addExperience,
         private CreateCareerGoal $createCareerGoal,
-    ) {
-    }
+        private readonly GenerateResume $generateResume,
+        private readonly UpdateCareerGoalProgress $updateCareerGoalProgress,
+    ) {}
 
     public function index(Request $request): View
     {
@@ -51,12 +54,13 @@ final readonly class CareerProfileController
     {
         $studentId = $this->resolveStudentId($request);
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('career.index')->with('error', 'الملف الشخصي غير موجود');
         }
 
         try {
             $this->updateCareerProfile->execute($studentId, $request->all());
+
             return redirect()->route('career.index')->with('success', 'تم تحديث الملف الشخصي بنجاح');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -69,12 +73,13 @@ final readonly class CareerProfileController
     {
         $studentId = $this->resolveStudentId($request);
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('career.index')->with('error', 'الملف الشخصي غير موجود');
         }
 
         try {
             $this->addPortfolioItem->execute($studentId, $request->all());
+
             return redirect()->route('career.index')->with('success', 'تمت إضافة المشروع بنجاح');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -87,12 +92,13 @@ final readonly class CareerProfileController
     {
         $studentId = $this->resolveStudentId($request);
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('career.index')->with('error', 'الملف الشخصي غير موجود');
         }
 
         try {
             $this->addExperience->execute($studentId, $request->all());
+
             return redirect()->route('career.index')->with('success', 'تمت إضافة الخبرة بنجاح');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -105,12 +111,13 @@ final readonly class CareerProfileController
     {
         $studentId = $this->resolveStudentId($request);
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('career.index')->with('error', 'الملف الشخصي غير موجود');
         }
 
         try {
             $this->createCareerGoal->execute($studentId, $request->all());
+
             return redirect()->route('career.index')->with('success', 'تمت إضافة الهدف المهني بنجاح');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -119,14 +126,62 @@ final readonly class CareerProfileController
         }
     }
 
+    public function generateResume(Request $request): RedirectResponse
+    {
+        $studentId = $this->resolveStudentId($request);
+
+        if (! $studentId) {
+            return redirect()->route('career.index')->with('error', 'الملف الشخصي غير موجود');
+        }
+
+        try {
+            $user = $request->user();
+            $studentName = $user->first_name . ' ' . $user->last_name;
+            $studentEmail = $user->email;
+
+            $this->generateResume->execute(
+                studentId: $studentId,
+                template: $request->input('template', 'modern'),
+                studentName: $studentName,
+                studentEmail: $studentEmail,
+            );
+
+            return redirect()->route('career.index')->with('success', 'تم إنشاء السيرة الذاتية بنجاح');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ أثناء إنشاء السيرة الذاتية')->withInput();
+        }
+    }
+
+    public function updateGoalProgress(Request $request, string $id): RedirectResponse
+    {
+        $studentId = $this->resolveStudentId($request);
+
+        if (! $studentId) {
+            return redirect()->route('career.index')->with('error', 'الملف الشخصي غير موجود');
+        }
+
+        try {
+            $this->updateCareerGoalProgress->execute(
+                studentId: $studentId,
+                goalId: $id,
+                progress: (int) $request->input('progress', 0),
+            );
+
+            return redirect()->route('career.index')->with('success', 'تم تحديث تقدم الهدف المهني بنجاح');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ أثناء تحديث الهدف')->withInput();
+        }
+    }
+
     private function resolveStudentId(Request $request): ?string
     {
         $user = $request->user();
-        if (!$user) {
+        if (! $user) {
             return null;
         }
 
         $student = EloquentStudent::where('user_id', $user->id)->first();
+
         return $student?->id;
     }
 }

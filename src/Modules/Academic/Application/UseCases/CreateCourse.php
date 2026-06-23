@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Academic\Application\UseCases;
 
-use Modules\Academic\Application\DTOs\CreateCourseDto;
 use Modules\Academic\Application\DTOs\CourseDto;
+use Modules\Academic\Application\DTOs\CreateCourseDto;
 use Modules\Academic\Application\Mappers\AcademicMapper;
 use Modules\Academic\Domain\Contracts\AcademicAuditLoggerInterface;
 use Modules\Academic\Domain\Contracts\CourseRepositoryInterface;

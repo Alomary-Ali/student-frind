@@ -26,6 +26,7 @@ final class ExamController extends Controller
     {
         $userId = \Modules\Shared\Domain\ValueObjects\UserId::fromString(auth()->id());
         $exams = $this->examRepository->findByUserId($userId);
+
         return view('productivity.exams', compact('exams'));
     }
 
@@ -33,6 +34,7 @@ final class ExamController extends Controller
     {
         $examId = \Modules\Productivity\Domain\ValueObjects\ExamId::fromString($id);
         $exam = $this->examRepository->findById($examId);
+
         return view('productivity.exam-detail', compact('exam'));
     }
 
@@ -52,7 +54,7 @@ final class ExamController extends Controller
 
         $result = $this->updateExamStatus->execute(
             $id,
-            $validated['status']
+            $validated['status'],
         );
 
         return response()->json($result);

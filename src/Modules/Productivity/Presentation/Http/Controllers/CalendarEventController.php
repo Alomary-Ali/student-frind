@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Productivity\Presentation\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Modules\Productivity\Application\DTOs\CalendarEventDto;
 use Modules\Productivity\Application\DTOs\CreateCalendarEventDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
 use Modules\Productivity\Application\UseCases\CreateCalendarEvent;

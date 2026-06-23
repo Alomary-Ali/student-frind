@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Academic\Domain\Entities;
 
 use DateTimeImmutable;
+use Modules\Academic\Domain\ValueObjects\SemesterId;
 use Modules\Academic\Domain\ValueObjects\SemesterPlanId;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Academic\Domain\ValueObjects\SemesterId;
 
 final class SemesterPlan
 {
@@ -45,8 +45,8 @@ final class SemesterPlan
             submittedAt: null,
             approvedBy: null,
             approvedAt: null,
-            createdAt: new DateTimeImmutable(),
-            updatedAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
+            updatedAt: new DateTimeImmutable,
         );
     }
 
@@ -87,8 +87,8 @@ final class SemesterPlan
         }
 
         $this->status = 'submitted';
-        $this->submittedAt = new DateTimeImmutable();
-        $this->updatedAt = new DateTimeImmutable();
+        $this->submittedAt = new DateTimeImmutable;
+        $this->updatedAt = new DateTimeImmutable;
     }
 
     public function approve(string $approvedBy): void
@@ -99,8 +99,8 @@ final class SemesterPlan
 
         $this->status = 'approved';
         $this->approvedBy = $approvedBy;
-        $this->approvedAt = new DateTimeImmutable();
-        $this->updatedAt = new DateTimeImmutable();
+        $this->approvedAt = new DateTimeImmutable;
+        $this->updatedAt = new DateTimeImmutable;
     }
 
     public function reject(): void
@@ -110,7 +110,7 @@ final class SemesterPlan
         }
 
         $this->status = 'rejected';
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
     }
 
     public function id(): SemesterPlanId

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Application\Mappers;
 
-use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Skill;
-use Modules\Skills\Domain\Entities\Certification;
-use Modules\Skills\Domain\Entities\Achievement;
-use Modules\Skills\Domain\Entities\LearningPath;
-use Modules\Skills\Application\DTOs\SkillProfileDto;
-use Modules\Skills\Application\DTOs\SkillDto;
-use Modules\Skills\Application\DTOs\CertificationDto;
 use Modules\Skills\Application\DTOs\AchievementDto;
+use Modules\Skills\Application\DTOs\CertificationDto;
 use Modules\Skills\Application\DTOs\LearningPathDto;
+use Modules\Skills\Application\DTOs\SkillDto;
+use Modules\Skills\Application\DTOs\SkillProfileDto;
+use Modules\Skills\Domain\Entities\Achievement;
+use Modules\Skills\Domain\Entities\Certification;
+use Modules\Skills\Domain\Entities\LearningPath;
+use Modules\Skills\Domain\Entities\Skill;
+use Modules\Skills\Domain\Entities\SkillProfile;
 
 final class SkillsMapper
 {

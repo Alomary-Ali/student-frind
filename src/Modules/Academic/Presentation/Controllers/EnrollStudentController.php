@@ -53,7 +53,7 @@ final class EnrollStudentController extends Controller
             return ApiResponse::error(
                 'PREREQUISITE_NOT_MET',
                 'Prerequisites not met: ' . $e->getMessage(),
-                status: Response::HTTP_CONFLICT
+                status: Response::HTTP_CONFLICT,
             );
         } catch (DuplicateEnrollmentException|StudentNotEligibleException $e) {
             return ApiResponse::error('CONFLICT', $e->getMessage(), status: Response::HTTP_CONFLICT);

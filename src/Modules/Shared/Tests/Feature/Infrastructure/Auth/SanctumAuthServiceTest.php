@@ -46,7 +46,7 @@ final class SanctumAuthServiceTest extends TestCase
             createdAt: new \DateTimeImmutable($eloquentUser->created_at->toIso8601String()),
         );
 
-        $service = new SanctumAuthService();
+        $service = new SanctumAuthService;
         $token = $service->generateToken($domainUser);
 
         $this->assertIsString($token);
@@ -79,7 +79,7 @@ final class SanctumAuthServiceTest extends TestCase
             createdAt: new \DateTimeImmutable($eloquentUser->created_at->toIso8601String()),
         );
 
-        $service = new SanctumAuthService();
+        $service = new SanctumAuthService;
         $token1 = $service->generateToken($domainUser);
         $token2 = $service->generateToken($domainUser);
 
@@ -88,7 +88,7 @@ final class SanctumAuthServiceTest extends TestCase
 
     public function test_service_implements_auth_service_interface(): void
     {
-        $service = new SanctumAuthService();
+        $service = new SanctumAuthService;
         $this->assertInstanceOf(AuthServiceInterface::class, $service);
     }
 }

@@ -7,8 +7,8 @@ namespace Modules\CareerProfile\Domain\Entities;
 use DateTimeImmutable;
 use InvalidArgumentException;
 use Modules\CareerProfile\Domain\Enums\GoalStatus;
-use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 use Modules\CareerProfile\Domain\ValueObjects\CareerGoalId;
+use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 
 final class CareerGoal
 {
@@ -33,7 +33,7 @@ final class CareerGoal
             $title,
             $targetDate,
             GoalStatus::NOT_STARTED,
-            0
+            0,
         );
     }
 
@@ -51,7 +51,7 @@ final class CareerGoal
             $title,
             $targetDate,
             $status,
-            $progress
+            $progress,
         );
     }
 

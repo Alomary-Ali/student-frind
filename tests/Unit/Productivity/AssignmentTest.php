@@ -6,7 +6,6 @@ namespace Tests\Unit\Productivity;
 
 use Modules\Productivity\Domain\Entities\Assignment;
 use Modules\Productivity\Domain\Enums\AssignmentStatus;
-use Modules\Productivity\Domain\ValueObjects\AssignmentId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 

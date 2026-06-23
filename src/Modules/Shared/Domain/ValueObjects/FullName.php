@@ -16,7 +16,7 @@ final class FullName
     public static function of(string $firstName, string $lastName): self
     {
         $firstName = trim($firstName);
-        $lastName  = trim($lastName);
+        $lastName = trim($lastName);
 
         if (strlen($firstName) < 2 || strlen($firstName) > 50) {
             throw InvalidFullNameException::invalidFirstName($firstName);

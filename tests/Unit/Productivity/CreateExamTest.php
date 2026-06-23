@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Productivity;
 
+use Illuminate\Support\Facades\Event;
 use Modules\Productivity\Application\DTOs\CreateExamDto;
 use Modules\Productivity\Application\UseCases\CreateExam;
 use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
 use Modules\Productivity\Domain\Entities\Exam;
 use Modules\Productivity\Domain\Events\ExamCreated;
-use Modules\Productivity\Domain\ValueObjects\ExamId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Event;
 
 final class CreateExamTest extends TestCase
 {

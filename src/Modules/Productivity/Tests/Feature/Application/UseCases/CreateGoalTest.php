@@ -29,7 +29,7 @@ final class CreateGoalTest extends TestCase
         $user = User::factory()->create();
         $this->userId = $user->id;
 
-        $this->goalRepository = new EloquentGoalRepository();
+        $this->goalRepository = new EloquentGoalRepository;
         $this->useCase = new CreateGoal(
             goals: $this->goalRepository,
             events: $this->app->make(EventDispatcherInterface::class),

@@ -6,17 +6,17 @@ namespace Modules\Productivity\Tests\Unit\Application\Mappers;
 
 use DateTimeImmutable;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
-use Modules\Productivity\Domain\Entities\Goal;
-use Modules\Productivity\Domain\Entities\Task;
-use Modules\Productivity\Domain\Entities\Reminder;
 use Modules\Productivity\Domain\Entities\CalendarEvent;
-use Modules\Productivity\Domain\Enums\ReminderType;
+use Modules\Productivity\Domain\Entities\Goal;
+use Modules\Productivity\Domain\Entities\Reminder;
+use Modules\Productivity\Domain\Entities\Task;
 use Modules\Productivity\Domain\Enums\GoalType;
-use Modules\Productivity\Domain\ValueObjects\GoalId;
-use Modules\Productivity\Domain\ValueObjects\TaskId;
-use Modules\Productivity\Domain\ValueObjects\ReminderId;
+use Modules\Productivity\Domain\Enums\ReminderType;
 use Modules\Productivity\Domain\ValueObjects\CalendarEventId;
+use Modules\Productivity\Domain\ValueObjects\GoalId;
 use Modules\Productivity\Domain\ValueObjects\PriorityLevel;
+use Modules\Productivity\Domain\ValueObjects\ReminderId;
+use Modules\Productivity\Domain\ValueObjects\TaskId;
 use PHPUnit\Framework\TestCase;
 
 final class ProductivityMapperTest extends TestCase
@@ -25,7 +25,7 @@ final class ProductivityMapperTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->mapper = new ProductivityMapper();
+        $this->mapper = new ProductivityMapper;
     }
 
     public function test_maps_goal_to_dto(): void

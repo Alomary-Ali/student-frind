@@ -6,14 +6,14 @@ namespace Modules\Skills\Domain\Entities;
 
 use DateTimeImmutable;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Skills\Domain\Events\SkillAdded;
-use Modules\Skills\Domain\Events\SkillLevelUpdated;
-use Modules\Skills\Domain\Events\CertificationEarned;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
+use Modules\Skills\Domain\Events\CertificationEarned;
+use Modules\Skills\Domain\Events\SkillAdded;
+use Modules\Skills\Domain\Events\SkillLevelUpdated;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
 
 final class SkillProfile
 {
@@ -33,14 +33,15 @@ final class SkillProfile
         SkillProfileId $id,
         StudentId $studentId,
     ): self {
-        $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable;
+
         return new self(
             $id,
             $studentId,
             [],
             [],
             $now,
-            $now
+            $now,
         );
     }
 
@@ -58,7 +59,7 @@ final class SkillProfile
             $skills,
             $certifications,
             $createdAt,
-            $updatedAt
+            $updatedAt,
         );
     }
 
@@ -110,7 +111,7 @@ final class SkillProfile
 
         $skill = Skill::create($id, $this->id, $name, $category, $level, $yearsOfExperience);
         $this->skills[] = $skill;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
 
         $this->raise(new SkillAdded(
             $id->value(),
@@ -118,7 +119,7 @@ final class SkillProfile
             $name,
             $category->value,
             $level->value,
-            $this->updatedAt
+            $this->updatedAt,
         ));
     }
 
@@ -129,7 +130,7 @@ final class SkillProfile
                 $oldLevel = $skill->level();
                 if ($oldLevel !== $newLevel) {
                     $skill->updateLevel($newLevel);
-                    $this->updatedAt = new DateTimeImmutable();
+                    $this->updatedAt = new DateTimeImmutable;
 
                     $this->raise(new SkillLevelUpdated(
                         $skillId->value(),
@@ -137,7 +138,7 @@ final class SkillProfile
                         $skill->name(),
                         $oldLevel->value,
                         $newLevel->value,
-                        $this->updatedAt
+                        $this->updatedAt,
                     ));
                 }
                 break;
@@ -162,18 +163,18 @@ final class SkillProfile
             $issueDate,
             $expiryDate,
             $credentialUrl,
-            $verificationCode
+            $verificationCode,
         );
 
         $this->certifications[] = $certification;
-        $this->updatedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable;
 
         $this->raise(new CertificationEarned(
             $id->value(),
             $this->id->value(),
             $name,
             $issuer,
-            $this->updatedAt
+            $this->updatedAt,
         ));
     }
 

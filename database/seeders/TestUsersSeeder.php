@@ -87,71 +87,71 @@ final class TestUsersSeeder extends Seeder
                     ]);
             }
 
-                // Assign role to user
-                $role = DB::table('roles')
-                    ->where('name', $userData['role']->value)
+            // Assign role to user
+            $role = DB::table('roles')
+                ->where('name', $userData['role']->value)
+                ->first();
+
+            if ($role !== null) {
+                $userRole = DB::table('user_roles')
+                    ->where('user_id', $existing->id)
                     ->first();
 
-                if ($role !== null) {
-                    $userRole = DB::table('user_roles')
+                if ($userRole === null) {
+                    DB::table('user_roles')->insert([
+                        'user_id' => $existing->id,
+                        'role_id' => $role->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+
+            // If student, create or update student profile
+            if ($userData['role'] === Role::STUDENT) {
+                $university = DB::table('universities')
+                    ->where('code', 'SANA')
+                    ->first();
+
+                $college = DB::table('colleges')
+                    ->where('code', 'CSIS')
+                    ->first();
+
+                $department = DB::table('departments')
+                    ->where('code', 'CSCS')
+                    ->first();
+
+                $major = DB::table('majors')
+                    ->where('code', 'CS')
+                    ->first();
+
+                if ($university !== null && $college !== null && $department !== null && $major !== null) {
+                    $student = DB::table('academic_students')
                         ->where('user_id', $existing->id)
                         ->first();
 
-                    if ($userRole === null) {
-                        DB::table('user_roles')->insert([
+                    if ($student === null) {
+                        DB::table('academic_students')->insert([
+                            'id' => (string) \Illuminate\Support\Str::uuid(),
                             'user_id' => $existing->id,
-                            'role_id' => $role->id,
+                            'student_number' => $userData['academic_id'],
+                            'academic_status' => 'active',
+                            'academic_standing' => 'good_standing',
+                            'cumulative_gpa' => $userData['gpa'],
+                            'semester_gpa' => 0.0,
+                            'current_semester_id' => null,
+                            'institution_id' => null,
+                            'university_id' => $university->id,
+                            'college_id' => $college->id,
+                            'department_id' => $department->id,
+                            'major_id' => $major->id,
+                            'level' => $userData['level'],
                             'created_at' => now(),
                             'updated_at' => now(),
                         ]);
                     }
                 }
-
-                // If student, create or update student profile
-                if ($userData['role'] === Role::STUDENT) {
-                    $university = DB::table('universities')
-                        ->where('code', 'SANA')
-                        ->first();
-
-                    $college = DB::table('colleges')
-                        ->where('code', 'CSIS')
-                        ->first();
-
-                    $department = DB::table('departments')
-                        ->where('code', 'CSCS')
-                        ->first();
-
-                    $major = DB::table('majors')
-                        ->where('code', 'CS')
-                        ->first();
-
-                    if ($university !== null && $college !== null && $department !== null && $major !== null) {
-                        $student = DB::table('academic_students')
-                            ->where('user_id', $existing->id)
-                            ->first();
-
-                        if ($student === null) {
-                            DB::table('academic_students')->insert([
-                                'id' => (string) \Illuminate\Support\Str::uuid(),
-                                'user_id' => $existing->id,
-                                'student_number' => $userData['academic_id'],
-                                'academic_status' => 'active',
-                                'academic_standing' => 'good_standing',
-                                'cumulative_gpa' => $userData['gpa'],
-                                'semester_gpa' => 0.0,
-                                'current_semester_id' => null,
-                                'institution_id' => null,
-                                'university_id' => $university->id,
-                                'college_id' => $college->id,
-                                'department_id' => $department->id,
-                                'major_id' => $major->id,
-                                'level' => $userData['level'],
-                                'created_at' => now(),
-                                'updated_at' => now(),
-                            ]);
-                        }
-                    }
-                }
+            }
         }
     }
 }

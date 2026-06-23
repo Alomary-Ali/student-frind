@@ -83,7 +83,7 @@ final class AssignAcademicPlanUseCaseTest extends TestCase
             departmentId: null,
             majorId: null,
             level: '1',
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $this->curriculum = Curriculum::reconstitute(
@@ -93,7 +93,7 @@ final class AssignAcademicPlanUseCaseTest extends TestCase
             description: 'CS program',
             totalCreditsRequired: Credits::of(30),
             institutionId: 'inst-uuid',
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $this->transactionManager->method('runInTransaction')

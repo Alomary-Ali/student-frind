@@ -154,8 +154,8 @@ final class ReminderEntityTest extends TestCase
         $id = ReminderId::generate();
         $taskId = TaskId::generate();
         $triggerAt = new DateTimeImmutable('2026-07-01 09:00:00');
-        $createdAt = new DateTimeImmutable();
-        $triggeredAt = new DateTimeImmutable();
+        $createdAt = new DateTimeImmutable;
+        $triggeredAt = new DateTimeImmutable;
 
         $reminder = Reminder::reconstitute(
             id: $id,

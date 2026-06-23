@@ -46,7 +46,7 @@ final class Reminder
             type: $type,
             linkedTaskId: $linkedTaskId,
             status: ReminderStatus::Pending,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
             triggeredAt: null,
         );
 
@@ -57,7 +57,7 @@ final class Reminder
             triggerAt: $triggerAt->format('Y-m-d H:i:s'),
             type: $type->value,
             linkedTaskId: $linkedTaskId?->value(),
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $reminder;
@@ -100,7 +100,7 @@ final class Reminder
             userId: $this->userId,
             message: $this->message,
             type: $this->type->value,
-            triggeredAt: new DateTimeImmutable(),
+            triggeredAt: new DateTimeImmutable,
         ));
     }
 
@@ -156,7 +156,7 @@ final class Reminder
 
     public function isDue(): bool
     {
-        return $this->triggerAt <= new DateTimeImmutable() && $this->status->isPending();
+        return $this->triggerAt <= new DateTimeImmutable && $this->status->isPending();
     }
 
     private function raise(object $event): void

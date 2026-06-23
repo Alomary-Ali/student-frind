@@ -53,7 +53,7 @@ final class EloquentReminderRepository implements ReminderRepositoryInterface
         $model = EloquentReminder::find($reminder->id()->value());
 
         if ($model === null) {
-            $model = new EloquentReminder();
+            $model = new EloquentReminder;
             $model->id = $reminder->id()->value();
         }
 

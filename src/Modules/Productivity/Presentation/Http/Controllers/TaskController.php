@@ -6,7 +6,6 @@ namespace Modules\Productivity\Presentation\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Modules\Productivity\Application\DTOs\CreateTaskDto;
-use Modules\Productivity\Application\DTOs\TaskDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
 use Modules\Productivity\Application\UseCases\CompleteTask;
 use Modules\Productivity\Application\UseCases\CreateTask;

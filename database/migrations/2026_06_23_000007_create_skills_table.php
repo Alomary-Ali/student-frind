@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('category', [
                 'programming', 'networking', 'design', 'ai', 'data_analysis',
-                'leadership', 'communication', 'teamwork', 'problem_solving', 'time_management'
+                'leadership', 'communication', 'teamwork', 'problem_solving', 'time_management',
             ]);
             $table->enum('level', ['beginner', 'intermediate', 'advanced', 'expert'])->default('beginner');
             $table->integer('years_of_experience')->default(0);

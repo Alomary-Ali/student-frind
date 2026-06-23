@@ -6,11 +6,11 @@ namespace Modules\Productivity\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
+use Modules\Productivity\Application\UseCases\CompleteTask;
 use Modules\Productivity\Application\UseCases\CreateCalendarEvent;
 use Modules\Productivity\Application\UseCases\CreateGoal;
 use Modules\Productivity\Application\UseCases\CreateReminder;
 use Modules\Productivity\Application\UseCases\CreateTask;
-use Modules\Productivity\Application\UseCases\CompleteTask;
 use Modules\Productivity\Application\UseCases\GenerateProductivitySnapshot;
 use Modules\Productivity\Application\UseCases\GetProductivityDashboard;
 use Modules\Productivity\Application\UseCases\UpdateGoalProgress;
@@ -112,6 +112,6 @@ final class ProductivityServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/../Presentation/Http/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Presentation/Http/routes.php');
     }
 }

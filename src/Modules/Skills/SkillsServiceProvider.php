@@ -23,28 +23,28 @@ final class SkillsServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \Modules\Skills\Domain\Contracts\SkillProfileRepositoryInterface::class,
-            \Modules\Skills\Infrastructure\Persistence\EloquentSkillProfileRepository::class,
+            Domain\Contracts\SkillProfileRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentSkillProfileRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Skills\Domain\Contracts\SkillRepositoryInterface::class,
-            \Modules\Skills\Infrastructure\Persistence\EloquentSkillRepository::class,
+            Domain\Contracts\SkillRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentSkillRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Skills\Domain\Contracts\CertificationRepositoryInterface::class,
-            \Modules\Skills\Infrastructure\Persistence\EloquentCertificationRepository::class,
+            Domain\Contracts\CertificationRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentCertificationRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Skills\Domain\Contracts\AchievementRepositoryInterface::class,
-            \Modules\Skills\Infrastructure\Persistence\EloquentAchievementRepository::class,
+            Domain\Contracts\AchievementRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentAchievementRepository::class,
         );
 
         $this->app->bind(
-            \Modules\Skills\Domain\Contracts\LearningPathRepositoryInterface::class,
-            \Modules\Skills\Infrastructure\Persistence\EloquentLearningPathRepository::class,
+            Domain\Contracts\LearningPathRepositoryInterface::class,
+            Infrastructure\Persistence\EloquentLearningPathRepository::class,
         );
     }
 

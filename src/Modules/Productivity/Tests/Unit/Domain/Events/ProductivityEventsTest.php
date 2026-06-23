@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Modules\Productivity\Tests\Unit\Domain\Events;
 
 use DateTimeImmutable;
-use Modules\Productivity\Domain\Events\GoalCreated;
-use Modules\Productivity\Domain\Events\GoalCompleted;
-use Modules\Productivity\Domain\Events\TaskCreated;
-use Modules\Productivity\Domain\Events\TaskCompleted;
-use Modules\Productivity\Domain\Events\ProjectCreated;
-use Modules\Productivity\Domain\Events\ExamCreated;
 use Modules\Productivity\Domain\Events\AssignmentCreated;
+use Modules\Productivity\Domain\Events\ExamCreated;
+use Modules\Productivity\Domain\Events\GoalCompleted;
+use Modules\Productivity\Domain\Events\GoalCreated;
+use Modules\Productivity\Domain\Events\ProductivitySnapshotGenerated;
+use Modules\Productivity\Domain\Events\ProjectCreated;
 use Modules\Productivity\Domain\Events\ReminderCreated;
 use Modules\Productivity\Domain\Events\ReminderTriggered;
-use Modules\Productivity\Domain\Events\ProductivitySnapshotGenerated;
-use Modules\Productivity\Domain\ValueObjects\ProjectId;
-use Modules\Productivity\Domain\ValueObjects\ExamId;
+use Modules\Productivity\Domain\Events\TaskCompleted;
+use Modules\Productivity\Domain\Events\TaskCreated;
 use Modules\Productivity\Domain\ValueObjects\AssignmentId;
+use Modules\Productivity\Domain\ValueObjects\ExamId;
+use Modules\Productivity\Domain\ValueObjects\ProjectId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 
@@ -31,7 +31,7 @@ final class ProductivityEventsTest extends TestCase
             title: 'Test Goal',
             targetDate: '2026-12-31',
             priority: 'high',
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         );
 
         $this->assertSame('goal-1', $event->goalId);
@@ -48,7 +48,7 @@ final class ProductivityEventsTest extends TestCase
             goalId: 'goal-1',
             userId: 'user-1',
             title: 'Test Goal',
-            completedAt: new DateTimeImmutable(),
+            completedAt: new DateTimeImmutable,
         );
 
         $this->assertSame('goal-1', $event->goalId);
@@ -66,7 +66,7 @@ final class ProductivityEventsTest extends TestCase
             dueDate: '2026-06-25',
             priority: 'medium',
             linkedGoalId: null,
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         );
 
         $this->assertSame('task-1', $event->taskId);
@@ -82,7 +82,7 @@ final class ProductivityEventsTest extends TestCase
             userId: 'user-1',
             title: 'Test Task',
             linkedGoalId: 'goal-1',
-            completedAt: new DateTimeImmutable(),
+            completedAt: new DateTimeImmutable,
         );
 
         $this->assertSame('task-1', $event->taskId);
@@ -149,7 +149,7 @@ final class ProductivityEventsTest extends TestCase
             triggerAt: '2026-06-24 09:00:00',
             type: 'in_app',
             linkedTaskId: 'task-1',
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         );
 
         $this->assertSame('reminder-1', $event->reminderId);
@@ -164,7 +164,7 @@ final class ProductivityEventsTest extends TestCase
             userId: 'user-1',
             message: 'Task due tomorrow',
             type: 'in_app',
-            triggeredAt: new DateTimeImmutable(),
+            triggeredAt: new DateTimeImmutable,
         );
 
         $this->assertSame('reminder-1', $event->reminderId);
@@ -183,7 +183,7 @@ final class ProductivityEventsTest extends TestCase
             overdueTasks: 3,
             completionRate: 50.0,
             snapshotDate: '2026-06-23',
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         );
 
         $this->assertSame('snapshot-1', $event->snapshotId);

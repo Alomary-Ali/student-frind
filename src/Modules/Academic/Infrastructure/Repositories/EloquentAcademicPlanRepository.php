@@ -41,7 +41,7 @@ final class EloquentAcademicPlanRepository implements AcademicPlanRepositoryInte
                 'status' => $plan->status()->value,
                 'assigned_at' => $plan->assignedAt(),
                 'institution_id' => $plan->institutionId(),
-            ]
+            ],
         );
     }
 

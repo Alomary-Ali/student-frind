@@ -12,7 +12,7 @@ final class AppServiceProviderTest extends TestCase
     public function test_provider_is_registered_in_container(): void
     {
         $this->assertTrue(
-            app()->providerIsLoaded(AppServiceProvider::class)
+            app()->providerIsLoaded(AppServiceProvider::class),
         );
     }
 

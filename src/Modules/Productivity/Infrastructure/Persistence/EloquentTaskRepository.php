@@ -62,7 +62,7 @@ final class EloquentTaskRepository implements TaskRepositoryInterface
         $model = EloquentTask::find($task->id()->value());
 
         if ($model === null) {
-            $model = new EloquentTask();
+            $model = new EloquentTask;
             $model->id = $task->id()->value();
         }
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Productivity\Application\UseCases;
 
 use Modules\Productivity\Application\DTOs\ProductivityDashboardDto;
-use Modules\Productivity\Application\DTOs\TaskDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
 use Modules\Productivity\Domain\Contracts\CalendarEventRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;

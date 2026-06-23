@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Productivity\Presentation\Http\Policies;
 
 use Illuminate\Auth\Access\Response;
-use Modules\Productivity\Domain\Entities\Goal;
-use Modules\Productivity\Domain\ValueObjects\GoalId;
 use Modules\Productivity\Infrastructure\Persistence\Eloquent\EloquentGoal;
 
 final class GoalPolicy

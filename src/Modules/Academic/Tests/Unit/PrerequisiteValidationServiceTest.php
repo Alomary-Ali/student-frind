@@ -19,7 +19,7 @@ final class PrerequisiteValidationServiceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->service = new PrerequisiteValidationService();
+        $this->service = new PrerequisiteValidationService;
     }
 
     public function test_validates_when_no_prerequisites(): void
@@ -78,7 +78,7 @@ final class PrerequisiteValidationServiceTest extends TestCase
             courseId: CourseId::fromString('660e8400-e29b-41d4-a716-446655440030'),
             semesterId: SemesterId::fromString('660e8400-e29b-41d4-a716-446655440041'),
             status: \Modules\Academic\Domain\Enums\EnrollmentStatus::Completed,
-            enrolledAt: new \DateTimeImmutable(),
+            enrolledAt: new \DateTimeImmutable,
         );
 
         $completedEnrollments = [$enrollment];
@@ -108,7 +108,7 @@ final class PrerequisiteValidationServiceTest extends TestCase
             courseId: CourseId::fromString('660e8400-e29b-41d4-a716-446655440030'),
             semesterId: SemesterId::fromString('660e8400-e29b-41d4-a716-446655440041'),
             status: \Modules\Academic\Domain\Enums\EnrollmentStatus::Completed,
-            enrolledAt: new \DateTimeImmutable(),
+            enrolledAt: new \DateTimeImmutable,
         );
 
         $enrollment2 = Enrollment::reconstitute(
@@ -117,7 +117,7 @@ final class PrerequisiteValidationServiceTest extends TestCase
             courseId: CourseId::fromString('660e8400-e29b-41d4-a716-446655440031'),
             semesterId: SemesterId::fromString('660e8400-e29b-41d4-a716-446655440041'),
             status: \Modules\Academic\Domain\Enums\EnrollmentStatus::Completed,
-            enrolledAt: new \DateTimeImmutable(),
+            enrolledAt: new \DateTimeImmutable,
         );
 
         $completedEnrollments = [$enrollment1, $enrollment2];

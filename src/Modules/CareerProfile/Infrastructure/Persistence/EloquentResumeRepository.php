@@ -7,9 +7,9 @@ namespace Modules\CareerProfile\Infrastructure\Persistence;
 use DateTimeImmutable;
 use Modules\CareerProfile\Domain\Contracts\ResumeRepositoryInterface;
 use Modules\CareerProfile\Domain\Entities\Resume;
-use Modules\CareerProfile\Domain\ValueObjects\ResumeId;
-use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
 use Modules\CareerProfile\Domain\Enums\ResumeTemplate;
+use Modules\CareerProfile\Domain\ValueObjects\CareerProfileId;
+use Modules\CareerProfile\Domain\ValueObjects\ResumeId;
 use Modules\CareerProfile\Infrastructure\Persistence\Eloquent\EloquentResume;
 
 final class EloquentResumeRepository implements ResumeRepositoryInterface
@@ -30,7 +30,7 @@ final class EloquentResumeRepository implements ResumeRepositoryInterface
         $model = EloquentResume::find($resume->id()->value());
 
         if ($model === null) {
-            $model = new EloquentResume();
+            $model = new EloquentResume;
             $model->id = $resume->id()->value();
         }
 
@@ -53,7 +53,7 @@ final class EloquentResumeRepository implements ResumeRepositoryInterface
             careerProfileId: CareerProfileId::of($model->career_profile_id),
             template: ResumeTemplate::from($model->template),
             content: $model->content,
-            generatedAt: new DateTimeImmutable($model->generated_at->format('Y-m-d H:i:s'))
+            generatedAt: new DateTimeImmutable($model->generated_at->format('Y-m-d H:i:s')),
         );
     }
 }

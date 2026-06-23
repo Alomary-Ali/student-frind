@@ -41,7 +41,7 @@ final class CalendarEvent
             endsAt: $endsAt,
             isAllDay: $isAllDay,
             linkedTaskId: $linkedTaskId,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
     }
 
@@ -116,17 +116,17 @@ final class CalendarEvent
 
     public function isPast(): bool
     {
-        return $this->endsAt < new DateTimeImmutable();
+        return $this->endsAt < new DateTimeImmutable;
     }
 
     public function isFuture(): bool
     {
-        return $this->startsAt > new DateTimeImmutable();
+        return $this->startsAt > new DateTimeImmutable;
     }
 
     public function isOngoing(): bool
     {
-        $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable;
 
         return $this->startsAt <= $now && $this->endsAt >= $now;
     }

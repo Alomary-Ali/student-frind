@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Productivity\Domain\Services;
 
-use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\AssignmentRepositoryInterface;
 use Modules\Productivity\Domain\Contracts\ExamRepositoryInterface;
+use Modules\Productivity\Domain\Contracts\TaskRepositoryInterface;
 use Modules\Shared\Domain\ValueObjects\UserId;
 
 final readonly class PriorityEngine
@@ -26,7 +26,7 @@ final readonly class PriorityEngine
         $priorityItems = [];
 
         foreach ($tasks as $task) {
-            if (!$task->status()->isCompleted()) {
+            if (! $task->status()->isCompleted()) {
                 $priorityItems[] = [
                     'type' => 'task',
                     'id' => $task->id()->value(),
@@ -38,7 +38,7 @@ final readonly class PriorityEngine
         }
 
         foreach ($assignments as $assignment) {
-            if (!$assignment->status()->isCompleted()) {
+            if (! $assignment->status()->isCompleted()) {
                 $priorityItems[] = [
                     'type' => 'assignment',
                     'id' => $assignment->id()->value(),
@@ -71,7 +71,7 @@ final readonly class PriorityEngine
         $priority = $task->priority()->weight() * 10;
 
         if ($task->dueDate()) {
-            $daysUntilDue = (new \DateTime())->diff($task->dueDate())->days;
+            $daysUntilDue = (new \DateTime)->diff($task->dueDate())->days;
             if ($daysUntilDue <= 1) {
                 $priority += 50;
             } elseif ($daysUntilDue <= 3) {
@@ -81,7 +81,7 @@ final readonly class PriorityEngine
             }
         }
 
-        if ($task->dueDate() && $task->dueDate() < new \DateTime()) {
+        if ($task->dueDate() && $task->dueDate() < new \DateTime) {
             $priority += 100;
         }
 
@@ -92,7 +92,7 @@ final readonly class PriorityEngine
     {
         $priority = 40;
 
-        $daysUntilDue = (new \DateTime())->diff($assignment->dueDate())->days;
+        $daysUntilDue = (new \DateTime)->diff($assignment->dueDate())->days;
         if ($daysUntilDue <= 1) {
             $priority += 50;
         } elseif ($daysUntilDue <= 3) {
@@ -112,7 +112,7 @@ final readonly class PriorityEngine
     {
         $priority = 50;
 
-        $daysUntilExam = (new \DateTime())->diff($exam->examDate())->days;
+        $daysUntilExam = (new \DateTime)->diff($exam->examDate())->days;
         if ($daysUntilExam <= 1) {
             $priority += 50;
         } elseif ($daysUntilExam <= 3) {

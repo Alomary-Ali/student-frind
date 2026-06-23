@@ -36,7 +36,7 @@ final class AcademicPlan
             studentId: $studentId,
             curriculumId: $curriculumId,
             status: AcademicPlanStatus::Active,
-            assignedAt: new DateTimeImmutable(),
+            assignedAt: new DateTimeImmutable,
             institutionId: $institutionId,
         );
 
@@ -71,12 +71,35 @@ final class AcademicPlan
         return $this->status === AcademicPlanStatus::Active;
     }
 
-    public function id(): AcademicPlanId { return $this->id; }
-    public function studentId(): StudentId { return $this->studentId; }
-    public function curriculumId(): CurriculumId { return $this->curriculumId; }
-    public function status(): AcademicPlanStatus { return $this->status; }
-    public function assignedAt(): DateTimeImmutable { return $this->assignedAt; }
-    public function institutionId(): ?string { return $this->institutionId; }
+    public function id(): AcademicPlanId
+    {
+        return $this->id;
+    }
+
+    public function studentId(): StudentId
+    {
+        return $this->studentId;
+    }
+
+    public function curriculumId(): CurriculumId
+    {
+        return $this->curriculumId;
+    }
+
+    public function status(): AcademicPlanStatus
+    {
+        return $this->status;
+    }
+
+    public function assignedAt(): DateTimeImmutable
+    {
+        return $this->assignedAt;
+    }
+
+    public function institutionId(): ?string
+    {
+        return $this->institutionId;
+    }
 
     private function raise(object $event): void
     {

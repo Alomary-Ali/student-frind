@@ -5,19 +5,17 @@ declare(strict_types=1);
 namespace Modules\Skills\Tests\Unit\Domain\Entities;
 
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Entities\SkillProfile;
-use Modules\Skills\Domain\Entities\Skill;
-use Modules\Skills\Domain\Entities\Certification;
-use Modules\Skills\Domain\ValueObjects\SkillProfileId;
-use Modules\Skills\Domain\ValueObjects\SkillId;
-use Modules\Skills\Domain\ValueObjects\CertificationId;
 use Modules\Skills\Domain\Enums\SkillCategory;
 use Modules\Skills\Domain\Enums\SkillLevel;
-use Modules\Skills\Domain\Events\SkillAdded;
 use Modules\Skills\Domain\Events\CertificationEarned;
+use Modules\Skills\Domain\Events\SkillAdded;
 use Modules\Skills\Domain\Events\SkillLevelUpdated;
+use Modules\Skills\Domain\ValueObjects\CertificationId;
+use Modules\Skills\Domain\ValueObjects\SkillId;
+use Modules\Skills\Domain\ValueObjects\SkillProfileId;
+use PHPUnit\Framework\TestCase;
 
 final class SkillProfileEntityTest extends TestCase
 {
@@ -39,7 +37,7 @@ final class SkillProfileEntityTest extends TestCase
     {
         $profileId = SkillProfileId::generate();
         $studentId = StudentId::generate();
-        $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable;
         $profile = SkillProfile::reconstitute($profileId, $studentId, [], [], $now, $now);
 
         $this->assertSame($profileId, $profile->id());
@@ -121,7 +119,7 @@ final class SkillProfileEntityTest extends TestCase
         $profile = SkillProfile::create($profileId, $studentId);
 
         $certId = CertificationId::generate();
-        $profile->addCertification($certId, 'OCA Java', 'Oracle', new DateTimeImmutable());
+        $profile->addCertification($certId, 'OCA Java', 'Oracle', new DateTimeImmutable);
 
         $this->assertCount(1, $profile->certifications());
         $this->assertSame('OCA Java', $profile->certifications()[0]->name());

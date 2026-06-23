@@ -7,12 +7,8 @@ namespace Modules\CareerProfile\Tests\Feature\Infrastructure\Persistence;
 use App\Models\User;
 use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Academic\Infrastructure\Persistence\EloquentStudent;
-use Modules\CareerProfile\Domain\Contracts\CareerProfileRepositoryInterface;
-use Modules\CareerProfile\Domain\Contracts\CareerGoalRepositoryInterface;
-use Modules\CareerProfile\Domain\Contracts\ExperienceRepositoryInterface;
-use Modules\CareerProfile\Domain\Contracts\PortfolioItemRepositoryInterface;
-use Modules\CareerProfile\Domain\Contracts\ResumeRepositoryInterface;
 use Modules\CareerProfile\Domain\Entities\CareerGoal;
 use Modules\CareerProfile\Domain\Entities\CareerProfile;
 use Modules\CareerProfile\Domain\Entities\Experience;
@@ -30,7 +26,6 @@ use Modules\CareerProfile\Infrastructure\Persistence\EloquentCareerProfileReposi
 use Modules\CareerProfile\Infrastructure\Persistence\EloquentExperienceRepository;
 use Modules\CareerProfile\Infrastructure\Persistence\EloquentPortfolioItemRepository;
 use Modules\CareerProfile\Infrastructure\Persistence\EloquentResumeRepository;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 use Tests\TestCase;
 
 final class CareerProfileRepositoriesTest extends TestCase
@@ -51,11 +46,11 @@ final class CareerProfileRepositoriesTest extends TestCase
     {
         parent::setUp();
 
-        $this->profileRepo = new EloquentCareerProfileRepository();
-        $this->goalRepo = new EloquentCareerGoalRepository();
-        $this->experienceRepo = new EloquentExperienceRepository();
-        $this->portfolioRepo = new EloquentPortfolioItemRepository();
-        $this->resumeRepo = new EloquentResumeRepository();
+        $this->profileRepo = new EloquentCareerProfileRepository;
+        $this->goalRepo = new EloquentCareerGoalRepository;
+        $this->experienceRepo = new EloquentExperienceRepository;
+        $this->portfolioRepo = new EloquentPortfolioItemRepository;
+        $this->resumeRepo = new EloquentResumeRepository;
 
         $user = User::factory()->create(['role' => 'student']);
         $student = EloquentStudent::create([

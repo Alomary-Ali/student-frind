@@ -39,7 +39,7 @@ final class Enrollment
             courseId: $courseId,
             semesterId: $semesterId,
             status: EnrollmentStatus::Enrolled,
-            enrolledAt: new DateTimeImmutable(),
+            enrolledAt: new DateTimeImmutable,
         );
 
         $enrollment->raise(new StudentEnrolled(
@@ -87,12 +87,35 @@ final class Enrollment
         return $this->status === EnrollmentStatus::Completed;
     }
 
-    public function id(): EnrollmentId { return $this->id; }
-    public function studentId(): StudentId { return $this->studentId; }
-    public function courseId(): CourseId { return $this->courseId; }
-    public function semesterId(): SemesterId { return $this->semesterId; }
-    public function status(): EnrollmentStatus { return $this->status; }
-    public function enrolledAt(): DateTimeImmutable { return $this->enrolledAt; }
+    public function id(): EnrollmentId
+    {
+        return $this->id;
+    }
+
+    public function studentId(): StudentId
+    {
+        return $this->studentId;
+    }
+
+    public function courseId(): CourseId
+    {
+        return $this->courseId;
+    }
+
+    public function semesterId(): SemesterId
+    {
+        return $this->semesterId;
+    }
+
+    public function status(): EnrollmentStatus
+    {
+        return $this->status;
+    }
+
+    public function enrolledAt(): DateTimeImmutable
+    {
+        return $this->enrolledAt;
+    }
 
     private function raise(object $event): void
     {

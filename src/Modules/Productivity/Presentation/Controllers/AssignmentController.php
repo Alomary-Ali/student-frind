@@ -26,6 +26,7 @@ final class AssignmentController extends Controller
     {
         $userId = \Modules\Shared\Domain\ValueObjects\UserId::fromString(auth()->id());
         $assignments = $this->assignmentRepository->findByUserId($userId);
+
         return view('productivity.assignments', compact('assignments'));
     }
 
@@ -33,6 +34,7 @@ final class AssignmentController extends Controller
     {
         $assignmentId = \Modules\Productivity\Domain\ValueObjects\AssignmentId::fromString($id);
         $assignment = $this->assignmentRepository->findById($assignmentId);
+
         return view('productivity.assignment-detail', compact('assignment'));
     }
 
@@ -54,7 +56,7 @@ final class AssignmentController extends Controller
         $result = $this->updateAssignmentProgress->execute(
             $id,
             $validated['status'],
-            $validated['submission_url'] ?? null
+            $validated['submission_url'] ?? null,
         );
 
         return response()->json($result);

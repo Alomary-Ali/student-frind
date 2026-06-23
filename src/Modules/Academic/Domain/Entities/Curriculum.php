@@ -32,7 +32,7 @@ final class Curriculum
         Credits $totalCreditsRequired,
         ?string $institutionId = null,
     ): self {
-        return new self($id, $name, $code, $description, $totalCreditsRequired, $institutionId, new DateTimeImmutable());
+        return new self($id, $name, $code, $description, $totalCreditsRequired, $institutionId, new DateTimeImmutable);
     }
 
     public static function reconstitute(
@@ -62,11 +62,38 @@ final class Curriculum
         return $this->courses;
     }
 
-    public function id(): CurriculumId { return $this->id; }
-    public function name(): string { return $this->name; }
-    public function code(): string { return $this->code; }
-    public function description(): string { return $this->description; }
-    public function totalCreditsRequired(): Credits { return $this->totalCreditsRequired; }
-    public function institutionId(): ?string { return $this->institutionId; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
+    public function id(): CurriculumId
+    {
+        return $this->id;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function code(): string
+    {
+        return $this->code;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function totalCreditsRequired(): Credits
+    {
+        return $this->totalCreditsRequired;
+    }
+
+    public function institutionId(): ?string
+    {
+        return $this->institutionId;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 }

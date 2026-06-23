@@ -6,10 +6,10 @@ namespace Modules\Skills\Tests\Unit\Domain\Entities;
 
 use DateTimeImmutable;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Entities\LearningPath;
 use Modules\Skills\Domain\ValueObjects\LearningPathId;
+use PHPUnit\Framework\TestCase;
 
 final class LearningPathEntityTest extends TestCase
 {

@@ -60,7 +60,7 @@ final class CreateSemesterPlanUseCaseTest extends TestCase
             creditHours: Credits::of(3),
             isActive: true,
             institutionId: null,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $course2 = Course::reconstitute(
@@ -71,7 +71,7 @@ final class CreateSemesterPlanUseCaseTest extends TestCase
             creditHours: Credits::of(4),
             isActive: true,
             institutionId: null,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $this->courseRepository->expects($this->exactly(2))
@@ -158,7 +158,7 @@ final class CreateSemesterPlanUseCaseTest extends TestCase
             creditHours: Credits::of(3),
             isActive: true,
             institutionId: null,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $this->courseRepository->expects($this->once())

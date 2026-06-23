@@ -18,7 +18,7 @@ final class PermissionMiddleware
     ) {}
 
     /**
-     * @param array<string> $permissions
+     * @param  array<string>  $permissions
      */
     public function handle(Request $request, Closure $next, string ...$permissions): Response
     {
@@ -46,7 +46,7 @@ final class PermissionMiddleware
             }
         }
 
-        if (!$hasRequiredPermission) {
+        if (! $hasRequiredPermission) {
             return response()->json([
                 'error' => [
                     'code' => 'FORBIDDEN',

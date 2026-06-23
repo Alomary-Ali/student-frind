@@ -9,7 +9,6 @@ use Modules\Productivity\Domain\Entities\Task;
 use Modules\Productivity\Domain\Enums\TaskStatus;
 use Modules\Productivity\Domain\Events\TaskCompleted;
 use Modules\Productivity\Domain\Events\TaskCreated;
-use Modules\Productivity\Domain\Exceptions\TaskAlreadyCompletedException;
 use Modules\Productivity\Domain\Exceptions\TaskCannotBeModifiedException;
 use Modules\Productivity\Domain\ValueObjects\PriorityLevel;
 use Modules\Productivity\Domain\ValueObjects\TaskId;

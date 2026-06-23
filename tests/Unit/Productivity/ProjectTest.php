@@ -6,7 +6,6 @@ namespace Tests\Unit\Productivity;
 
 use Modules\Productivity\Domain\Entities\Project;
 use Modules\Productivity\Domain\Enums\ProjectStatus;
-use Modules\Productivity\Domain\ValueObjects\ProjectId;
 use Modules\Shared\Domain\ValueObjects\UserId;
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +17,7 @@ final class ProjectTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 
@@ -34,7 +33,7 @@ final class ProjectTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 
@@ -49,7 +48,7 @@ final class ProjectTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 
@@ -64,7 +63,7 @@ final class ProjectTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 
@@ -81,7 +80,7 @@ final class ProjectTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 
@@ -96,7 +95,7 @@ final class ProjectTest extends TestCase
             userId: UserId::generate(),
             title: 'مشروع تطوير تطبيق الويب',
             description: 'تطوير تطبيق ويب لإدارة المهام',
-            startDate: new \DateTimeImmutable(),
+            startDate: new \DateTimeImmutable,
             dueDate: new \DateTimeImmutable('+60 days'),
         );
 

@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthPageController;
 use App\Http\Controllers\HomeController;
-use Modules\Shared\Presentation\Controllers\LoginController;
-use Modules\Shared\Presentation\Controllers\LogoutController;
-use Modules\Productivity\Presentation\Controllers\ProductivityDashboardController;
+use Illuminate\Support\Facades\Route;
 use Modules\Academic\Presentation\Controllers\AcademicDashboardController;
 use Modules\Academic\Presentation\Controllers\AcademicPlanController;
 use Modules\Academic\Presentation\Controllers\GetStudentAlertsController;
 use Modules\Academic\Presentation\Controllers\ListCoursesController;
 use Modules\Academic\Presentation\Controllers\ListCurriculumCoursesController;
-use Modules\Productivity\Presentation\Controllers\ProductivityGoalController;
-use Modules\Productivity\Presentation\Controllers\ProductivityTaskController;
-use Modules\Productivity\Presentation\Controllers\ProductivityCalendarController;
-use Modules\Productivity\Presentation\Controllers\ProductivityReminderController;
 use Modules\Productivity\Presentation\Controllers\AssignmentController;
 use Modules\Productivity\Presentation\Controllers\ExamController;
+use Modules\Productivity\Presentation\Controllers\ProductivityCalendarController;
+use Modules\Productivity\Presentation\Controllers\ProductivityDashboardController;
+use Modules\Productivity\Presentation\Controllers\ProductivityGoalController;
+use Modules\Productivity\Presentation\Controllers\ProductivityReminderController;
+use Modules\Productivity\Presentation\Controllers\ProductivityTaskController;
 use Modules\Productivity\Presentation\Controllers\ProjectController;
+use Modules\Shared\Presentation\Controllers\LoginController;
+use Modules\Shared\Presentation\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,13 +64,13 @@ Route::middleware('auth')->group(function () {
             ->middleware('role:student,advisor,admin,faculty');
         Route::get('/plan', AcademicPlanController::class)->name('plan')
             ->middleware('role:student,advisor,admin');
-        Route::get('/profile', \Modules\Academic\Presentation\Controllers\AcademicProfileController::class)->name('profile')
+        Route::get('/profile', Modules\Academic\Presentation\Controllers\AcademicProfileController::class)->name('profile')
             ->middleware('role:student,advisor,admin');
-        Route::get('/progress', \Modules\Academic\Presentation\Controllers\AcademicProgressController::class)->name('progress')
+        Route::get('/progress', Modules\Academic\Presentation\Controllers\AcademicProgressController::class)->name('progress')
             ->middleware('role:student,advisor,admin');
         Route::get('/alerts', GetStudentAlertsController::class)->name('alerts')
             ->middleware('role:student,advisor,admin');
-        Route::get('/graduation-map', \Modules\Academic\Presentation\Controllers\GraduationMapController::class)->name('graduation-map')
+        Route::get('/graduation-map', Modules\Academic\Presentation\Controllers\GraduationMapController::class)->name('graduation-map')
             ->middleware('role:student,advisor,admin');
         Route::get('/curriculum', ListCurriculumCoursesController::class)->name('curriculum')
             ->middleware('role:student,advisor,admin,faculty');
@@ -141,4 +141,3 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/', HomeController::class)->name('home')->middleware('auth');
-

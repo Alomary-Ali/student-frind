@@ -40,7 +40,7 @@ final readonly class RoleId
             throw new \InvalidArgumentException('Role ID cannot be empty');
         }
 
-        if (!Str::isUuid($this->value)) {
+        if (! Str::isUuid($this->value)) {
             throw new \InvalidArgumentException('Role ID must be a valid UUID');
         }
     }

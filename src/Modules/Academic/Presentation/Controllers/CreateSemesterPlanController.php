@@ -43,7 +43,7 @@ final class CreateSemesterPlanController extends Controller
                 'status' => $plan->status(),
                 'notes' => $plan->notes(),
             ],
-            message: 'Semester plan created successfully'
+            message: 'Semester plan created successfully',
         )->setStatusCode(201);
     }
 }

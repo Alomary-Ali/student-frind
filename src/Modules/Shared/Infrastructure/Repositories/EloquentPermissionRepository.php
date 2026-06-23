@@ -51,7 +51,7 @@ final class EloquentPermissionRepository implements PermissionRepositoryInterfac
         $model = EloquentPermission::find($permission->id()->value());
 
         if ($model === null) {
-            $model = new EloquentPermission();
+            $model = new EloquentPermission;
             $model->id = $permission->id()->value();
         }
 
@@ -66,7 +66,6 @@ final class EloquentPermissionRepository implements PermissionRepositoryInterfac
     }
 
     /**
-     * @param RoleId $roleId
      * @return array<Permission>
      */
     public function findByRoleId(RoleId $roleId): array

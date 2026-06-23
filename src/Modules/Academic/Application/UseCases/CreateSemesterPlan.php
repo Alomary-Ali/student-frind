@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Academic\Application\UseCases;
 
-use Modules\Academic\Domain\Contracts\SemesterPlanRepositoryInterface;
 use Modules\Academic\Domain\Contracts\CourseRepositoryInterface;
+use Modules\Academic\Domain\Contracts\SemesterPlanRepositoryInterface;
 use Modules\Academic\Domain\Entities\SemesterPlan;
+use Modules\Academic\Domain\Exceptions\CourseNotFoundException;
+use Modules\Academic\Domain\ValueObjects\SemesterId;
 use Modules\Academic\Domain\ValueObjects\SemesterPlanId;
 use Modules\Academic\Domain\ValueObjects\StudentId;
-use Modules\Academic\Domain\ValueObjects\SemesterId;
-use Modules\Academic\Domain\Exceptions\CourseNotFoundException;
 
 final readonly class CreateSemesterPlan
 {

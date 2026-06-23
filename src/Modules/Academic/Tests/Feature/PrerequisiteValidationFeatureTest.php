@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Academic\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\Sanctum;
 use Modules\Academic\Infrastructure\Persistence\EloquentCourse;
 use Modules\Academic\Infrastructure\Persistence\EloquentSemester;
@@ -56,7 +55,7 @@ final class PrerequisiteValidationFeatureTest extends TestCase
             'cumulative_gpa' => 3.5,
             'institution_id' => null,
         ]);
-        
+
         // Verify student exists in database
         $this->assertDatabaseHas('academic_students', ['id' => $studentId]);
 

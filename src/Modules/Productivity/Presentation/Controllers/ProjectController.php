@@ -26,6 +26,7 @@ final class ProjectController extends Controller
     {
         $userId = \Modules\Shared\Domain\ValueObjects\UserId::fromString(auth()->id());
         $projects = $this->projectRepository->findByUserId($userId);
+
         return view('productivity.projects', compact('projects'));
     }
 
@@ -33,6 +34,7 @@ final class ProjectController extends Controller
     {
         $projectId = \Modules\Productivity\Domain\ValueObjects\ProjectId::fromString($id);
         $project = $this->projectRepository->findById($projectId);
+
         return view('productivity.project-detail', compact('project'));
     }
 
@@ -52,7 +54,7 @@ final class ProjectController extends Controller
 
         $result = $this->updateProjectProgress->execute(
             $id,
-            $validated['progress_percentage']
+            $validated['progress_percentage'],
         );
 
         return response()->json($result);

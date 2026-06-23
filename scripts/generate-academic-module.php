@@ -17,6 +17,7 @@ $files = [];
 
 $exceptionTemplate = function (string $name, string $messageMethod = ''): string {
     $method = $messageMethod ?: "return '{$name} occurred.';";
+
     return <<<PHP
 <?php
 

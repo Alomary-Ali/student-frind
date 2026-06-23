@@ -69,14 +69,14 @@ final class Student
             departmentId: $departmentId,
             majorId: $majorId,
             level: $level,
-            createdAt: new DateTimeImmutable(),
+            createdAt: new DateTimeImmutable,
         );
 
         $student->raise(new StudentCreated(
             studentId: $id->value(),
             userId: $userId,
             studentNumber: $studentNumber,
-            occurredAt: new DateTimeImmutable(),
+            occurredAt: new DateTimeImmutable,
         ));
 
         return $student;
@@ -166,7 +166,7 @@ final class Student
             studentId: $this->id->value(),
             previousGpa: $previous->value(),
             newGpa: $newGpa->value(),
-            updatedAt: new DateTimeImmutable(),
+            updatedAt: new DateTimeImmutable,
         ));
 
         $this->updateStandingFromGpa($newGpa);
@@ -189,28 +189,90 @@ final class Student
         $this->academicStanding = match (true) {
             $value >= 2.0 => AcademicStanding::GoodStanding,
             $value >= 1.5 => AcademicStanding::Probation,
-            default       => AcademicStanding::Suspension,
+            default => AcademicStanding::Suspension,
         };
     }
 
-    public function id(): StudentId { return $this->id; }
-    public function userId(): string { return $this->userId; }
-    public function studentNumber(): string { return $this->studentNumber; }
-    public function academicStatus(): AcademicStatus { return $this->academicStatus; }
-    public function academicStanding(): AcademicStanding { return $this->academicStanding; }
-    public function cumulativeGpa(): Gpa { return $this->cumulativeGpa; }
-    public function semesterGpa(): ?Gpa { return $this->semesterGpa; }
-    public function currentSemesterId(): ?string { return $this->currentSemesterId; }
-    public function institutionId(): ?string { return $this->institutionId; }
-    public function universityId(): ?string { return $this->universityId; }
-    public function collegeId(): ?string { return $this->collegeId; }
-    public function departmentId(): ?string { return $this->departmentId; }
-    public function majorId(): ?string { return $this->majorId; }
-    public function level(): string { return $this->level; }
-    public function createdAt(): DateTimeImmutable { return $this->createdAt; }
+    public function id(): StudentId
+    {
+        return $this->id;
+    }
+
+    public function userId(): string
+    {
+        return $this->userId;
+    }
+
+    public function studentNumber(): string
+    {
+        return $this->studentNumber;
+    }
+
+    public function academicStatus(): AcademicStatus
+    {
+        return $this->academicStatus;
+    }
+
+    public function academicStanding(): AcademicStanding
+    {
+        return $this->academicStanding;
+    }
+
+    public function cumulativeGpa(): Gpa
+    {
+        return $this->cumulativeGpa;
+    }
+
+    public function semesterGpa(): ?Gpa
+    {
+        return $this->semesterGpa;
+    }
+
+    public function currentSemesterId(): ?string
+    {
+        return $this->currentSemesterId;
+    }
+
+    public function institutionId(): ?string
+    {
+        return $this->institutionId;
+    }
+
+    public function universityId(): ?string
+    {
+        return $this->universityId;
+    }
+
+    public function collegeId(): ?string
+    {
+        return $this->collegeId;
+    }
+
+    public function departmentId(): ?string
+    {
+        return $this->departmentId;
+    }
+
+    public function majorId(): ?string
+    {
+        return $this->majorId;
+    }
+
+    public function level(): string
+    {
+        return $this->level;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 
     /** @return list<Enrollment> */
-    public function enrollments(): array { return $this->enrollments; }
+    public function enrollments(): array
+    {
+        return $this->enrollments;
+    }
 
     private function raise(object $event): void
     {

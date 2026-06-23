@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\CareerProfile\Application\Mappers;
 
-use Modules\CareerProfile\Domain\Entities\CareerProfile;
-use Modules\CareerProfile\Domain\Entities\PortfolioItem;
-use Modules\CareerProfile\Domain\Entities\Experience;
-use Modules\CareerProfile\Domain\Entities\Resume;
-use Modules\CareerProfile\Domain\Entities\CareerGoal;
-use Modules\CareerProfile\Application\DTOs\CareerProfileDto;
-use Modules\CareerProfile\Application\DTOs\PortfolioItemDto;
-use Modules\CareerProfile\Application\DTOs\ExperienceDto;
-use Modules\CareerProfile\Application\DTOs\ResumeDto;
 use Modules\CareerProfile\Application\DTOs\CareerGoalDto;
+use Modules\CareerProfile\Application\DTOs\CareerProfileDto;
+use Modules\CareerProfile\Application\DTOs\ExperienceDto;
+use Modules\CareerProfile\Application\DTOs\PortfolioItemDto;
+use Modules\CareerProfile\Application\DTOs\ResumeDto;
+use Modules\CareerProfile\Domain\Entities\CareerGoal;
+use Modules\CareerProfile\Domain\Entities\CareerProfile;
+use Modules\CareerProfile\Domain\Entities\Experience;
+use Modules\CareerProfile\Domain\Entities\PortfolioItem;
+use Modules\CareerProfile\Domain\Entities\Resume;
 
 final class CareerProfileMapper
 {

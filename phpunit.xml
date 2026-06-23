@@ -76,6 +76,21 @@
         <testsuite name="UI-Feature">
             <directory>src/Modules/UI/Tests/Feature</directory>
         </testsuite>
+        <testsuite name="Opportunities Unit">
+            <directory>src/Modules/Opportunities/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Opportunities Feature">
+            <directory>src/Modules/Opportunities/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Career-Unit">
+            <directory>src/Modules/Career/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Notifications-Unit">
+            <directory>src/Modules/Notifications/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="StudentServices-Unit">
+            <directory>src/Modules/StudentServices/Tests/Unit</directory>
+        </testsuite>
     </testsuites>
 
     <!-- Coverage Source — includes both app/ and src/ -->

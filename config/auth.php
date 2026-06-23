@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 use Modules\Shared\Infrastructure\Persistence\EloquentUser;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults

@@ -6,8 +6,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Modules\Academic\Domain\Enums\AlertSeverity;
-use Modules\Academic\Domain\Enums\AlertType;
 use Modules\Academic\Infrastructure\Persistence\EloquentAcademicAlert;
 
 final class AcademicAlertSeeder extends Seeder

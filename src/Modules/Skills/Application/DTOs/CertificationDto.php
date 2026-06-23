@@ -16,6 +16,5 @@ final readonly class CertificationDto
         public ?string $credentialUrl,
         public ?string $verificationCode,
         public bool $isExpired,
-    ) {
-    }
+    ) {}
 }

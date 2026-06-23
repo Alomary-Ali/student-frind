@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\AppMiddleware;
 
+use App\Http\Middleware\RoleMiddleware;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Testing\TestResponse;
-use App\Http\Middleware\RoleMiddleware;
 use Tests\TestCase;
 
 final class RoleMiddlewareTest extends TestCase
@@ -21,9 +21,9 @@ final class RoleMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => $user);
 
-        $middleware = new RoleMiddleware();
+        $middleware = new RoleMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'), 'student')
+            $middleware->handle($request, fn ($req) => response('ok'), 'student'),
         );
 
         $response->assertOk();
@@ -36,9 +36,9 @@ final class RoleMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => $user);
 
-        $middleware = new RoleMiddleware();
+        $middleware = new RoleMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'), 'student', 'admin')
+            $middleware->handle($request, fn ($req) => response('ok'), 'student', 'admin'),
         );
 
         $response->assertOk();
@@ -50,9 +50,9 @@ final class RoleMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => $user);
 
-        $middleware = new RoleMiddleware();
+        $middleware = new RoleMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'), 'student')
+            $middleware->handle($request, fn ($req) => response('ok'), 'student'),
         );
 
         $response->assertRedirect(route('home'));
@@ -63,9 +63,9 @@ final class RoleMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET');
         $request->setUserResolver(fn () => null);
 
-        $middleware = new RoleMiddleware();
+        $middleware = new RoleMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'), 'student')
+            $middleware->handle($request, fn ($req) => response('ok'), 'student'),
         );
 
         $response->assertRedirect(route('login'));
@@ -76,9 +76,9 @@ final class RoleMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET', [], [], [], ['HTTP_ACCEPT' => 'application/json']);
         $request->setUserResolver(fn () => null);
 
-        $middleware = new RoleMiddleware();
+        $middleware = new RoleMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'), 'student')
+            $middleware->handle($request, fn ($req) => response('ok'), 'student'),
         );
 
         $response->assertStatus(401);
@@ -91,9 +91,9 @@ final class RoleMiddlewareTest extends TestCase
         $request = Request::create('/test', 'GET', [], [], [], ['HTTP_ACCEPT' => 'application/json']);
         $request->setUserResolver(fn () => $user);
 
-        $middleware = new RoleMiddleware();
+        $middleware = new RoleMiddleware;
         $response = TestResponse::fromBaseResponse(
-            $middleware->handle($request, fn ($req) => response('ok'), 'student')
+            $middleware->handle($request, fn ($req) => response('ok'), 'student'),
         );
 
         $response->assertStatus(403);

@@ -29,7 +29,7 @@ final class AuthSecurityTest extends TestCase
 
         $response = $this->post('/login', [
             'academic_id' => '12345678',
-            'password'    => 'Password@123',
+            'password' => 'Password@123',
         ]);
 
         $response->assertRedirect(route('academic.dashboard'));
@@ -42,7 +42,7 @@ final class AuthSecurityTest extends TestCase
 
         $response = $this->post('/login', [
             'academic_id' => '12345678',
-            'password'    => 'wrong-password',
+            'password' => 'wrong-password',
         ]);
 
         $response->assertSessionHasErrors('academic_id');
@@ -53,7 +53,7 @@ final class AuthSecurityTest extends TestCase
     {
         $response = $this->post('/login', [
             'academic_id' => '99999999',
-            'password'    => 'password',
+            'password' => 'password',
         ]);
 
         $response->assertSessionHasErrors('academic_id');
@@ -65,7 +65,7 @@ final class AuthSecurityTest extends TestCase
         // Academic ID must be exactly 8 digits
         $response = $this->post('/login', [
             'academic_id' => 'abc',
-            'password'    => 'password',
+            'password' => 'password',
         ]);
 
         $response->assertSessionHasErrors('academic_id');
@@ -77,7 +77,7 @@ final class AuthSecurityTest extends TestCase
 
         $response = $this->post('/login', [
             'academic_id' => '12345678',
-            'password'    => 'Password@123',
+            'password' => 'Password@123',
         ]);
 
         $response->assertSessionHasErrors('academic_id');
@@ -113,8 +113,8 @@ final class AuthSecurityTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)
-             ->get('/login')
-             ->assertRedirect();
+            ->get('/login')
+            ->assertRedirect();
     }
 
     // ── Rate Limiting ──────────────────────────────────────────────────────
@@ -124,13 +124,13 @@ final class AuthSecurityTest extends TestCase
         for ($i = 0; $i < 5; $i++) {
             $this->post('/login', [
                 'academic_id' => '00000000',
-                'password'    => 'wrong',
+                'password' => 'wrong',
             ]);
         }
 
         $response = $this->post('/login', [
             'academic_id' => '00000000',
-            'password'    => 'wrong',
+            'password' => 'wrong',
         ]);
 
         $response->assertStatus(429);

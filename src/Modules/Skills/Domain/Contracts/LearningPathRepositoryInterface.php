@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Skills\Domain\Contracts;
 
+use Modules\Academic\Domain\ValueObjects\StudentId;
 use Modules\Skills\Domain\Entities\LearningPath;
 use Modules\Skills\Domain\ValueObjects\LearningPathId;
-use Modules\Academic\Domain\ValueObjects\StudentId;
 
 interface LearningPathRepositoryInterface
 {

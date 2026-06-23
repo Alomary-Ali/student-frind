@@ -8,7 +8,6 @@ use Modules\Productivity\Application\DTOs\GoalDto;
 use Modules\Productivity\Application\Mappers\ProductivityMapper;
 use Modules\Productivity\Domain\Contracts\GoalRepositoryInterface;
 use Modules\Productivity\Domain\Exceptions\GoalNotFoundException;
-use Modules\Productivity\Domain\Exceptions\InvalidGoalProgressException;
 use Modules\Productivity\Domain\ValueObjects\GoalId;
 use Modules\Productivity\Domain\ValueObjects\GoalProgress;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;

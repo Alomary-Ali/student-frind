@@ -122,4 +122,3 @@ final class UserFactory extends Factory
         ]);
     }
 }
-
