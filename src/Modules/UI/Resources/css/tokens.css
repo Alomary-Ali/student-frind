@@ -1,0 +1,73 @@
+/*
+ * ─── Design Tokens: CSS Custom Properties ────────────────────────────
+ * These variables are consumed by every component and utility class.
+ * They are kept in a dedicated file so they can be versioned, audited,
+ * and overridden independently of the framework CSS build.
+ *
+ * HSL values are stored as space-separated triples (no `hsl()` wrapper)
+ * so they can be consumed with opacity: `hsl(var(--color-primary) / 0.5)`.
+ *
+ * Dark mode overrides are applied via both `@media (prefers-color-scheme: dark)`
+ * and `.dark` class, matching Tailwind v4 convention.
+ * ───────────────────────────────────────────────────────────────────────
+ */
+
+/*
+ * ─── Gradient + Shadow Bridge ─────────────────────────────────────────
+ * Gradients use color variables internally, so they must be defined
+ * outside @theme (Tailwind v4 limitation).
+ */
+:root {
+    --gradient-primary: linear-gradient(135deg, hsl(var(--color-primary)) 0%, hsl(var(--color-primary-hover)) 100%);
+    --gradient-navy: linear-gradient(135deg, hsl(var(--color-navy)) 0%, hsl(var(--color-navy-hover)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--color-accent)) 0%, hsl(var(--color-accent-hover)) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(var(--color-warning)) 0%, hsl(var(--color-warning-hover)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--color-navy)) 0%, hsl(var(--color-primary)) 60%, hsl(var(--color-primary)) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(var(--color-surface)) 0%, hsl(var(--color-background)) 100%);
+    --gradient-mist: linear-gradient(135deg, hsl(var(--color-background)) 0%, hsl(var(--color-primary-light)) 100%);
+
+    /* ── Extended Semantic Colours (not in @theme) ────────────────── */
+    --color-info: 210 100% 50%;
+    --color-info-light: 210 100% 94%;
+    --color-success: 158 79% 39%;
+    --color-success-light: 158 79% 90%;
+    --color-surface-hover: 210 40% 96%;
+    --color-text-on-primary: 0 0% 100%;
+    --color-text-on-navy: 0 0% 100%;
+    --radius-full: 9999px;
+}
+
+/*
+ * ─── Dark Mode (prefers-color-scheme) ────────────────────────────────
+ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: 225 50% 8%;
+        --color-surface: 225 39% 14%;
+        --color-surface-raised: 225 34% 16%;
+        --color-surface-hover: 225 34% 18%;
+        --color-text-primary: 210 40% 96%;
+        --color-text-secondary: 217 33% 65%;
+        --color-text-muted: 217 33% 47%;
+        --color-border: 217 33% 17%;
+        --color-border-light: 215 38% 14%;
+    }
+}
+
+/*
+ * ─── Dark Mode (.dark class) ─────────────────────────────────────────
+ */
+.dark {
+    --color-background: 225 50% 8%;
+    --color-surface: 225 39% 14%;
+    --color-surface-raised: 225 34% 16%;
+    --color-surface-hover: 225 34% 18%;
+    --color-text-primary: 210 40% 96%;
+    --color-text-secondary: 217 33% 65%;
+    --color-text-muted: 217 33% 47%;
+    --color-border: 217 33% 17%;
+    --color-border-light: 215 38% 14%;
+
+    --gradient-surface: linear-gradient(180deg, hsl(var(--color-surface)) 0%, hsl(var(--color-background)) 100%);
+    --gradient-mist: linear-gradient(135deg, hsl(var(--color-background)) 0%, hsl(var(--color-border-light)) 100%);
+}

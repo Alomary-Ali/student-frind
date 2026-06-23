@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <!-- Core Tests -->
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+
+        <!-- Shared Module -->
+        <testsuite name="Shared-Unit">
+            <directory>src/Modules/Shared/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Shared-Feature">
+            <directory>src/Modules/Shared/Tests/Feature</directory>
+        </testsuite>
+
+        <!-- Academic Module -->
+        <testsuite name="Academic-Unit">
+            <directory>src/Modules/Academic/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Academic-Feature">
+            <directory>src/Modules/Academic/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Academic-Integration">
+            <directory>src/Modules/Academic/Tests/Integration</directory>
+        </testsuite>
+
+        <!-- Productivity Module -->
+        <testsuite name="Productivity-Unit">
+            <directory>src/Modules/Productivity/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Productivity-Feature">
+            <directory>src/Modules/Productivity/Tests/Feature</directory>
+        </testsuite>
+
+        <!-- Administration Module -->
+        <testsuite name="Administration-Unit">
+            <directory>src/Modules/Administration/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Administration-Feature">
+            <directory>src/Modules/Administration/Tests/Feature</directory>
+        </testsuite>
+
+        <!-- Analytics Module -->
+        <testsuite name="Analytics-Unit">
+            <directory>src/Modules/Analytics/Tests/Unit</directory>
+        </testsuite>
+
+        <!-- CareerProfile Module -->
+        <testsuite name="CareerProfile-Unit">
+            <directory>src/Modules/CareerProfile/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="CareerProfile-Feature">
+            <directory>src/Modules/CareerProfile/Tests/Feature</directory>
+        </testsuite>
+
+        <!-- Skills Module -->
+        <testsuite name="Skills-Unit">
+            <directory>src/Modules/Skills/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Skills-Feature">
+            <directory>src/Modules/Skills/Tests/Feature</directory>
+        </testsuite>
+
+        <!-- UI / Design System Module -->
+        <testsuite name="UI-Unit">
+            <directory>src/Modules/UI/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="UI-Feature">
+            <directory>src/Modules/UI/Tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+
+    <!-- Coverage Source — includes both app/ and src/ -->
+    <source>
+        <include>
+            <directory>app</directory>
+            <directory>src</directory>
+        </include>
+        <exclude>
+            <directory>src/Modules/Guidance</directory>
+            <directory>src/Modules/Skills</directory>
+            <directory>src/Modules/CareerProfile</directory>
+            <directory>src/Modules/Opportunities</directory>
+            <directory>src/Modules/Community</directory>
+        </exclude>
+    </source>
+
+    <php>
+        <env name="APP_ENV"                value="testing"/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS"          value="4"/>
+        <env name="BROADCAST_CONNECTION"   value="null"/>
+        <env name="CACHE_STORE"            value="array"/>
+        <env name="DB_CONNECTION"          value="sqlite"/>
+        <env name="DB_DATABASE"            value=":memory:"/>
+        <env name="DB_URL"                 value=""/>
+        <env name="MAIL_MAILER"            value="array"/>
+        <env name="QUEUE_CONNECTION"       value="sync"/>
+        <env name="SESSION_DRIVER"         value="array"/>
+        <env name="SESSION_ENCRYPT"        value="false"/>
+        <env name="PULSE_ENABLED"          value="false"/>
+        <env name="TELESCOPE_ENABLED"      value="false"/>
+        <env name="NIGHTWATCH_ENABLED"     value="false"/>
+    </php>
+</phpunit>
+

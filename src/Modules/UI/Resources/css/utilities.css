@@ -1,0 +1,148 @@
+/*
+ * ─── Utility Classes ─────────────────────────────────────────────────
+ * One-off utility classes that don't belong to any component.
+ * These augment Tailwind's built-in utilities.
+ * ───────────────────────────────────────────────────────────────────────
+ */
+
+/* ─── Text Colour Utilities ─────────────────────────────────────────── */
+.text-text-primary    { color: hsl(var(--color-text-primary)); }
+.text-text-secondary  { color: hsl(var(--color-text-secondary)); }
+.text-text-muted      { color: hsl(var(--color-text-muted)); }
+.text-primary         { color: hsl(var(--color-primary)); }
+.text-accent          { color: hsl(var(--color-accent)); }
+.text-navy            { color: hsl(var(--color-navy)); }
+.text-error           { color: hsl(var(--color-error)); }
+.text-error-hover     { color: hsl(var(--color-error-hover)); }
+.text-warning         { color: hsl(var(--color-warning)); }
+
+.text-critical        { color: hsl(var(--color-error)); }
+.text-high            { color: hsl(var(--color-warning)); }
+.text-normal          { color: hsl(var(--color-primary)); }
+
+/* ─── Background Colour Utilities ───────────────────────────────────── */
+.bg-surface         { background: hsl(var(--color-surface)); }
+.bg-background      { background: hsl(var(--color-background)); }
+.bg-border          { background: hsl(var(--color-border)); }
+.bg-primary         { background: hsl(var(--color-primary)); }
+.bg-navy            { background: hsl(var(--color-navy)); }
+.bg-navy\/10        { background: hsl(var(--color-navy) / 0.1); }
+.bg-primary\/10     { background: hsl(var(--color-primary) / 0.1); }
+.bg-primary\/8      { background: hsl(var(--color-primary) / 0.08); }
+.bg-primary\/40     { background: hsl(var(--color-primary) / 0.40); }
+.bg-error\/10       { background: hsl(var(--color-error) / 0.10); }
+.bg-border-light    { background: hsl(var(--color-border-light)); }
+
+/* ─── RTL Global Fixes ──────────────────────────────────────────────── */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .card,
+[dir="rtl"] .card-elevated,
+[dir="rtl"] .unit-card {
+    text-align: right;
+}
+
+[dir="rtl"] .alert-critical,
+[dir="rtl"] .alert-high,
+[dir="rtl"] .alert-normal {
+    border-right-width: 3px;
+    border-left-width: 0;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] select,
+[dir="rtl"] textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] .badge {
+    direction: rtl;
+}
+
+[dir="rtl"] .navbar-inner {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-logo {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-links {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-dropdown {
+    left: 0;
+    right: auto;
+    text-align: right;
+}
+
+[dir="rtl"] .pulsebar-item {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .progress-fill {
+    transform-origin: right center;
+}
+
+[dir="rtl"] table {
+    direction: rtl;
+}
+
+[dir="rtl"] td,
+[dir="rtl"] th {
+    text-align: right;
+}
+
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] span,
+[dir="rtl"] label {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+}
+
+[dir="rtl"] .inline-flex.items-center.gap-1,
+[dir="rtl"] .inline-flex.items-center.gap-2,
+[dir="rtl"] .inline-flex.items-center.gap-3 {
+    direction: rtl;
+}
+
+/* ─── Responsive Fixes ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .card,
+    .card-elevated,
+    .unit-card {
+        width: 100%;
+    }
+
+    .section-label {
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .flex-wrap {
+        gap: 8px;
+    }
+
+    main {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .grid-cols-2,
+    .grid-cols-3 {
+        gap: 8px;
+    }
+
+    .lg\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+}

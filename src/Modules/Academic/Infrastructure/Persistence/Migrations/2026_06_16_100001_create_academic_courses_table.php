@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('academic_courses', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('code')->unique();
+            $table->string('title');
+            $table->text('description');
+            $table->unsignedTinyInteger('credit_hours');
+            $table->boolean('is_active')->default(true);
+            $table->uuid('institution_id')->nullable();
+            $table->timestamps();
+
+            $table->index('is_active');
+            $table->index('institution_id');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('academic_courses');
+    }
+};

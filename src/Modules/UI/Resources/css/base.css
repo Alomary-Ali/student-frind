@@ -1,0 +1,176 @@
+/*
+ * ─── Base & Reset Styles ─────────────────────────────────────────────
+ * Minimal reset + accessibility + animations that apply globally.
+ * ───────────────────────────────────────────────────────────────────────
+ */
+
+/* ─── Global Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ─── Theme Transition (interactive elements only) ────────────────── */
+a, button, .btn, .nav-link, .card, .unit-card, .badge,
+input, select, textarea, .navbar, .pulsebar, #sidebar, .slidemenu {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+/* ─── Focus Visible (WCAG 2.4.7) ──────────────────────────────────── */
+*:focus-visible {
+    outline: 2px solid hsl(var(--color-primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ─── Reduced Motion (WCAG 2.3.3) ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ─── Touch Targets (WCAG 2.5.8) ──────────────────────────────────── */
+@media (hover: none) {
+    button, a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .unit-card, .card, .card-elevated {
+        cursor: pointer;
+    }
+}
+
+/* ─── Responsive Base Font ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+    html { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+    html { font-size: 13px; }
+
+    .unit-card { padding: 10px; }
+
+    .btn {
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .btn-sm {
+        height: 36px;
+        font-size: 11px;
+        padding: 0 14px;
+    }
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--color-border));
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--color-text-muted));
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ─── Animations ────────────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-6px); }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes scale-in {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── Animation Utility Classes ─────────────────────────────────────── */
+.animate-fade-in-up {
+    animation: fadeInUp 0.4s ease both;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease both;
+}
+
+.animate-scale-in {
+    animation: scale-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+
+/* ─── Decorative Orbs ───────────────────────────────────────────────── */
+.orb {
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    position: absolute;
+}
+
+.orb-primary {
+    background: hsl(var(--color-primary) / 0.15);
+}

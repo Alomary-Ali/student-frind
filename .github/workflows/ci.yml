@@ -1,0 +1,127 @@
+name: CI — Quality Gate
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: ssp_testing
+        ports: ['3306:3306']
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, dom, fileinfo, mysql, pdo, pdo_mysql
+          coverage: xdebug
+
+      - name: Cache Composer
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Setup Environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: ssp_testing
+          DB_USERNAME: root
+          DB_PASSWORD: password
+
+      # ── Gate 1: Code Style ──────────────────────────────────────────────
+      - name: "🎨 Code Style (Laravel Pint)"
+        run: ./vendor/bin/pint --test
+
+      # ── Gate 2: Static Analysis ─────────────────────────────────────────
+      - name: "🔍 Static Analysis (PHPStan Level 6)"
+        run: ./vendor/bin/phpstan analyse --memory-limit=512M
+
+      # ── Gate 3: Tests + Coverage ────────────────────────────────────────
+      - name: "🧪 Run Tests with Coverage"
+        run: |
+          php artisan migrate --force
+          php artisan db:seed --class=TestingSeeder --force 2>/dev/null || true
+          ./vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: ssp_testing
+          DB_USERNAME: root
+          DB_PASSWORD: password
+          APP_ENV: testing
+
+      # ── Gate 4: Coverage Threshold ──────────────────────────────────────
+      - name: "📊 Check Coverage Threshold (80%)"
+        run: |
+          COVERAGE=$(php -r "
+            \$xml = simplexml_load_file('coverage.xml');
+            \$metrics = \$xml->xpath('//metrics');
+            \$total = array_sum(array_map(fn(\$m) => (int)\$m['elements'], \$metrics));
+            \$covered = array_sum(array_map(fn(\$m) => (int)\$m['coveredelements'], \$metrics));
+            echo \$total > 0 ? round(\$covered / \$total * 100) : 0;
+          ")
+          echo "Coverage: ${COVERAGE}%"
+          if [ "$COVERAGE" -lt 80 ]; then
+            echo "❌ Coverage ${COVERAGE}% is below required 80%"
+            exit 1
+          fi
+          echo "✅ Coverage ${COVERAGE}% meets requirement"
+
+      # ── Gate 5: Security Scan ───────────────────────────────────────────
+      - name: "🔐 Security Audit (composer)"
+        run: composer audit
+
+      # ── Gate 6: No Dangerous Files ──────────────────────────────────────
+      - name: "🚫 Check for Dangerous Debug Files"
+        run: |
+          FOUND=$(find . -maxdepth 1 -name "*.php" \
+            ! -name "artisan" \
+            ! -name "*.config.php" \
+            -not -path "./vendor/*" | wc -l)
+          if [ "$FOUND" -gt 0 ]; then
+            echo "❌ Loose PHP files found in project root:"
+            find . -maxdepth 1 -name "*.php" ! -name "artisan" -not -path "./vendor/*"
+            exit 1
+          fi
+          echo "✅ No dangerous root-level PHP files"
+
+      # ── Gate 7: Auth Middleware Check ───────────────────────────────────
+      - name: "🛡️ Check Dashboard Routes Have Auth Middleware"
+        run: |
+          if grep -E "Route::(get|post|put|delete|patch)\('/?(academic|productivity)" routes/web.php | \
+             grep -v "middleware\('auth'\)" | grep -v "Route::middleware" | grep -qv "^$"; then
+            echo "❌ Unprotected dashboard routes detected"
+            exit 1
+          fi
+          echo "✅ All dashboard routes are protected"
+
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          file: coverage.xml
