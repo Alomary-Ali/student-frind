@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\StudentServices\Infrastructure\Integrations;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 final class DompdfDocumentGenerator implements DocumentGeneratorInterface
 {
@@ -19,9 +20,9 @@ final class DompdfDocumentGenerator implements DocumentGeneratorInterface
 
         $pdf = Pdf::loadView("student-services::{$viewName}", $data);
         $filename = "document_{$type}_" . time() . '.pdf';
-        $path = storage_path("app/documents/{$filename}");
 
-        $pdf->save($path);
+        Storage::makeDirectory('documents');
+        $pdf->save(storage_path("app/documents/{$filename}"));
 
         return "documents/{$filename}";
     }

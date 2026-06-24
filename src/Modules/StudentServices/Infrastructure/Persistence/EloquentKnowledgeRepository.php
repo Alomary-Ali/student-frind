@@ -43,6 +43,15 @@ final class EloquentKnowledgeRepository implements KnowledgeRepositoryInterface
             ->toArray();
     }
 
+    public function findAllPublished(): array
+    {
+        return EloquentKnowledgeArticle::where('status', 'published')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(fn ($model) => $this->toEntity($model))
+            ->toArray();
+    }
+
     public function saveArticle(KnowledgeArticle $article): void
     {
         $model = EloquentKnowledgeArticle::find($article->id()->value());

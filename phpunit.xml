@@ -88,8 +88,19 @@
         <testsuite name="Notifications-Unit">
             <directory>src/Modules/Notifications/Tests/Unit</directory>
         </testsuite>
+        <testsuite name="Notifications-Feature">
+            <directory>src/Modules/Notifications/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Notifications-Integration">
+            <directory>src/Modules/Notifications/Tests</directory>
+            <exclude>src/Modules/Notifications/Tests/Unit</exclude>
+            <exclude>src/Modules/Notifications/Tests/Feature</exclude>
+        </testsuite>
         <testsuite name="StudentServices-Unit">
             <directory>src/Modules/StudentServices/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="StudentServices-Feature">
+            <directory>src/Modules/StudentServices/Tests/Feature</directory>
         </testsuite>
     </testsuites>
 

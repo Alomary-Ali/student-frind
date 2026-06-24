@@ -11,7 +11,7 @@ class DocumentRequestRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'document_type' => ['required', 'string', 'in:CERTIFICATE,TRANSCRIPT,STATEMENT,OFFICIAL_LETTER,ID_CARD'],
+            'document_type' => ['required', 'string', 'in:certificate,transcript,statement,official_letter,id_card'],
             'notes' => ['nullable', 'string', 'max:1000'],
         ];
     }

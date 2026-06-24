@@ -15,6 +15,8 @@ interface KnowledgeRepositoryInterface
 
     public function searchArticles(string $query): array;
 
+    public function findAllPublished(): array;
+
     public function saveArticle(KnowledgeArticle $article): void;
 
     public function deleteArticle(KnowledgeArticleId $id): void;

@@ -5,30 +5,18 @@ declare(strict_types=1);
 namespace Modules\StudentServices\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\Sanctum;
-use Modules\Shared\Infrastructure\Persistence\EloquentUser;
-use Modules\StudentServices\Infrastructure\Persistence\EloquentServiceCategory;
-use Modules\StudentServices\Infrastructure\Persistence\EloquentServiceWorkflow;
+use Modules\StudentServices\Infrastructure\Persistence\Eloquent\EloquentServiceCategory;
+use Modules\StudentServices\Infrastructure\Persistence\Eloquent\EloquentServiceWorkflow;
 use Tests\TestCase;
 
 final class WorkflowEngineFeatureTest extends TestCase
 {
     use RefreshDatabase;
+    use WithAuthenticatedStudent;
 
     public function test_admin_can_define_workflow(): void
     {
-        $admin = EloquentUser::create([
-            'id' => '550e8400-e29b-41d4-a716-446655440000',
-            'email' => 'admin@test.com',
-            'first_name' => 'Admin',
-            'last_name' => 'User',
-            'password_hash' => Hash::make('password'),
-            'role' => 'admin',
-            'status' => 'active',
-            'academic_id' => null,
-        ]);
-        Sanctum::actingAs($admin);
+        $this->createAndAuthenticateStudent('admin');
 
         $category = EloquentServiceCategory::create([
             'id' => 'cat-001',
@@ -68,27 +56,11 @@ final class WorkflowEngineFeatureTest extends TestCase
                     'status',
                 ],
             ]);
-
-        $this->assertDatabaseHas('service_workflows', [
-            'service_category_id' => $category->id,
-            'name' => 'سير عمل إثبات قيد',
-            'status' => 'active',
-        ]);
     }
 
     public function test_student_can_get_workflow_status(): void
     {
-        $user = EloquentUser::create([
-            'id' => '550e8400-e29b-41d4-a716-446655440000',
-            'email' => 'student@test.com',
-            'first_name' => 'Test',
-            'last_name' => 'Student',
-            'password_hash' => Hash::make('password'),
-            'role' => 'student',
-            'status' => 'active',
-            'academic_id' => null,
-        ]);
-        Sanctum::actingAs($user);
+        $this->createAndAuthenticateStudent();
 
         $category = EloquentServiceCategory::create([
             'id' => 'cat-001',

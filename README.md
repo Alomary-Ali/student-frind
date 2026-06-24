@@ -1,362 +1,362 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://via.placeholder.com/1200x200/06214B/FFFFFF?text=%D8%B1%D9%81%D9%8A%D9%82+%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8">
-  <img alt="رفيق الطالب — Student Success Platform" src="https://via.placeholder.com/1200x200/243B7C/FFFFFF?text=%D8%B1%D9%81%D9%8A%D9%82+%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8">
+  <img alt="رفيق الطالب" src="https://via.placeholder.com/1200x200/243B7C/FFFFFF?text=%D8%B1%D9%81%D9%8A%D9%82+%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8">
 </picture>
 
 <p align="center">
-  <strong>Student Success Platform (SSP)</strong><br>
-  <em>Academic Journey • Career Development • Smart Assistant</em>
+  <strong>منصة رفيق الطالب</strong><br>
+  <em>الرحلة الأكاديمية • التطوير المهني • المساعد الذكي</em>
 </p>
 
-<p align="center">
+<p align="center" dir="ltr">
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php" alt="PHP 8.2">
   <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=flat-square&logo=laravel" alt="Laravel 12">
-  <img src="https://img.shields.io/badge/Tests-1109-10B981?style=flat-square&logo=phpunit" alt="1109 tests">
-  <img src="https://img.shields.io/badge/Coverage-80%25-10B981?style=flat-square" alt="80% coverage">
-  <img src="https://img.shields.io/badge/Modules-14-243B7C?style=flat-square" alt="14 modules">
-  <img src="https://img.shields.io/badge/Pint-Passing-10B981?style=flat-square" alt="Pint">
-  <img src="https://img.shields.io/badge/PHPStan-Level_6-8A2BE2?style=flat-square" alt="PHPStan Level 6">
+  <img src="https://img.shields.io/badge/الاختبارات-1109-10B981?style=flat-square" alt="1109 tests">
+  <img src="https://img.shields.io/badge/التغطية-80%25-10B981?style=flat-square" alt="80% coverage">
+  <img src="https://img.shields.io/badge/الوحدات-14-243B7C?style=flat-square" alt="14 modules">
+  <img src="https://img.shields.io/badge/Pint-ناجح-10B981?style=flat-square" alt="Pint">
+  <img src="https://img.shields.io/badge/PHPStan-المستوى_6-8A2BE2?style=flat-square" alt="PHPStan Level 6">
 </p>
 
 ---
 
-## 🎯 Vision
+## 🎯 الرؤية
 
-A comprehensive platform that accompanies students **from their first day at university** until **graduation and career readiness** — transforming the academic experience into an intelligent, integrated journey.
+منصة متكاملة ترافق الطالب **من أول يوم في الجامعة** حتى **التخرج والجاهزية لسوق العمل** — تحويل التجربة الأكاديمية إلى رحلة ذكية متكاملة.
 
-| For Students | For Universities |
-|-------------|-----------------|
-| Plan academic journey | Real-time success dashboards |
-| Track GPA and performance | At-risk student detection |
-| Build skills and portfolio | Cohort analytics |
-| Discover jobs & internships | Accreditation reporting |
-| AI-powered assistance | Data-driven decisions |
+| للطالب | للجامعة |
+|--------|---------|
+| تخطيط المسار الأكاديمي | لوحات نجاح لحظية |
+| متابعة المعدل والأداء | كشف الطلاب المعرضين للخطر |
+| بناء المهارات والملف الوظيفي | تحليلات الفوج الأكاديمي |
+| اكتشاف الوظائف والتدريب | تقارير الاعتماد الأكاديمي |
+| مساعدة بالذكاء الاصطناعي | قرارات مبنية على البيانات |
 
 ---
 
-## 🧱 Architecture
+## 🧱 العمارة
 
 ```
                     ┌─────────────────────────────┐
-                    │      Presentation Layer      │
+                    │      طبقة العرض              │
                     │  Controllers · Views · API   │
                     └──────────────┬──────────────┘
                                    │
                     ┌──────────────▼──────────────┐
-                    │     Application Layer        │
+                    │     طبقة التطبيق             │
                     │ Use Cases · DTOs · Mappers   │
                     └──────────────┬──────────────┘
                                    │
                     ┌──────────────▼──────────────┐
-                    │       Domain Layer           │
+                    │       طبقة المجال            │
                     │ Entities · VOs · Events      │
                     │   Enums · Contracts          │
                     └──────────────┬──────────────┘
                                    │
                     ┌──────────────▼──────────────┐
-                    │    Infrastructure Layer       │
+                    │    طبقة البنية التحتية        │
                     │  Eloquent · Repos · Gateways │
                     │   Migrations · Integrations  │
                     └─────────────────────────────┘
 ```
 
-| Decision | Choice |
-|----------|--------|
-| **Pattern** | Modular Monolith + Domain-Driven Design |
-| **Framework** | Laravel 12 |
-| **Language** | PHP 8.2 |
-| **Database** | MySQL 8.0+ (SQLite for testing) |
-| **Primary Keys** | UUID v4 |
-| **Authentication** | Laravel Sanctum |
-| **Code Style** | Laravel Pint (PSR-12) |
-| **Static Analysis** | PHPStan Level 6 |
-| **Testing** | PHPUnit 11 |
-| **AI Integration** | OpenAI API (openai-php/laravel) |
-| **PDF Generation** | Dompdf (barryvdh/laravel-dompdf) |
-| **Module Communication** | Domain Events + Contract Interfaces |
+| القرار | الاختيار |
+|--------|----------|
+| **النمط** | كتلة واحدة نمطية + تصميم موجه بالمجال (DDD) |
+| **الإطار** | Laravel 12 |
+| **اللغة** | PHP 8.2 |
+| **قاعدة البيانات** | MySQL 8.0+ (SQLite للاختبار) |
+| **المفاتيح الأساسية** | UUID v4 |
+| **المصادقة** | Laravel Sanctum |
+| **نمط الكود** | Laravel Pint (PSR-12) |
+| **التحليل الثابت** | PHPStan المستوى 6 |
+| **الاختبارات** | PHPUnit 11 |
+| **الذكاء الاصطناعي** | OpenAI API (openai-php/laravel) |
+| **توليد PDF** | Dompdf (barryvdh/laravel-dompdf) |
+| **تواصل الوحدات** | أحداث المجال + واجهات تعاقدية |
 
-> See [Architecture Decision Records](docs/adr/) for detailed rationale.
-
----
-
-## 📦 Modules (14)
-
-| # | Module | Files | Purpose | Status |
-|---|--------|------:|---------|--------|
-| 1 | **Shared** | ~40 | Users, auth, event dispatcher, shared VOs | ✅ Complete |
-| 2 | **Academic** | ~80 | Courses, grades, GPA, study plans, graduation | ✅ Complete |
-| 3 | **Productivity** | ~70 | Tasks, goals, habits, scheduling | ✅ Complete |
-| 4 | **UI** | ~40 | Design system, 14 rf-* components, tokens | ✅ Complete |
-| 5 | **Guidance** | ~30 | AI recommendations, early alerts | ✅ Complete |
-| 6 | **Skills** | ~60 | Skill profiles, certifications, learning paths | ✅ Complete |
-| 7 | **CareerProfile** | ~80 | Portfolio, CV builder, experiences, career goals | ✅ Complete |
-| 8 | **Opportunities** | ~60 | Jobs, internships, scholarships, competitions | ✅ Complete |
-| 9 | **Analytics** | ~20 | Dashboards, KPIs, university reports | ✅ Complete |
-| 10 | **Administration** | ~30 | Roles, permissions, system config | ✅ Complete |
-| 11 | **Community** | ~20 | Forums, groups, events, mentorship | ✅ Complete |
-| 12 | **Career** | ~97 | Interview prep, career paths, portfolio, dashboard | ✅ Complete |
-| 13 | **Notifications** | ~25 | In-app notifications, real-time alerts | ✅ Complete |
-| 14 | **StudentServices** | ~174 | Service requests, documents, knowledge base, AI assistant | ✅ Complete |
-
-**Total:** ~999 source files, ~91 views, ~54 migrations, 1109 tests.
+> راجع [سجلات القرارات المعمارية](docs/adr/) للتفاصيل الكاملة.
 
 ---
 
-## ✨ Key Features
+## 📦 الوحدات (14)
 
-### 🎓 Academic Management
-- Course enrollment and grade tracking
-- GPA calculation and progress monitoring
-- Study plan management and graduation mapping
-- Academic advising and early alerts
+| # | الوحدة | الملفات | الغرض | الحالة |
+|---|--------|--------:|-------|--------|
+| 1 | **المشتركة** | ~40 | المستخدمون، المصادقة، موزع الأحداث | ✅ مكتملة |
+| 2 | **الأكاديمية** | ~80 | المقررات، الدرجات، المعدل، الخطط، التخرج | ✅ مكتملة |
+| 3 | **الإنتاجية** | ~70 | المهام، الأهداف، العادات، الجدولة | ✅ مكتملة |
+| 4 | **واجهة المستخدم** | ~40 | نظام التصميم، 14 مكوناً، رموز التصميم | ✅ مكتملة |
+| 5 | **الإرشاد** | ~30 | توصيات ذكية، تنبيهات مبكرة | ✅ مكتملة |
+| 6 | **المهارات** | ~60 | ملفات المهارات، الشهادات، مسارات التعلم | ✅ مكتملة |
+| 7 | **الملف المهني** | ~80 | ملف الأعمال، بناء السيرة الذاتية، الخبرات | ✅ مكتملة |
+| 8 | **الفرص** | ~60 | الوظائف، التدريب، المنح، المسابقات | ✅ مكتملة |
+| 9 | **التحليلات** | ~20 | لوحات البيانات، مؤشرات الأداء، تقارير الجامعة | ✅ مكتملة |
+| 10 | **الإدارة** | ~30 | الصلاحيات، الأدوار، إعدادات النظام | ✅ مكتملة |
+| 11 | **المجتمع** | ~20 | المنتديات، المجموعات، الفعاليات، الإرشاد | ✅ مكتملة |
+| 12 | **المهنية** | ~97 | تحضير المقابلات، المسارات الوظيفية، الملف الشخصي | ✅ مكتملة |
+| 13 | **التنبيهات** | ~25 | إشعارات داخلية، تنبيهات لحظية | ✅ مكتملة |
+| 14 | **خدمات الطالب** | ~174 | طلبات الخدمات، المستندات، قاعدة المعرفة، المساعد الذكي | ✅ مكتملة |
 
-### 💼 Career Development
-- Professional portfolio builder
-- Skill gap analysis and learning roadmaps
-- CV/resume generation
-- Interview preparation with AI feedback
-- Career path exploration and recommendations
-- Employment readiness scoring
-
-### 🤖 Smart Assistant (AI-Powered)
-- Natural language question answering
-- Knowledge base retrieval
-- Service request guidance
-- Conversation history and context awareness
-- Suggested replies and actions
-- Powered by **OpenAI GPT-4o-mini**
-
-### 📄 Document Management
-- Request official documents (transcripts, certificates, statements)
-- Automated PDF generation with verification codes
-- Document verification portal (QR-ready)
-- Digital document archive
-
-### 🔔 Notifications
-- Real-time in-app notifications
-- Service request status updates
-- Document availability alerts
-- Unread count and mark-as-read
-
-### 📊 Analytics & Insights
-- Student success dashboards
-- At-risk student identification
-- Cohort performance analytics
-- Service usage statistics
+**الإجمالي:** ~999 ملف مصدر، ~91 قالب، ~54 ترحيل، 1109 اختبار.
 
 ---
 
-## 🚀 Getting Started
+## ✨ المميزات الرئيسية
 
-### Prerequisites
+### 🎓 الإدارة الأكاديمية
+- التسجيل في المقررات وتتبع الدرجات
+- حساب المعدل ومراقبة التقدم
+- إدارة الخطة الدراسية ورسم خريطة التخرج
+- الإرشاد الأكاديمي والتنبيهات المبكرة
+
+### 💼 التطوير المهني
+- بناء ملف الأعمال الاحترافي
+- تحليل فجوة المهارات وخرائط التعلم
+- إنشاء السيرة الذاتية
+- تحضير المقابلات بتغذية راجعة من الذكاء الاصطناعي
+- استكشاف المسارات الوظيفية والتوصيات
+- قياس الجاهزية للتوظيف
+
+### 🤖 المساعد الذكي
+- الإجابة على الأسئلة بلغة طبيعية
+- البحث في قاعدة المعرفة
+- توجيه طلبات الخدمات
+- سجل المحادثات والوعي بالسياق
+- الردود والإجراءات المقترحة
+- مدعوم بـ **OpenAI GPT-4o-mini**
+
+### 📄 إدارة المستندات
+- طلب المستندات الرسمية (كشوف درجات، شهادات، إفادات)
+- توليد PDF آلي مع رموز تحقق
+- بوابة التحقق من المستندات (جاهزة لـ QR)
+- أرشيف المستندات الرقمية
+
+### 🔔 التنبيهات
+- إشعارات لحظية داخل التطبيق
+- تحديثات حالة طلبات الخدمات
+- تنبيهات توفر المستندات
+- عدد غير المقروء وإمكانية التعليم كـ"مقروء"
+
+### 📊 التحليلات والرؤى
+- لوحات نجاح الطلاب
+- كشف الطلاب المعرضين للخطر
+- تحليلات أداء الفوج
+- إحصائيات استخدام الخدمات
+
+---
+
+## 🚀 البدء
+
+### المتطلبات الأساسية
 
 ```bash
 PHP ^8.2
 Composer 2.x
 MySQL 8.0+ / PostgreSQL 14+
-Redis (queues & cache)
-Node.js 20+ (Vite build)
+Redis (قوائم الانتظار والتخزين المؤقت)
+Node.js 20+ (بناء Vite)
 ```
 
-### Installation
+### التثبيت
 
 ```bash
-# Clone
+# استنساخ المستودع
 git clone https://github.com/Alomary-Ali/student-frind.git
 cd student-frind
 
-# Install dependencies
+# تثبيت التبعيات
 composer install
 npm install
 
-# Environment
+# إعداد البيئة
 cp .env.example .env
 php artisan key:generate
 
-# Database
+# قاعدة البيانات
 php artisan migrate
 
-# Optional: Seed demo data
+# اختياري: إضافة بيانات تجريبية
 php artisan db:seed --class=DatabaseSeeder
 
-# AI Assistant (optional — needs API key)
-# Add to .env:
+# المساعد الذكي (اختياري — يحتاج مفتاح API)
+# أضف إلى .env:
 # OPENAI_API_KEY=sk-your-key-here
 ```
 
-### Development
+### التطوير
 
 ```bash
-# Start the server
+# تشغيل الخادم
 php artisan serve
 
-# Compile assets (Vite)
+# ترجمة الأصول (Vite)
 npm run dev
 ```
 
-### Testing
+### الاختبارات
 
 ```bash
-# Run full test suite
+# تشغيل جميع الاختبارات
 php artisan test
-# or
+# أو
 ./vendor/bin/phpunit
 
-# Run module-specific tests
+# تشغيل اختبارات وحدة محددة
 ./vendor/bin/phpunit --testsuite=StudentServices-Unit
 ./vendor/bin/phpunit --testsuite=Career-Unit
 ```
 
-### Code Quality
+### جودة الكود
 
 ```bash
-# Code style
+# تنظيف النمط
 ./vendor/bin/pint
 
-# Static analysis
+# التحليل الثابت
 ./vendor/bin/phpstan analyse
 ```
 
 ---
 
-## 🔌 API Endpoints
+## 🔌 نقاط API
 
-The platform exposes RESTful APIs under `auth:sanctum`:
+المنصة توفر واجهات RESTful تحت `auth:sanctum`:
 
-| Prefix | Endpoints |
-|--------|-----------|
-| `/api/services` | Service catalog |
-| `/api/service-requests` | CRUD service requests |
-| `/api/documents` | Document management |
-| `/api/knowledge` | Knowledge base |
-| `/api/faq` | Frequently asked questions |
-| `/api/assistant/conversations` | AI chat conversations |
+| المسار | الوظيفة |
+|--------|---------|
+| `/api/services` | كتالوج الخدمات |
+| `/api/service-requests` | إدارة طلبات الخدمات |
+| `/api/documents` | إدارة المستندات |
+| `/api/knowledge` | قاعدة المعرفة |
+| `/api/faq` | الأسئلة الشائعة |
+| `/api/assistant/conversations` | محادثات المساعد الذكي |
 
 ---
 
-## 📁 Project Structure
+## 📁 هيكل المشروع
 
 ```
-├── AGENTS.md                 # Session memory & progress
-├── AI_INSTRUCTIONS.md        # AI coding assistant rules
-├── ENGINEERING_RULEBOOK.md   # Mandatory engineering rules
-├── app/                      # Laravel application core
-├── composer.json             # 14 PSR-4 module namespaces
+├── AGENTS.md                 # ذاكرة الجلسة والتقدم
+├── AI_INSTRUCTIONS.md        # قواعد المساعد الذكي
+├── ENGINEERING_RULEBOOK.md   # القواعد الهندسية الملزمة
+├── app/                      # نواة تطبيق Laravel
+├── composer.json             # 14 نطاق PSR-4 للوحدات
 ├── database/
-│   ├── factories/            # 13 model factories
-│   ├── migrations/           # 54 database migrations
-│   └── seeders/              # Data seeders
+│   ├── factories/            # 13 مصنع نماذج
+│   ├── migrations/           # 54 ترحيل قاعدة بيانات
+│   └── seeders/              # بذور البيانات
 ├── docs/
-│   ├── adr/                  # Architecture Decision Records
-│   ├── design-system/        # UI tokens, components, guidelines
-│   ├── engineering/          # API, database, security, testing rules
-│   └── changelog/            # Release history
+│   ├── adr/                  # سجلات القرارات المعمارية
+│   ├── design-system/        # رموز التصميم والمكونات
+│   ├── engineering/          # قواعد API وقواعد البيانات والأمن والاختبار
+│   └── changelog/            # سجل الإصدارات
 ├── resources/
-│   ├── css/                  # Tailwind v4 + design tokens
-│   ├── views/                # 91 Blade templates
-│   │   ├── components/       # 27 reusable UI components
-│   │   ├── layouts/          # Dashboard + Auth layouts
-│   │   └── {module}/         # Module-specific views
-│   └── lang/                 # Arabic translations
+│   ├── css/                  # Tailwind v4 + رموز التصميم
+│   ├── views/                # 91 قالب Blade
+│   │   ├── components/       # 27 مكون واجهة قابل لإعادة الاستخدام
+│   │   ├── layouts/          # تخطيطات لوحة التحكم والمصادقة
+│   │   └── {module}/         # قوالب خاصة بكل وحدة
+│   └── lang/                 # الترجمة العربية
 ├── src/Modules/
-│   ├── {ModuleName}/         # 14 DDD modules
-│   │   ├── Domain/           # Entities, VOs, Enums, Events
-│   │   ├── Application/      # Use Cases, DTOs, Mappers
-│   │   ├── Infrastructure/   # Persistence, Gateways
-│   │   ├── Presentation/     # Controllers, Routes, Views
-│   │   └── Tests/            # Unit, Feature, Integration
+│   ├── {ModuleName}/         # 14 وحدة DDD
+│   │   ├── Domain/           # الكيانات، كائنات القيمة، التعدادات، الأحداث
+│   │   ├── Application/      # حالات الاستخدام، DTOs، المحولات
+│   │   ├── Infrastructure/   # التخزين، البوابات
+│   │   ├── Presentation/     # المتحكمات، المسارات، القوالب
+│   │   └── Tests/            # اختبارات الوحدة والميزات والتكامل
 │   └── ...
 ├── storage/
-├── tests/                    # Global test suites
+├── tests/                    # مجموعات الاختبارات العامة
 └── vite.config.js            # Tailwind v4 + Laravel Vite
 ```
 
 ---
 
-## 🎨 Design System
+## 🎨 نظام التصميم
 
-Built with **Tailwind CSS v4**, HSL design tokens, and 14 reusable components:
+مبني بـ **Tailwind CSS v4**، رموز تصميم HSL، و14 مكوّناً قابلاً لإعادة الاستخدام:
 
-| Component | Description |
-|-----------|-------------|
-| `x-rf-card` | Content cards with 8 variants |
-| `x-rf-button` | Action buttons with 5 variants |
-| `x-rf-badge` | Status badges with 6 variants |
-| `x-rf-input` | Form inputs with validation |
-| `x-rf-modal` | Alpine.js dialog with transitions |
-| `x-rf-alert` | Dismissible alerts with 5 levels |
-| `x-rf-progress` | Progress bars with ARIA support |
-| `x-rf-kpi-card` | KPI metrics with trend indicators |
-| `x-rf-empty-state` | Empty state with action button |
-| `x-rf-sidebar` | Responsive navigation sidebar |
-| `x-rf-bottom-nav` | Mobile bottom navigation |
-| `x-rf-breadcrumb` | Breadcrumb navigation |
-| `x-rf-dropdown` | Dropdown menus |
-| `x-rf-toast` | Toast notifications |
+| المكوّن | الوصف |
+|---------|-------|
+| `x-rf-card` | بطاقات محتوى بـ 8 أنواع |
+| `x-rf-button` | أزرار إجراءات بـ 5 أنواع |
+| `x-rf-badge` | شارات حالة بـ 6 أنواع |
+| `x-rf-input` | حقول إدخال مع تحقق |
+| `x-rf-modal` | نافذة حوار بـ Alpine.js |
+| `x-rf-alert` | تنبيهات قابلة للإغلاق بـ 5 مستويات |
+| `x-rf-progress` | أشرطة تقدم مع دعم ARIA |
+| `x-rf-kpi-card` | مؤشرات أداء مع مؤشرات اتجاه |
+| `x-rf-empty-state` | حالة فارغة مع زر إجراء |
+| `x-rf-sidebar` | شريط جانبي متجاوب |
+| `x-rf-bottom-nav` | شريط سفلي للجوال |
+| `x-rf-breadcrumb` | مسار التنقل |
+| `x-rf-dropdown` | قوائم منسدلة |
+| `x-rf-toast` | إشعارات منبثقة |
 
-Features: **RTL Arabic** (Cairo font), **Dark mode**, **Responsive**, **WCAG accessible**.
+المميزات: **دعم كامل للعربية** (خط Cairo)، **الوضع الليلي**، **تصميم متجاوب**، **متوافق مع WCAG**.
 
 ---
 
-## 🧪 Testing Strategy
+## 🧪 استراتيجية الاختبارات
 
 ```
-Unit (50%):     Domain entities, VOs, enums, DTOs
-Feature (30%):  Use cases, controllers, form requests
-Integration:    Cross-module workflows, gateways
-API Tests:      Endpoints with Sanctum auth
+الوحدة (50%):     كيانات المجال، كائنات القيمة، التعدادات، DTOs
+الميزات (30%):    حالات الاستخدام، المتحكمات، طلبات النماذج
+التكامل:          سير العمل عبر الوحدات، البوابات
+API:              نقاط النهاية مع مصادقة Sanctum
 ```
 
-Current: **1109 tests, 3281 assertions, 0 failures** across 137 test files.
+الوضع الحالي: **1109 اختبار، 3281 تأكيد، 0 فشل** عبر 137 ملف اختبار.
 
 ---
 
-## 📚 Documentation
+## 📚 التوثيق
 
-| Resource | Location |
-|----------|----------|
-| Memory System | [`.memory/`](.memory/) |
-| Engineering Rules | [`ENGINEERING_RULEBOOK.md`](ENGINEERING_RULEBOOK.md) |
-| AI Instructions | [`AI_INSTRUCTIONS.md`](AI_INSTRUCTIONS.md) |
-| API Standards | [`docs/engineering/api-standards.md`](docs/engineering/api-standards.md) |
-| Security Rules | [`docs/engineering/security-rules.md`](docs/engineering/security-rules.md) |
-| Database Rules | [`docs/engineering/database-rules.md`](docs/engineering/database-rules.md) |
-| Testing Rules | [`docs/engineering/testing-rules.md`](docs/engineering/testing-rules.md) |
-| Coding Rules | [`docs/engineering/coding-rules.md`](docs/engineering/coding-rules.md) |
-| Design System | [`docs/design-system/`](docs/design-system/) |
-| ADRs | [`docs/adr/`](docs/adr/) |
-
----
-
-## 🛣️ Roadmap
-
-- [x] **Phase 0-1** — Foundation + Shared Module
-- [x] **Phase 2** — Academic Core
-- [x] **Phase 3** — Productivity
-- [x] **Phase 4** — UI Design System
-- [x] **Phase 5** — Career & Skills
-- [x] **Phase 6** — Student Services & Smart Assistant
-- [ ] **Phase 7** — Community & Mentorship
-- [ ] **Phase 8** — Analytics & Administration
-- [ ] **Phase 9** — Production Hardening & CI/CD
-- [ ] **Phase 10** — Launch & Scale
+| المصدر | الموقع |
+|--------|--------|
+| نظام الذاكرة | [`.memory/`](.memory/) |
+| القواعد الهندسية | [`ENGINEERING_RULEBOOK.md`](ENGINEERING_RULEBOOK.md) |
+| تعليمات الذكاء الاصطناعي | [`AI_INSTRUCTIONS.md`](AI_INSTRUCTIONS.md) |
+| معايير API | [`docs/engineering/api-standards.md`](docs/engineering/api-standards.md) |
+| قواعد الأمن | [`docs/engineering/security-rules.md`](docs/engineering/security-rules.md) |
+| قواعد قاعدة البيانات | [`docs/engineering/database-rules.md`](docs/engineering/database-rules.md) |
+| قواعد الاختبار | [`docs/engineering/testing-rules.md`](docs/engineering/testing-rules.md) |
+| قواعد البرمجة | [`docs/engineering/coding-rules.md`](docs/engineering/coding-rules.md) |
+| نظام التصميم | [`docs/design-system/`](docs/design-system/) |
+| القرارات المعمارية | [`docs/adr/`](docs/adr/) |
 
 ---
 
-## 🤝 Contribution
+## 🛣️ خارطة الطريق
 
-1. **Read [`AI_INSTRUCTIONS.md`](AI_INSTRUCTIONS.md)** and **[`ENGINEERING_RULEBOOK.md`](ENGINEERING_RULEBOOK.md)** before writing any code
-2. **One use case per class** — no fat controllers or fat models
-3. **Domain layer must be framework-free** — no Eloquent, no Facades
-4. **Module boundaries are sacred** — use Contracts and Events, never direct imports
-5. **Write tests** — every feature needs Unit + Feature tests
-6. **Update memory** after every implementation milestone
-7. **Every architectural decision** gets logged in `.memory/decisions.md` and an ADR
+- [x] **المرحلة 0-1** — التأسيس + الوحدة المشتركة
+- [x] **المرحلة 2** — النواة الأكاديمية
+- [x] **المرحلة 3** — الإنتاجية
+- [x] **المرحلة 4** — نظام التصميم
+- [x] **المرحلة 5** — المهنية والمهارات
+- [x] **المرحلة 6** — خدمات الطالب والمساعد الذكي
+- [ ] **المرحلة 7** — المجتمع والتواصل
+- [ ] **المرحلة 8** — التحليلات والإدارة
+- [ ] **المرحلة 9** — التعزيز الإنتاجي و CI/CD
+- [ ] **المرحلة 10** — الإطلاق والتوسع
+
+---
+
+## 🤝 المساهمة
+
+1. **اقرأ [`AI_INSTRUCTIONS.md`](AI_INSTRUCTIONS.md)** و **[`ENGINEERING_RULEBOOK.md`](ENGINEERING_RULEBOOK.md)** قبل كتابة أي كود
+2. **حالة استخدام واحدة لكل كلاس** — لا لمتحكمات أو نماذج ضخمة
+3. **طبقة المجال خالية من الإطار** — لا Eloquent ولا Facades
+4. **حدود الوحدات مقدسة** — استخدم العقود والأحداث، لا الاستيراد المباشر
+5. **اكتب اختبارات** — كل ميزة تحتاج اختبار وحدة + اختبار ميزة
+6. **حدّث الذاكرة** بعد كل إنجاز تنفيذي
+7. **كل قرار معماري** يسجل في `.memory/decisions.md` و ADR
 
 ---
 
 <p align="center">
-  <sub>Built with ❤️ for student success —<br>
+  <sub>بُني بحب لنجاح الطالب —<br>
   <em>من الطالب، للطالب، برفيق الطالب</em>
   </sub>
 </p>

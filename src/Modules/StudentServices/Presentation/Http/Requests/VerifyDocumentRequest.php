@@ -11,7 +11,8 @@ class VerifyDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => ['required', 'string', 'max:64'],
+            'code' => ['required_without:verification_code', 'string', 'max:64'],
+            'verification_code' => ['required_without:code', 'string', 'max:64'],
         ];
     }
 

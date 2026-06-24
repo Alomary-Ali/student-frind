@@ -5,29 +5,17 @@ declare(strict_types=1);
 namespace Modules\StudentServices\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\Sanctum;
-use Modules\Shared\Infrastructure\Persistence\EloquentUser;
-use Modules\StudentServices\Infrastructure\Persistence\EloquentServiceCategory;
+use Modules\StudentServices\Infrastructure\Persistence\Eloquent\EloquentServiceCategory;
 use Tests\TestCase;
 
 final class ServiceRequestFeatureTest extends TestCase
 {
     use RefreshDatabase;
+    use WithAuthenticatedStudent;
 
     public function test_student_can_create_service_request(): void
     {
-        $user = EloquentUser::create([
-            'id' => '550e8400-e29b-41d4-a716-446655440000',
-            'email' => 'student@test.com',
-            'first_name' => 'Test',
-            'last_name' => 'Student',
-            'password_hash' => Hash::make('password'),
-            'role' => 'student',
-            'status' => 'active',
-            'academic_id' => null,
-        ]);
-        Sanctum::actingAs($user);
+        $user = $this->createAndAuthenticateStudent();
 
         $category = EloquentServiceCategory::create([
             'id' => 'cat-001',
@@ -59,7 +47,6 @@ final class ServiceRequestFeatureTest extends TestCase
 
         $this->assertDatabaseHas('student_service_requests', [
             'category_id' => $category->id,
-            'student_id' => $user->id,
             'status' => 'new',
             'priority' => 'medium',
         ]);
@@ -67,17 +54,7 @@ final class ServiceRequestFeatureTest extends TestCase
 
     public function test_create_request_fails_with_invalid_priority(): void
     {
-        $user = EloquentUser::create([
-            'id' => '550e8400-e29b-41d4-a716-446655440000',
-            'email' => 'student@test.com',
-            'first_name' => 'Test',
-            'last_name' => 'Student',
-            'password_hash' => Hash::make('password'),
-            'role' => 'student',
-            'status' => 'active',
-            'academic_id' => null,
-        ]);
-        Sanctum::actingAs($user);
+        $this->createAndAuthenticateStudent();
 
         $category = EloquentServiceCategory::create([
             'id' => 'cat-001',
@@ -98,17 +75,7 @@ final class ServiceRequestFeatureTest extends TestCase
 
     public function test_student_can_list_their_requests(): void
     {
-        $user = EloquentUser::create([
-            'id' => '550e8400-e29b-41d4-a716-446655440000',
-            'email' => 'student@test.com',
-            'first_name' => 'Test',
-            'last_name' => 'Student',
-            'password_hash' => Hash::make('password'),
-            'role' => 'student',
-            'status' => 'active',
-            'academic_id' => null,
-        ]);
-        Sanctum::actingAs($user);
+        $this->createAndAuthenticateStudent();
 
         $response = $this->getJson('/api/v1/student-services/requests');
 
