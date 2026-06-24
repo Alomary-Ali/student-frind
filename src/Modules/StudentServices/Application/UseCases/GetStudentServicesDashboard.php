@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Application\UseCases;
@@ -22,8 +23,8 @@ final readonly class GetStudentServicesDashboard
         $allRequests = $this->requests->findByStudentId($studentId);
         $allDocuments = $this->documents->findByStudentId($studentId);
 
-        $activeRequests = array_filter($allRequests, fn($r) => ! in_array($r->status()->value, ['completed', 'cancelled', 'rejected'], true));
-        $pendingDocuments = array_filter($allDocuments, fn($d) => $d->status()->value === 'pending');
+        $activeRequests = array_filter($allRequests, fn ($r) => ! in_array($r->status()->value, ['completed', 'cancelled', 'rejected'], true));
+        $pendingDocuments = array_filter($allDocuments, fn ($d) => $d->status()->value === 'pending');
 
         $recentRequests = array_slice($allRequests, 0, 5);
         $recentMessages = $this->conversations->findActiveByStudentId($studentId);
@@ -32,7 +33,7 @@ final readonly class GetStudentServicesDashboard
             'active_requests_count' => count($activeRequests),
             'pending_documents_count' => count($pendingDocuments),
             'unread_notifications' => $this->notifications->getUnreadCount($studentId),
-            'recent_requests' => array_map(fn($r) => [
+            'recent_requests' => array_map(fn ($r) => [
                 'id' => $r->id()->value(),
                 'ref_number' => $r->refNumber(),
                 'status' => $r->status()->value,

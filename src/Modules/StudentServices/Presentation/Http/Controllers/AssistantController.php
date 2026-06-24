@@ -90,7 +90,28 @@ final readonly class AssistantController
         }
     }
 
-    public function history(string $id, Request $request): View
+    public function history(Request $request): View
+    {
+        $studentId = $this->resolveStudentId($request);
+
+        if (! $studentId) {
+            return view('student-services.assistant.history', [
+                'conversations' => [],
+                'conversation' => null,
+                'messages' => [],
+            ]);
+        }
+
+        $conversations = $this->conversations->findByStudentId($studentId);
+
+        return view('student-services.assistant.history', [
+            'conversations' => $conversations,
+            'conversation' => null,
+            'messages' => [],
+        ]);
+    }
+
+    public function conversation(string $id, Request $request): View
     {
         $history = $this->getConversationHistory->execute($id);
 

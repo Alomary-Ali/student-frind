@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             TestUsersSeeder::class,
             CourseSeeder::class,
             StudentDemoSeeder::class,
+            StudentServicesSeeder::class,
+            KnowledgeBaseSeeder::class,
         ]);
     }
 }

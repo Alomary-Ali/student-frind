@@ -1,14 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Application\UseCases;
 
+use Illuminate\Support\Str;
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use Modules\StudentServices\Domain\Contracts\KnowledgeRepositoryInterface;
 use Modules\StudentServices\Domain\Entities\KnowledgeArticle;
-use Modules\StudentServices\Domain\Enums\KnowledgeStatus;
 use Modules\StudentServices\Domain\ValueObjects\KnowledgeArticleId;
-use Illuminate\Support\Str;
 
 final readonly class CreateKnowledgeArticle
 {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Infrastructure\Integrations;
@@ -9,7 +10,7 @@ final class DompdfDocumentGenerator implements DocumentGeneratorInterface
 {
     public function generate(string $type, array $data): string
     {
-        $viewName = match($type) {
+        $viewName = match ($type) {
             'transcript' => 'documents.transcript',
             'certificate' => 'documents.certificate',
             'statement' => 'documents.statement',

@@ -22,6 +22,8 @@ final class ModuleServiceProviderTest extends TestCase
         \Modules\Administration\AdministrationServiceProvider::class,
         \Modules\UI\UIServiceProvider::class,
         \Modules\Career\CareerServiceProvider::class,
+        \Modules\Notifications\NotificationsServiceProvider::class,
+        \Modules\StudentServices\StudentServicesServiceProvider::class,
     ];
 
     public function test_provider_is_registered_in_container(): void

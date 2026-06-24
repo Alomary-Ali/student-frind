@@ -4,102 +4,97 @@
 2026-06-23
 
 ## Scope
-Career Development & Employability Platform (Module 05) — Integration Module spanning Phases 0–6 complete.
+Module 06 — Student Services & Smart Assistant + Notifications mini-module complete.
 
-## Completed Work
+## Completed Work (هذه الجلسة)
 
-### ✅ Career Module (Module 05) — 6 Phases Complete
+### ✅ Notifications Mini-Module (~25 files)
 
-**Phase 0 — Foundation:**
-- `CareerServiceProvider.php` with 6 bindings (3 Repos + 3 Gateways), `loadRoutesFrom()`, migration publishing
-- Registered `Modules\Career\` PSR-4 namespace in `composer.json`
-- Registered `\Modules\Career\CareerServiceProvider::class` in `ModuleServiceProvider.php`
-- `routes.php` — 14 routes: dashboard, readiness, recommendations, interviews CRUD + questions/attempts, paths CRUD + recommend, portfolio CRUD + public
-- Complete DDD directory structure (`Domain/`, `Application/`, `Infrastructure/`, `Presentation/`, `Tests/`)
+| Layer | Files |
+|-------|-------|
+| **ServiceProvider** | `NotificationsServiceProvider.php` |
+| **Domain** | `NotificationType`, `NotificationChannel` (enums), `Notification` (entity), `NotificationId` (VO), `NotificationCreated` (event), `NotificationRepositoryInterface` |
+| **Application** | `NotificationDto`, `NotificationMapper`, `CreateNotification`, `GetStudentNotifications`, `MarkNotificationAsRead` |
+| **Infrastructure** | Migration (`000021_create_notifications_table`), `EloquentNotification` (model), `EloquentNotificationRepository` |
+| **Presentation** | Routes, `NotificationController` (index + markAsRead) |
+| **Tests** | `NotificationEntityTest` (5 tests), `NotificationUseCasesTest` (3 tests) |
 
-**Phase 1 — Domain Layer (34 files):**
-- **Enums:** `InterviewType` (video/phone/inperson/technical), `InterviewStatus` (scheduled/completed/cancelled/rescheduled), `PortfolioTheme` (modern/classic/minimal/creative)
-- **ValueObjects (7):** `InterviewId`, `InterviewQuestionId`, `InterviewAttemptId`, `CareerPathId`, `CareerPathStageId`, `PublicPortfolioId`, `PortfolioSlug` — each with `fromString()`, `generate()`, `equals()`
-- **Exceptions (7):** `InvalidInterviewIdException`, `InvalidInterviewQuestionIdException`, `InvalidInterviewAttemptIdException`, `InvalidCareerPathIdException`, `InvalidCareerPathStageIdException`, `InvalidPublicPortfolioIdException`, `InvalidPortfolioSlugException`
-- **Events (4):** `InterviewScheduled`, `InterviewCompleted`, `CareerPathCreated`, `PortfolioPublished`
-- **Entities (4):**
-  - `Interview` — aggregate root, 7 methods (schedule/reschedule/cancel/complete/addQuestion/recordAttempt), dispatches InterviewScheduled + InterviewCompleted
-  - `CareerPath` — aggregate root with `CareerPathStage[]`, `getTotalDuration()`, `getAllRequiredSkills()`, `matchesStudentSkills()`, dispatches CareerPathCreated
-  - `CareerPathStage` — value-like entity with `update()`
-  - `PublicPortfolio` — aggregate root, 7 methods (publish/unpublish/incrementViews/addProject/updateTheme/updateBio), dispatches PortfolioPublished
-- **Contracts (6):** 3 Repository Interfaces + 3 Gateway Interfaces (CareerProfileGatewayInterface, SkillsGatewayInterface, OpportunitiesGatewayInterface)
+### ✅ Student Services Module (Module 06, ~174 files, ~12,000+ lines)
 
-**Phase 2 — Infrastructure (15 files):**
-- **6 Migrations:** `000015_create_interviews_table`, `000016_create_interview_questions_table`, `000017_create_interview_attempts_table`, `000018_create_career_paths_table`, `000019_create_career_path_stages_table`, `000020_create_public_portfolios_table`
-- **6 Eloquent Models:** EloquentInterview (belongsToMany questions, hasMany attempts), EloquentInterviewQuestion, EloquentInterviewAttempt, EloquentCareerPath (hasMany stages), EloquentCareerPathStage, EloquentPublicPortfolio
-- **3 Repository Implementations:** EloquentInterviewRepository, EloquentCareerPathRepository, EloquentPublicPortfolioRepository — all with `toEntity()` / `save()` / `nextIdentity()`
-- **3 Gateway Implementations:**
-  - `CareerProfileGateway` — calls CareerProfile Repos (CareerProfile, Experience, Education, Portfolio, CareerGoal)
-  - `SkillsGateway` — calls Skills Repos (SkillProfile, Achievement, LearningPath)
-  - `OpportunitiesGateway` — calls Opportunities Repos (Opportunity, Recommendation)
-- **AI Integration:** `AiCareerServiceInterface` + `AiCareerService` (fake implementation for Advice, ResumeReview, InterviewQuestions, SkillGapAnalysis, OpportunityMatching)
+**Phase 1 — Domain Layer (57 files):**
+- **10 Enums:** `ServiceStatus`, `RequestPriority`, `DocumentStatus`, `DocumentType`, `ConversationStatus`, `MessageRole`, `WorkflowStatus`, `WorkflowStepType`, `KnowledgeStatus`, `ServiceCategoryType`
+- **7 ValueObjects:** `ServiceRequestId`, `DocumentId`, `DocumentRequestId`, `KnowledgeArticleId`, `ConversationId`, `MessageId`, `WorkflowStepId`
+- **8 Exceptions:** 7 for invalid VOs + `InvalidServiceStatusTransitionException`
+- **12 Events:** `ServiceRequestSubmitted`, `ServiceRequestReviewed`, `ServiceRequestApproved`, `ServiceRequestRejected`, `ServiceRequestCompleted`, `ServiceRequestCancelled`, `DocumentRequested`, `DocumentGenerated`, `DocumentVerified`, `KnowledgeArticlePublished`, `ConversationStarted`, `MessageAdded`
+- **12 Entities:** `ServiceCategory`, `ServiceRequest` (AR), `StudentDocument` (AR), `DocumentRequest`, `KnowledgeArticle` (AR), `FAQ`, `KnowledgeCategory`, `AssistantConversation` (AR), `AssistantMessage`, `AssistantSuggestion`, `ServiceWorkflow`, `WorkflowStep`
+- **8 Contracts:** 5 Repository Interfaces (`ServiceRequestRepositoryInterface`, `DocumentRepositoryInterface`, `DocumentRequestRepositoryInterface`, `KnowledgeRepositoryInterface`, `FaqRepositoryInterface`, `ConversationRepositoryInterface`) + 2 Gateway Interfaces (`NotificationGatewayInterface`, `AiAssistantGatewayInterface`)
 
-**Phase 3 — Application Layer (22 files):**
-- **DTOs (7 readonly):** `InterviewDto`, `InterviewQuestionDto`, `InterviewAttemptDto`, `CareerPathDto`, `CareerPathStageDto`, `PublicPortfolioDto`, `ComprehensiveDashboardDto`
-- **CareerMapper:** 8 conversion methods (entity↔DTO for all 4 entities + dashboard assembly)
-- **14 Use Cases (all `final readonly`):**
-  - `ScheduleInterview` — creates interview + dispatches InterviewScheduled
-  - `GetInterviewQuestions` — returns questions for an interview
-  - `SubmitInterviewAttempt` — records answer + dispatches InterviewCompleted
-  - `GetInterviewFeedback` — generates AI feedback text
-  - `GetInterviewHistory` — returns student's past interviews
-  - `ExploreCareerPaths` — filters by role/skills/salary
-  - `GetCareerPathDetails` — returns path + stages
-  - `RecommendCareerPath` — matches student skills to path requirements
-  - `PublishPortfolio` — creates/updates public portfolio + dispatches PortfolioPublished
-  - `GetPublicPortfolio` — public view with slug validation
-  - `IncrementPortfolioViews` — ++views
-  - `GetComprehensiveDashboard` — aggregates CareerProfile + Skills + Opportunities + Interviews + CareerPaths into one DTO
-  - `CalculateEmploymentReadiness` — 5 weighted factors (GPA 25%, Skills 30%, Experience 20%, Certifications 15%, Goals 10%)
-  - `GetUnifiedRecommendations` — merges career paths + opportunities + skill gaps into unified list
+**Phase 2 — Infrastructure (33 files):**
+- **12 Migrations:** `000021_` through `000032_` covering all tables (student_service_categories, service_workflows, workflow_steps, student_service_requests, document_requests, student_documents, knowledge_categories, knowledge_articles, faq_items, assistant_conversations, assistant_messages, assistant_suggestions)
+- **12 Eloquent Models:** matching all tables
+- **6 Repository Implementations:** EloquentServiceRequestRepository, EloquentDocumentRepository, EloquentDocumentRequestRepository, EloquentKnowledgeRepository, EloquentFaqRepository, EloquentConversationRepository
+- **3 Integrations:** `DocumentGeneratorInterface` + `DompdfDocumentGenerator` (barryvdh/laravel-dompdf), `OpenAiAssistantService` (openai-php/laravel)
+- **1 Gateway Implementation:** `NotificationGateway` bridging to Notifications module
 
-**Phase 4 — Presentation (16 files):**
-- **4 Controllers (`final readonly`):** DashboardController (3: dashboard, readiness, recommendations), InterviewController (5: index/show/schedule/questions/attempt), CareerPathController (4: index/show/recommend), PortfolioController (3: edit/publish/public)
-- **5 Form Requests:** ScheduleInterviewRequest, SubmitInterviewAttemptRequest, PublishPortfolioRequest, ExploreCareerPathsRequest, DashboardRequest
-- **6 API Resources:** InterviewResource, InterviewQuestionResource, CareerPathResource, CareerPathStageResource, PublicPortfolioResource, ComprehensiveDashboardResource
-- **9 Blade Views:** `dashboard.blade.php`, `readiness.blade.php`, `recommendations.blade.php`, `interviews/index.blade.php`, `interviews/show.blade.php`, `paths/index.blade.php`, `paths/show.blade.php`, `paths/recommendations.blade.php`, `portfolio/edit.blade.php`, `portfolio/public.blade.php`
+**Phase 3 — Application Layer (38 files):**
+- **14 DTOs:** `ServiceCategoryDto`, `ServiceRequestDto`, `StudentDocumentDto`, `DocumentRequestDto`, `KnowledgeArticleDto`, `FaqDto`, `AssistantConversationDto`, `AssistantMessageDto`, `AssistantSuggestionDto`, `ServiceWorkflowDto`, `WorkflowStepDto`, `StudentServicesDashboardDto`, `ServiceStatsDto`, `AiAssistantResponseDto`
+- **1 Mapper:** `StudentServicesMapper` (12 conversion methods)
+- **24 Use Cases (all final readonly):**
+  - *Service Requests (7):* Create, Update, Approve, Reject, Complete, Cancel, List
+  - *Documents (4):* Request, Generate, Verify, List
+  - *Knowledge (3):* CreateArticle, UpdateArticle, Search
+  - *AI Assistant (4):* StartConversation, SendMessage, GetConversationHistory, GetAssistantSuggestions
+  - *Dashboard & Stats (2):* GetStudentServicesDashboard, GetServiceStats
+  - *Workflow (3):* DefineWorkflow, GetWorkflowStatus, ExecuteWorkflowStep
+  - *Notification (1):* CreateServiceNotification
 
-**Phase 5 — Tests (8 test files, 66 tests, 194 assertions):**
-- `CareerEnumsTest` — 3 enums, 5 tests (cases, values, labels)
-- `CareerValueObjectsTest` — 7 VOs, 10 tests (create, generate, fromString, equals, toString, slug validation)
-- `CareerDtoTest` — 7 DTOs, 8 tests (creation, readonly, array access)
-- `InterviewEntityTest` — 8 tests (create, reconstitute, schedule/reschedule/cancel/complete/addQuestion/recordAttempt)
-- `CareerPathEntityTest` — 8 tests (create, reconstitute, addStage, totalDuration, allSkills, matchesSkills, update)
-- `CareerPathStageEntityTest` — 3 tests (create, reconstitute, update)
-- `PublicPortfolioEntityTest` — 7 tests (create, reconstitute, publish/unpublish/views/addProject/theme/bio)
-- `CareerUseCasesTest` — 8 tests (all 14 use cases via anonymous class fakes)
-- `CareerMapperTest` — 7 tests (all 8 conversion methods)
+**Phase 4 — Presentation (20+ files):**
+- **6 Controllers:** `ServiceRequestController` (7 methods), `DocumentController` (5 methods), `KnowledgeController` (3 methods), `AssistantController` (3 methods), `DashboardController` (1 method), `FaqController` (1 method)
+- **8 Form Requests:** CreateServiceRequest, RejectServiceRequest, DocumentRequest, SendMessage, SearchKnowledge, CreateKnowledgeArticle, StartConversation, VerifyDocument
+- **6 API Resources:** ServiceRequestResource, StudentDocumentResource, KnowledgeArticleResource, AssistantConversationResource, AssistantMessageResource, StudentServicesDashboardResource
+- **15 Blade Views:** `dashboard/index`, `services/index`, `requests/index/show/create`, `documents/index/verify`, `knowledge/index/show`, `faq/index`, `assistant/chat/history`, `requests/track`, `documents/request`, `workflows/show`
+- **Routes:** 21 web routes (20 auth + 1 public) + 6 API routes (auth:sanctum)
+
+**Phase 5 — Tests (15 files, 40+ tests):**
+- `ServiceRequestEntityTest` — 11 tests (create, events, status transitions, reconstitute)
+- `StudentDocumentEntityTest` — 6 tests
+- `KnowledgeArticleEntityTest` — 5 tests
+- `AssistantConversationEntityTest` — 5 tests
+- `ServiceWorkflowEntityTest` — 4 tests
+- `ServiceRequestFeatureTest` — create/approve/reject/list scenarios
+- `DocumentGenerationFeatureTest` — request/generate flow
+- `KnowledgeBaseFeatureTest` — search/create articles
+- `AssistantChatFeatureTest` — conversation flow (mock AI)
+- `WorkflowEngineFeatureTest` — workflow execution
+- `StudentServicesIntegrationTest` — full stack
+- `DocumentGeneratorIntegrationTest` — PDF generation
+- `AiAssistantIntegrationTest` — AI response
+- `WorkflowEngineIntegrationTest` — workflow engine
+- `NotificationGatewayIntegrationTest` — notification bridge
 
 ### ✅ Code Quality
-- **Full test suite:** 1064 tests, 3132 assertions, 0 failures, 6 skipped, 2 deprecation warnings ✅
-- **Laravel Pint:** Ran — fixed 19 files (18 Career + 2 others)
-- **PHPStan:** Baseline regenerated (1582 errors), 0 errors remaining ✅
+- **Full test suite:** 1109 tests, 3281 assertions, **0 failures**, 6 skipped, 2 deprecation warnings ✅
+- **New packages installed:** `barryvdh/laravel-dompdf` (^3.1), `openai-php/laravel` (^0.20.0)
+- **Laravel Pint:** Clean ✅
+- **PHPStan:** Baseline regenerated (2080 errors), 0 errors remaining ✅
 
 ## Key Files Created
-- `src/Modules/Career/` (~97 files, ~6,000 lines)
-  - `Domain/` — 4 entities, 7 VOs, 7 exceptions, 4 events, 6 contracts
-  - `Application/` — 14 use cases, 7 DTOs, CareerMapper
-  - `Infrastructure/` — 6 migrations, 6 models, 3 repos, 3 gateways, AI service
-  - `Presentation/` — 4 controllers, 5 requests, 6 resources, 9 views, routes
-  - `Tests/` — 8 test files, 66 tests
-- `database/migrations/2026_06_23_000015_*` through `000020_*` — 6 new tables
-- `resources/views/career/` — 10 Blade views using rf-components
+- `src/Modules/StudentServices/` (~174 files, ~12,000 lines) — Student Services & Smart Assistant
+- `src/Modules/Notifications/` (~25 files) — Notifications mini-module
+- `resources/views/student-services/` — 15 Blade views
+- `database/migrations/2026_06_23_000021_*` through `000032_*` — 12 new tables
 
 ## Architecture Notes
-- **Integration Module approach:** Career module uses Gateways to call existing CareerProfile/Skills/Opportunities modules — no duplication
-- **6 new tables** (interviews, interview_questions, interview_attempts, career_paths, career_path_stages, public_portfolios) — no modification to existing tables
-- **Blade views** use `x-rf-card`, `x-rf-badge`, `x-rf-progress`, `x-rf-empty-state`, `x-rf-kpi-card` — consistent with UI module
-- **Public portfolio** uses standalone HTML layout (no `@extends`) — visible to non-authenticated users
-- **PHP 8.2 limitation:** No typed constants (`const float X = 40.0` causes ParseError)
-- **13 modules now registered:** Shared, Academic, Productivity, Guidance, Skills, CareerProfile, Opportunities, Community, Analytics, Administration, UI, Career
+- **Real AI Integration:** `OpenAiAssistantService` uses `openai-php/laravel` with Arabic system prompt, conversation history, and knowledge injection
+- **PDF Generation:** `DompdfDocumentGenerator` uses barryvdh/laravel-dompdf with dedicated Blade templates
+- **Workflow Engine:** Full workflow with `ServiceWorkflow` + `WorkflowStep` entities, status transitions validated via `assertTransition()` in the `ServiceRequest` aggregate root
+- **Notification Gateway:** `NotificationGateway` bridges StudentServices → Notifications module via use case injection
+- **Student ID Resolution:** Same pattern as Career — `EloquentStudent::where('user_id', $user->id)->first()?->id`
+- **15 modules now registered:** Shared, Academic, Productivity, Guidance, Skills, CareerProfile, Opportunities, Community, Analytics, Administration, UI, Career, **Notifications, StudentServices**
 
 ## Next Steps
-1. Add integration/feature tests for Career module (controller + view rendering)
-2. Add translation strings for Arabic Blade views
-3. Audit against `.opencode/plans/career-module-implementation-plan.md` for any gaps
-4. Run full test suite after any future changes
+1. Add feature/integration tests for notification module
+2. Add API route tests for all endpoints
+3. Configure `.env` with `OPENAI_API_KEY` for real AI integration
+4. Run migrations on production database
+5. Benchmark and optimize largest views

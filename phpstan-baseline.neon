@@ -4105,6 +4105,186 @@ parameters:
 			path: src/Modules/CareerProfile/Tests/Unit/Domain/Services/CareerProfileServicesTest.php
 
 		-
+			message: '#^Property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/Eloquent/EloquentNotification.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$channel\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$is_read\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$link\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$message\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$student_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Notifications\\Infrastructure\\Persistence\\Eloquent\\EloquentNotification\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: src/Modules/Notifications/Infrastructure/Persistence/EloquentNotificationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Academic\\Infrastructure\\Persistence\\EloquentStudent\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/Notifications/Presentation/Http/Controllers/NotificationController.php
+
+		-
+			message: '#^Method Modules\\Notifications\\Presentation\\Http\\Controllers\\NotificationController\:\:index\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/Notifications/Presentation/Http/Controllers/NotificationController.php
+
+		-
+			message: '#^Method Modules\\Notifications\\Presentation\\Http\\Requests\\GetNotificationsRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/Notifications/Presentation/Http/Requests/GetNotificationsRequest.php
+
+		-
+			message: '#^Method Modules\\Notifications\\Presentation\\Http\\Requests\\MarkAsReadRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/Notifications/Presentation/Http/Requests/MarkAsReadRequest.php
+
+		-
+			message: '#^Method Modules\\Notifications\\Presentation\\Http\\Resources\\NotificationResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/Notifications/Presentation/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Property Modules\\Shared\\Domain\\Contracts\\EventDispatcherInterface@anonymous/src/Modules/Notifications/Tests/Feature/NotificationUseCasesTest\.php\:58\:\:\$dispatched type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/Notifications/Tests/Feature/NotificationUseCasesTest.php
+
+		-
+			message: '#^Access to an undefined property Modules\\Notifications\\Domain\\Events\\NotificationCreated\:\:\$notificationId\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationEntityTest.php
+
+		-
+			message: '#^Call to an undefined method Modules\\Notifications\\Tests\\NotificationIntegrationTest\:\:assertDatabaseHas\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: src/Modules/Notifications/Tests/NotificationIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with Modules\\Notifications\\Application\\DTOs\\NotificationDto will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationIntegrationTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\Notifications\\Infrastructure\\Persistence\\EloquentNotification\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$isRead on null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\Notifications\\Application\\UseCases\\MarkNotificationAsRead constructor invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 2
+			path: src/Modules/Notifications/Tests/NotificationIntegrationTest.php
+
+		-
+			message: '#^Result of method Modules\\Notifications\\Application\\UseCases\\MarkNotificationAsRead\:\:execute\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with Modules\\Notifications\\Application\\DTOs\\NotificationDto will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationUseCaseTest.php
+
+		-
+			message: '#^Cannot access property \$isRead on null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationUseCaseTest.php
+
+		-
+			message: '#^Class Modules\\Notifications\\Application\\UseCases\\MarkNotificationAsRead constructor invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 2
+			path: src/Modules/Notifications/Tests/NotificationUseCaseTest.php
+
+		-
+			message: '#^Result of method Modules\\Notifications\\Application\\UseCases\\MarkNotificationAsRead\:\:execute\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 1
+			path: src/Modules/Notifications/Tests/NotificationUseCaseTest.php
+
+		-
 			message: '#^Method Modules\\Opportunities\\Application\\DTOs\\OpportunityDto\:\:__construct\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -7235,6 +7415,1938 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/Modules/Skills/Tests/Unit/Domain/Services/SkillsServicesTest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\AiAssistantResponseDto\:\:__construct\(\) has parameter \$suggestions with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/AiAssistantResponseDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\KnowledgeArticleDto\:\:__construct\(\) has parameter \$tags with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/KnowledgeArticleDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\ServiceStatsDto\:\:__construct\(\) has parameter \$byCategory with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/ServiceStatsDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\ServiceStatsDto\:\:__construct\(\) has parameter \$byStatus with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/ServiceStatsDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\StudentDocumentDto\:\:__construct\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/StudentDocumentDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\StudentServicesDashboardDto\:\:__construct\(\) has parameter \$recentMessages with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/StudentServicesDashboardDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\StudentServicesDashboardDto\:\:__construct\(\) has parameter \$recentRequests with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/StudentServicesDashboardDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\DTOs\\StudentServicesDashboardDto\:\:__construct\(\) has parameter \$services with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/DTOs/StudentServicesDashboardDto.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\Mappers\\StudentServicesMapper\:\:toDashboardDto\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/Mappers/StudentServicesMapper.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\ApproveServiceRequest\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/ApproveServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\CancelServiceRequest\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/CancelServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\CompleteServiceRequest\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/CompleteServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\CreateKnowledgeArticle\:\:execute\(\) has parameter \$tags with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/CreateKnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\CreateKnowledgeArticle\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/CreateKnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\CreateServiceNotification\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/CreateServiceNotification.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\CreateServiceRequest\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/CreateServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\DefineWorkflow\:\:execute\(\) has parameter \$steps with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/DefineWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\DefineWorkflow\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/DefineWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\ExecuteWorkflowStep\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/ExecuteWorkflowStep.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GenerateDocument\:\:execute\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GenerateDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GenerateDocument\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GenerateDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GetAssistantSuggestions\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GetAssistantSuggestions.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GetConversationHistory\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GetConversationHistory.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GetServiceStats\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GetServiceStats.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GetStudentServicesDashboard\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GetStudentServicesDashboard.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\GetWorkflowStatus\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/GetWorkflowStatus.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\ListServiceRequests\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/ListServiceRequests.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\ListStudentDocuments\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/ListStudentDocuments.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\RejectServiceRequest\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/RejectServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\RequestDocument\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/RequestDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\SearchKnowledgeBase\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/SearchKnowledgeBase.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\SendMessage\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/SendMessage.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\StartConversation\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/StartConversation.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\UpdateKnowledgeArticle\:\:execute\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/UpdateKnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\UpdateKnowledgeArticle\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/UpdateKnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\UpdateServiceRequest\:\:execute\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/UpdateServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\UpdateServiceRequest\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/UpdateServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\VerifyDocument\:\:execute\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Application/UseCases/VerifyDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\ConversationRepositoryInterface\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\ConversationRepositoryInterface\:\:getMessages\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\ConversationRepositoryInterface\:\:getSuggestions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\DocumentRepositoryInterface\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/DocumentRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\DocumentRequestRepositoryInterface\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/DocumentRequestRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\FaqRepositoryInterface\:\:findAll\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/FaqRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\FaqRepositoryInterface\:\:findByCategory\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/FaqRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface\:\:ask\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/Gateways/AiAssistantGatewayInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface\:\:ask\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/Gateways/AiAssistantGatewayInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface\:\:generateSuggestions\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/Gateways/AiAssistantGatewayInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface\:\:generateSuggestions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/Gateways/AiAssistantGatewayInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface\:\:searchKnowledge\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/Gateways/AiAssistantGatewayInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\KnowledgeRepositoryInterface\:\:findArticlesByCategory\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/KnowledgeRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\KnowledgeRepositoryInterface\:\:searchArticles\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/KnowledgeRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\ServiceRequestRepositoryInterface\:\:findByStatus\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/ServiceRequestRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Contracts\\ServiceRequestRepositoryInterface\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Contracts/ServiceRequestRepositoryInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantConversation\:\:__construct\(\) has parameter \$contextData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantConversation.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantConversation\:\:contextData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantConversation.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantConversation\:\:create\(\) has parameter \$contextData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantConversation.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantConversation\:\:reconstitute\(\) has parameter \$contextData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantConversation.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantConversation\:\:updateContext\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantConversation.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantMessage\:\:__construct\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantMessage.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantMessage\:\:create\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantMessage.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantMessage\:\:metadata\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantMessage.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\AssistantMessage\:\:reconstitute\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/AssistantMessage.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\KnowledgeArticle\:\:__construct\(\) has parameter \$tags with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/KnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\KnowledgeArticle\:\:create\(\) has parameter \$tags with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/KnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\KnowledgeArticle\:\:reconstitute\(\) has parameter \$tags with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/KnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\KnowledgeArticle\:\:tags\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/KnowledgeArticle.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceRequest\:\:__construct\(\) has parameter \$attachments with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceRequest\:\:attachments\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceRequest\:\:reconstitute\(\) has parameter \$attachments with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceWorkflow\:\:__construct\(\) has parameter \$steps with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceWorkflow\:\:addStep\(\) has parameter \$stepConfig with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceWorkflow\:\:create\(\) has parameter \$steps with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceWorkflow\:\:raise\(\) is unused\.$#'
+			identifier: method.unused
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceWorkflow\:\:reconstitute\(\) has parameter \$steps with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\ServiceWorkflow\:\:steps\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/ServiceWorkflow.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\StudentDocument\:\:__construct\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/StudentDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\StudentDocument\:\:create\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/StudentDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\StudentDocument\:\:metadata\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/StudentDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\StudentDocument\:\:reconstitute\(\) has parameter \$metadata with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/StudentDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\WorkflowStep\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/WorkflowStep.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\WorkflowStep\:\:config\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/WorkflowStep.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\WorkflowStep\:\:create\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/WorkflowStep.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Domain\\Entities\\WorkflowStep\:\:reconstitute\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Domain/Entities/WorkflowStep.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\DocumentGeneratorInterface\:\:generate\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/DocumentGeneratorInterface.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\DompdfDocumentGenerator\:\:generate\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/DompdfDocumentGenerator.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\OpenAiAssistantService\:\:ask\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/OpenAiAssistantService.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\OpenAiAssistantService\:\:ask\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/OpenAiAssistantService.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\OpenAiAssistantService\:\:generateSuggestions\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/OpenAiAssistantService.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\OpenAiAssistantService\:\:generateSuggestions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/OpenAiAssistantService.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Integrations\\OpenAiAssistantService\:\:searchKnowledge\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Integrations/OpenAiAssistantService.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:messages\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentAssistantConversation.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentAssistantConversation.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentAssistantMessage.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentAssistantSuggestion.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentDocumentRequest.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentFaqItem.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentKnowledgeArticle.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeCategory\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentKnowledgeCategory.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceCategory\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentServiceCategory.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:category\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentServiceRequest.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceWorkflow\:\:steps\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentServiceWorkflow.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceWorkflow\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentServiceWorkflow.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentStudentDocument.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentWorkflowStep\:\:workflow\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentWorkflowStep.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentWorkflowStep\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/Eloquent/EloquentWorkflowStep.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$last_activity_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$student_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:\$content\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:\$conversation_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:\$role\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$action_url\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$conversation_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$message_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$suggestion_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantConversation\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantMessage\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentAssistantSuggestion\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentConversationRepository\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentConversationRepository\:\:getMessages\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentConversationRepository\:\:getSuggestions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentConversationRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$file_path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$student_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:\$verification_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentStudentDocument\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentDocumentRepository\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$document_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$notes\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$student_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentDocumentRequest\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentDocumentRequestRepository\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentDocumentRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$answer\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$category_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$is_active\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$question\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$sort_order\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:orderBy\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentFaqItem\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentFaqRepository\:\:findAll\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentFaqRepository\:\:findByCategory\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentFaqRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$category_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$content\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$slug\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:\$view_count\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentKnowledgeArticle\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentKnowledgeRepository\:\:findArticlesByCategory\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentKnowledgeRepository\:\:searchArticles\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentKnowledgeRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$admin_notes\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$category_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$current_step_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$notes\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$priority\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$ref_number\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$student_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Access to an undefined property Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:\$workflow_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceRequest\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 4
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceRequestRepository\:\:findByStatus\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceRequestRepository\:\:findByStudentId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Infrastructure/Persistence/EloquentServiceRequestRepository.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Academic\\Infrastructure\\Persistence\\EloquentStudent\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\AssistantController\:\:chat\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 3
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\AssistantController\:\:conversation\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\AssistantController\:\:history\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 2
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\AssistantController\:\:send\(\) never returns Illuminate\\View\\View so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\AssistantController\:\:send\(\) should return Illuminate\\Http\\RedirectResponse\|Illuminate\\View\\View but returns Illuminate\\Http\\JsonResponse\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\AssistantController\:\:\$getAssistantSuggestions is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/AssistantController.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Academic\\Infrastructure\\Persistence\\EloquentStudent\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DashboardController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\DashboardController\:\:index\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DashboardController.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Academic\\Infrastructure\\Persistence\\EloquentStudent\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\DocumentController\:\:create\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\DocumentController\:\:index\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\DocumentController\:\:show\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\DocumentController\:\:verify\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\DocumentController\:\:\$documentGenerator is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\DocumentController\:\:\$requestDocument is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/DocumentController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\FaqController\:\:index\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/FaqController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\KnowledgeController\:\:index\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/KnowledgeController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\KnowledgeController\:\:search\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/KnowledgeController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\KnowledgeController\:\:show\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/KnowledgeController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\KnowledgeController\:\:\$createKnowledgeArticle is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/KnowledgeController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\KnowledgeController\:\:\$updateKnowledgeArticle is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/KnowledgeController.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Academic\\Infrastructure\\Persistence\\EloquentStudent\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\StudentServices\\Infrastructure\\Persistence\\Eloquent\\EloquentServiceCategory\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\ServiceRequestController\:\:create\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\ServiceRequestController\:\:index\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Controllers\\ServiceRequestController\:\:show\(\) should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\ServiceRequestController\:\:\$completeServiceRequest is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Presentation\\Http\\Controllers\\ServiceRequestController\:\:\$updateServiceRequest is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Controllers/ServiceRequestController.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\ApproveServiceRequestRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/ApproveServiceRequestRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\CreateKnowledgeArticleRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/CreateKnowledgeArticleRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\CreateServiceRequestRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/CreateServiceRequestRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\DocumentRequestRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/DocumentRequestRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\RejectServiceRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/RejectServiceRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\SearchKnowledgeRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/SearchKnowledgeRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\SendMessageRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/SendMessageRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\StartConversationRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/StartConversationRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\UpdateServiceRequestRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/UpdateServiceRequestRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Requests\\VerifyDocumentRequest\:\:rules\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Requests/VerifyDocumentRequest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\AssistantConversationResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/AssistantConversationResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\AssistantMessageResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/AssistantMessageResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\FaqResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/FaqResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\KnowledgeArticleResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/KnowledgeArticleResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\ServiceCategoryResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/ServiceCategoryResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\ServiceRequestResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/ServiceRequestResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\ServiceWorkflowResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/ServiceWorkflowResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\StudentDocumentResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/StudentDocumentResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\StudentServicesDashboardResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/StudentServicesDashboardResource.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Presentation\\Http\\Resources\\WorkflowStepResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Modules/StudentServices/Presentation/Http/Resources/WorkflowStepResource.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: src/Modules/StudentServices/Tests/Feature/AssistantChatFeatureTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 4
+			path: src/Modules/StudentServices/Tests/Feature/DocumentGenerationFeatureTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Feature/KnowledgeBaseFeatureTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentKnowledgeCategory\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Feature/KnowledgeBaseFeatureTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: src/Modules/StudentServices/Tests/Feature/ServiceRequestFeatureTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceCategory\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Feature/ServiceRequestFeatureTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Feature/WorkflowEngineFeatureTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceCategory\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Feature/WorkflowEngineFeatureTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceWorkflow\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Modules/StudentServices/Tests/Feature/WorkflowEngineFeatureTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with array will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$id on array\.$#'
+			identifier: property.nonObject
+			count: 6
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$role on array\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$status on array\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\SendMessage constructor invoked with 4 parameters, 3 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\StartConversation constructor invoked with 4 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Method Modules\\StudentServices\\Application\\UseCases\\StartConversation\:\:execute\(\) invoked with 3 parameters, 1\-2 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Missing parameter \$studentId \(string\) in call to method Modules\\StudentServices\\Application\\UseCases\\SendMessage\:\:execute\(\)\.$#'
+			identifier: argument.missing
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Parameter \#2 \$ai of class Modules\\StudentServices\\Application\\UseCases\\SendMessage constructor expects Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface, Modules\\Shared\\Domain\\Contracts\\EventDispatcherInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Parameter \#3 \$events of class Modules\\StudentServices\\Application\\UseCases\\SendMessage constructor expects Modules\\Shared\\Domain\\Contracts\\EventDispatcherInterface, Modules\\StudentServices\\Domain\\Contracts\\Gateways\\AiAssistantGatewayInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$contextData in call to method Modules\\StudentServices\\Application\\UseCases\\StartConversation\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$role in call to method Modules\\StudentServices\\Application\\UseCases\\SendMessage\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/AiAssistantIntegrationTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with array will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 2
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$id on array\.$#'
+			identifier: property.nonObject
+			count: 6
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$status on array\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\GenerateDocument constructor invoked with 4 parameters, 3 required\.$#'
+			identifier: arguments.count
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\RequestDocument constructor invoked with 3 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\VerifyDocument constructor invoked with 3 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Domain\\Contracts\\DocumentGeneratorInterface not found\.$#'
+			identifier: class.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Missing parameter \$verificationCode \(string\) in call to method Modules\\StudentServices\\Application\\UseCases\\VerifyDocument\:\:execute\(\)\.$#'
+			identifier: argument.missing
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Parameter \#2 \$generator of class Modules\\StudentServices\\Application\\UseCases\\GenerateDocument constructor expects Modules\\StudentServices\\Infrastructure\\Integrations\\DocumentGeneratorInterface, Modules\\Shared\\Domain\\Contracts\\EventDispatcherInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Parameter \#3 \$data of method Modules\\StudentServices\\Application\\UseCases\\GenerateDocument\:\:execute\(\) expects array, string given\.$#'
+			identifier: argument.type
+			count: 7
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Parameter \#3 \$events of class Modules\\StudentServices\\Application\\UseCases\\GenerateDocument constructor expects Modules\\Shared\\Domain\\Contracts\\EventDispatcherInterface, Modules\\StudentServices\\Domain\\Contracts\\DocumentGeneratorInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$documentId in call to method Modules\\StudentServices\\Application\\UseCases\\VerifyDocument\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$metadata in call to method Modules\\StudentServices\\Application\\UseCases\\GenerateDocument\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$title in call to method Modules\\StudentServices\\Application\\UseCases\\GenerateDocument\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$verifierId in call to method Modules\\StudentServices\\Application\\UseCases\\VerifyDocument\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/DocumentGeneratorIntegrationTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Call to function in_array\(\) with arguments true, non\-empty\-list\<null\> and true will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with false will always evaluate to false\.$#'
+			identifier: method.impossibleType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Parameter \#1 \$createNotification of class Modules\\StudentServices\\Infrastructure\\Gateways\\NotificationGateway constructor expects Modules\\Notifications\\Application\\UseCases\\CreateNotification, Modules\\Notifications\\Domain\\Contracts\\NotificationRepositoryInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 6
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Parameter \#2 \$getStudentNotifications of class Modules\\StudentServices\\Infrastructure\\Gateways\\NotificationGateway constructor expects Modules\\Notifications\\Application\\UseCases\\GetStudentNotifications, Modules\\Shared\\Domain\\Contracts\\EventDispatcherInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 6
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Result of method Modules\\StudentServices\\Infrastructure\\Gateways\\NotificationGateway\:\:send\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 7
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$channel in call to method Modules\\StudentServices\\Application\\UseCases\\CreateServiceNotification\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$channel in call to method Modules\\StudentServices\\Infrastructure\\Gateways\\NotificationGateway\:\:send\(\)\.$#'
+			identifier: argument.unknown
+			count: 4
+			path: src/Modules/StudentServices/Tests/Integration/NotificationGatewayIntegrationTest.php
+
+		-
+			message: '#^Call to an undefined static method Modules\\Shared\\Infrastructure\\Persistence\\EloquentUser\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with array will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceCategory\.$#'
+			identifier: class.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$id on array\.$#'
+			identifier: property.nonObject
+			count: 8
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$status on array\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\ApproveServiceRequest constructor invoked with 3 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\CompleteServiceRequest constructor invoked with 3 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\CreateServiceRequest constructor invoked with 3 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Instantiated class Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceRequestRepository not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Tests\\Integration\\StudentServicesIntegrationTest\:\:\$requestRepository \(Modules\\StudentServices\\Domain\\Contracts\\ServiceRequestRepositoryInterface\) does not accept Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceRequestRepository\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$notes in call to method Modules\\StudentServices\\Application\\UseCases\\ApproveServiceRequest\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/StudentServicesIntegrationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with array will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Call to method findByCategoryId\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceWorkflowRepository\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Call to method findById\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceWorkflowRepository\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceCategory\.$#'
+			identifier: class.notFound
+			count: 6
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Call to static method create\(\) on an unknown class Modules\\StudentServices\\Infrastructure\\Persistence\\EloquentServiceWorkflow\.$#'
+			identifier: class.notFound
+			count: 5
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$id on array\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$status on array\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Cannot access property \$steps on array\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\DefineWorkflow constructor invoked with 3 parameters, 0 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\ExecuteWorkflowStep constructor invoked with 3 parameters, 2 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Application\\UseCases\\GetWorkflowStatus constructor invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Class Modules\\StudentServices\\Domain\\Contracts\\ServiceWorkflowRepositoryInterface not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Instantiated class Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceRequestRepository not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Instantiated class Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceWorkflowRepository not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Missing parameter \$action \(string\) in call to method Modules\\StudentServices\\Application\\UseCases\\ExecuteWorkflowStep\:\:execute\(\)\.$#'
+			identifier: argument.missing
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Parameter \#1 \$requests of class Modules\\StudentServices\\Application\\UseCases\\GetWorkflowStatus constructor expects Modules\\StudentServices\\Domain\\Contracts\\ServiceRequestRepositoryInterface, Modules\\StudentServices\\Domain\\Contracts\\ServiceWorkflowRepositoryInterface&PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Property Modules\\StudentServices\\Tests\\Integration\\WorkflowEngineIntegrationTest\:\:\$requestRepository \(Modules\\StudentServices\\Domain\\Contracts\\ServiceRequestRepositoryInterface\) does not accept Modules\\StudentServices\\Infrastructure\\Repositories\\EloquentServiceRequestRepository\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
+
+		-
+			message: '#^Unknown parameter \$data in call to method Modules\\StudentServices\\Application\\UseCases\\ExecuteWorkflowStep\:\:execute\(\)\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: src/Modules/StudentServices/Tests/Integration/WorkflowEngineIntegrationTest.php
 
 		-
 			message: '#^Parameter \#1 \$user of method Illuminate\\Foundation\\Testing\\TestCase\:\:actingAs\(\) expects Illuminate\\Contracts\\Auth\\Authenticatable, Illuminate\\Database\\Eloquent\\Collection\<int, Illuminate\\Database\\Eloquent\\Model\>\|Illuminate\\Database\\Eloquent\\Model given\.$#'

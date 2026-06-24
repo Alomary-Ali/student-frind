@@ -18,5 +18,6 @@ final class NotificationsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__ . '/Presentation/Http/routes.php');
+        $this->loadMigrationsFrom(__DIR__ . '/Infrastructure/Database');
     }
 }

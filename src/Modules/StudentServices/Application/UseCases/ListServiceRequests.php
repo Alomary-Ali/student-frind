@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Application\UseCases;
@@ -15,7 +16,8 @@ final readonly class ListServiceRequests
     {
         if ($status !== null) {
             $all = $this->requests->findByStatus($status);
-            return array_filter($all, fn($r) => $r->studentId() === $studentId);
+
+            return array_filter($all, fn ($r) => $r->studentId() === $studentId);
         }
 
         return $this->requests->findByStudentId($studentId);

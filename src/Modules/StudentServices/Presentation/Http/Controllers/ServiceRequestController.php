@@ -18,6 +18,7 @@ use Modules\StudentServices\Application\UseCases\RejectServiceRequest as RejectS
 use Modules\StudentServices\Application\UseCases\UpdateServiceRequest;
 use Modules\StudentServices\Domain\Contracts\ServiceRequestRepositoryInterface;
 use Modules\StudentServices\Domain\ValueObjects\ServiceRequestId;
+use Modules\StudentServices\Infrastructure\Persistence\Eloquent\EloquentServiceCategory;
 use Modules\StudentServices\Presentation\Http\Requests\CreateServiceRequestRequest;
 use Modules\StudentServices\Presentation\Http\Requests\RejectServiceRequest as RejectServiceRequestForm;
 
@@ -49,7 +50,11 @@ final readonly class ServiceRequestController
 
     public function create(): View
     {
-        return view('student-services.requests.create');
+        $categories = EloquentServiceCategory::where('is_active', true)->get();
+
+        return view('student-services.requests.create', [
+            'categories' => $categories,
+        ]);
     }
 
     public function store(CreateServiceRequestRequest $request): RedirectResponse

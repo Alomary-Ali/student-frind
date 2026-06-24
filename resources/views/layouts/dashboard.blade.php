@@ -25,7 +25,10 @@
             background: hsl(var(--color-navy) / 0.45);
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
-            z-index: 46;
+            z-index: 50;
+        }
+        #sidebar {
+            z-index: 51;
         }
     </style>
 </head>
@@ -254,6 +257,69 @@
                 المشاريع
             </a>
 
+            {{-- Student Services Section --}}
+            <p class="nav-section-label">خدمات الطالب</p>
+
+            <a href="{{ route('student-services.dashboard') }}"
+               class="nav-link {{ request()->routeIs('student-services.dashboard') ? 'nav-link-active' : '' }}"
+               {{ request()->routeIs('student-services.dashboard') ? 'aria-current="page"' : '' }}
+               data-nav-link="student-services-dashboard">
+                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+                لوحة الخدمات
+            </a>
+
+            <a href="{{ route('student-services.requests.index') }}"
+               class="nav-link {{ request()->routeIs('student-services.requests*') ? 'nav-link-active' : '' }}"
+               {{ request()->routeIs('student-services.requests*') ? 'aria-current="page"' : '' }}
+               data-nav-link="student-services-requests">
+                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                </svg>
+                طلباتي
+            </a>
+
+            <a href="{{ route('student-services.documents.index') }}"
+               class="nav-link {{ request()->routeIs('student-services.documents*') ? 'nav-link-active' : '' }}"
+               {{ request()->routeIs('student-services.documents*') ? 'aria-current="page"' : '' }}
+               data-nav-link="student-services-documents">
+                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                المستندات
+            </a>
+
+            <a href="{{ route('student-services.knowledge.index') }}"
+               class="nav-link {{ request()->routeIs('student-services.knowledge*') ? 'nav-link-active' : '' }}"
+               {{ request()->routeIs('student-services.knowledge*') ? 'aria-current="page"' : '' }}
+               data-nav-link="student-services-knowledge">
+                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+                قاعدة المعرفة
+            </a>
+
+            <a href="{{ route('student-services.faq.index') }}"
+               class="nav-link {{ request()->routeIs('student-services.faq*') ? 'nav-link-active' : '' }}"
+               {{ request()->routeIs('student-services.faq*') ? 'aria-current="page"' : '' }}
+               data-nav-link="student-services-faq">
+                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                الأسئلة الشائعة
+            </a>
+
+            <a href="{{ route('student-services.assistant.chat') }}"
+               class="nav-link {{ request()->routeIs('student-services.assistant*') ? 'nav-link-active' : '' }}"
+               {{ request()->routeIs('student-services.assistant*') ? 'aria-current="page"' : '' }}
+               data-nav-link="student-services-assistant">
+                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                </svg>
+                المساعد الذكي
+            </a>
+
             @if(auth()->user() && auth()->user()->role === 'student')
             {{-- Career & Skills Section --}}
             <p class="nav-section-label">التطوير المهني والمهارات</p>
@@ -416,8 +482,18 @@
         if (e.key === 'Escape') closeSidebar();
     });
 
-    // ── Auto-scroll active nav link into view ──
+    // Close sidebar when clicking nav links on mobile
     document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('#sidebar .nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 1024) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Auto-scroll active nav link into view
         var activeLink = document.querySelector('#sidebar .nav-link-active');
         if (activeLink) {
             activeLink.scrollIntoView({ block: 'nearest', behavior: 'instant' });

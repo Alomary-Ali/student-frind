@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Infrastructure\Integrations;
@@ -16,13 +17,13 @@ final class OpenAiAssistantService implements AiAssistantGatewayInterface
             ['role' => 'system', 'content' => self::SYSTEM_PROMPT],
         ];
 
-        if (!empty($context['history'])) {
+        if (! empty($context['history'])) {
             foreach ($context['history'] as $msg) {
                 $messages[] = ['role' => $msg['role'], 'content' => $msg['content']];
             }
         }
 
-        if (!empty($context['knowledge'])) {
+        if (! empty($context['knowledge'])) {
             $knowledgeContext = "المعلومات المتاحة:\n";
             foreach ($context['knowledge'] as $article) {
                 $knowledgeContext .= "- {$article['title']}: {$article['content']}\n";

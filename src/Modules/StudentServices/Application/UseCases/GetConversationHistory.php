@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Application\UseCases;
@@ -32,7 +33,7 @@ final readonly class GetConversationHistory
                 'created_at' => $conversation->createdAt()->format('c'),
                 'last_activity_at' => $conversation->lastActivityAt()->format('c'),
             ],
-            'messages' => array_map(fn($m) => [
+            'messages' => array_map(fn ($m) => [
                 'id' => $m->id()->value(),
                 'role' => $m->role()->value,
                 'content' => $m->content(),

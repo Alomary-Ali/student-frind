@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices\Application\UseCases;
 
 use Modules\Shared\Domain\Contracts\EventDispatcherInterface;
 use Modules\StudentServices\Domain\Contracts\ServiceRequestRepositoryInterface;
-use Modules\StudentServices\Domain\Enums\RequestPriority;
 use Modules\StudentServices\Domain\ValueObjects\ServiceRequestId;
 
 final readonly class UpdateServiceRequest

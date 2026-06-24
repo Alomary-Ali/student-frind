@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\StudentServices;
@@ -13,8 +14,8 @@ use Modules\StudentServices\Domain\Contracts\Gateways\NotificationGatewayInterfa
 use Modules\StudentServices\Domain\Contracts\KnowledgeRepositoryInterface;
 use Modules\StudentServices\Domain\Contracts\ServiceRequestRepositoryInterface;
 use Modules\StudentServices\Infrastructure\Gateways\NotificationGateway;
-use Modules\StudentServices\Infrastructure\Integrations\DompdfDocumentGenerator;
 use Modules\StudentServices\Infrastructure\Integrations\DocumentGeneratorInterface;
+use Modules\StudentServices\Infrastructure\Integrations\DompdfDocumentGenerator;
 use Modules\StudentServices\Infrastructure\Integrations\OpenAiAssistantService;
 use Modules\StudentServices\Infrastructure\Persistence\EloquentConversationRepository;
 use Modules\StudentServices\Infrastructure\Persistence\EloquentDocumentRepository;
@@ -43,5 +44,6 @@ final class StudentServicesServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__ . '/Presentation/Http/routes.php');
+        $this->loadMigrationsFrom(__DIR__ . '/Infrastructure/Database');
     }
 }
